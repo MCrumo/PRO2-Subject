@@ -11,7 +11,7 @@ bool poda_subarbre(BinTree<int> &a, int x) {
             return true;
         }
         else {
-            BinTree<int> a1(a.left(), a2(a.right());
+            BinTree<int> a1(a.left()), a2(a.right());
             bool b;
             b = poda_subarbre(a1, x);
             if (not b) {
