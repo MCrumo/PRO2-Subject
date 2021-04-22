@@ -96,6 +96,12 @@ public:
       \post s'han escrit els atributs del parametre implicit al canal estandard de sortida
     */
     void escriure_problema() const;
+    
+private:
+    string id;
+    int e_totals;
+    int e_correctes;
+    double ratio;
 };
 
 #endif
