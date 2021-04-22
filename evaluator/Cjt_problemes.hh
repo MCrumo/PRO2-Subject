@@ -6,6 +6,9 @@
 #define CJT_PROBLEMES
 
 #include "Problema.hh"
+#ifndef NO_DIAGRAM
+#include <map>
+#endif
 
 /** @class Cjt_problemes
     @brief Representa el conjunt de problemes del Evaluator.
@@ -63,6 +66,9 @@ public:
       \post s'han escrit pel canal estandard de sortida els problemes del parametre implicit en ordre ascendent de ratio i en cas d'empat per odre creixent d'identificador
     */
     void llistar_problemes() const;
+    
+private:
+    map<string, Problema> llista_problemes;
 };
 
 #endif
