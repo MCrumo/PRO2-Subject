@@ -7,7 +7,7 @@ Problema::Problema() {
     ratio = 1.0;
 }
 
-Problema::Problema(srting nom) {
+Problema::Problema(string nom) {
     id = nom;
     e_correctes = 0;
     e_totals = 0;
