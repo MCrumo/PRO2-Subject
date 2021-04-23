@@ -26,30 +26,28 @@ void Problema::actualitzar_ratio() {
     ratio = (1 + e_totals) / double(1 + e_correctes);
 }
 
-string Problema::nom_problema() {
+string Problema::nom_problema() const {
     return id;
 }
 
-int Problema::consul_enviats() {
+int Problema::consul_enviats() const {
     return e_totals;
 }
 
-int Problema::consul_correctes() {
+int Problema::consul_correctes() const {
     return e_correctes;
 }
 
-double Problema::consul_ratio() {
+double Problema::consul_ratio() const {
     return ratio;
 }
 
 void Problema::llegir_problema() {
-    cin >> nom_p;
-    id = nom_p;
-    
+    cin >> id;
 }
 
-void escriure_problema() {
-    cout << id << "(" << e_totals << "," e_correctes << "," << ratio << ")" << endl;
+void Problema::escriure_problema() const {
+    cout << id << "(" << e_totals << "," << e_correctes << "," << ratio << ")" << endl;
 }
 
 
