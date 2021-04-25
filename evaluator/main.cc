@@ -13,7 +13,7 @@
 #include "Cjt_cursos.hh"
 #include "Cjt_usuaris.hh"
 #ifndef NO_DIAGRAM
-#include "Excepcio.hh"
+#include "ExcepcioEvaluator.hh"
 #endif
 
 /** @brief Programa principal de la pràctica <em>Evaluator, plataforma de gestió de problemes i cursos de programació</em>.
@@ -38,13 +38,8 @@ int main ()
         string nom, nom_2;
         if (c == "nuevo_problema" or c == "np") {
             cin >> nom;
-            if (cjt_p.existeix_problema(nom)) {
-                error.throw_p1();
-            } else {
-                Problema p(nom);
-                cjt_p.afegir_problema(p);
-                cjt_p.escriure_problemes();
-            }
+            Problema p(nom);
+            cjt_p.afegir_problema(p);
         }
         else if (c == "nueva_sesion" or c == "ns") {
             cin >> nom;
@@ -177,11 +172,8 @@ int main ()
         }
         else if (c == "escribir_problema" or c == "ep") {
             cin >> nom;
-            if (not cjt_p.existeix_problema(nom)) {
-                error.throw_p3();
-            } else {
-                (cjt_p.buscar_problema(nom)).escriure_problema();
-            }
+            //1r llençara l'error o executara escriure_problema?!!!
+            (cjt_p.buscar_problema(nom)).escriure_problema();
         }
         else if (c == "listar_sesiones" or c == "lc") {
             cjt_s.llistar_sessions();
