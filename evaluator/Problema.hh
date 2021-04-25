@@ -8,6 +8,7 @@
 #ifndef NO_DIAGRAM
 #include <iostream>
 #include <string>
+#include "ExcepcioEvaluator"
 using namespace std;
 #endif
 
