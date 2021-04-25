@@ -43,7 +43,7 @@ public:
       \pre estan preparats al canal estandar d'entrada un conjunt d'identificadors de problemes en preordre
       \post s'han afegit els problemes al parametre implicit
     */
-    void afegir_problemes();
+    void afegir_problemes(BinTree<string>& t);
     
     //Consultores
     
@@ -63,7 +63,7 @@ public:
       \pre <em>cert</em>
       \post el resultat es nom del parametre implicit
     */
-    string nom_sessio() const;
+    string nom_sessio();
     
     /** @brief Consulta el nombre de problemes del curs
       \pre <em>cert</em>
@@ -89,7 +89,12 @@ public:
       \pre <em>cert</em>
       \post s'han escrit els atributs del parametre implicit al canal estandard de sortida
     */
-    void escriure_sessio() const;
+    void escriure_sessio(const BinTree<string>& t) const;
+
+private:
+    string id;
+    BinTree<string> problemes_sessio;
+    int problemes_totals;
 };
 
 #endif

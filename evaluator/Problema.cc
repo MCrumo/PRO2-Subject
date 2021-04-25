@@ -50,6 +50,11 @@ void Problema::escriure_problema() const {
     cout << id << "(" << e_totals << "," << e_correctes << "," << ratio << ")" << endl;
 }
 
+bool Problema::operator<(const Problema& p) const {
+    if (ratio != p.ratio) return ratio < p.ratio;
+    else return id < p.id;
+}
+
 
 
 

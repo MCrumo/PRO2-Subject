@@ -8,7 +8,7 @@
 #ifndef NO_DIAGRAM
 #include <iostream>
 #include <string>
-#include "ExcepcioEvaluator"
+#include "ExcepcioEvaluator.hh"
 using namespace std;
 #endif
 
@@ -55,12 +55,9 @@ public:
     
     //Consultores
     
-    /** @brief Compara les ratios de dos problemes
-      \pre problema 1 i problema 2
-      \post true si la radio del p2 es mes gran que la ratio del p1
-    */
-    static bool comp_ratio(const Problema& p1, const Problema& p2);
-    
+    //AFEGIR COMENTARIS!!!!!!!!1
+    bool operator<(const Problema& p) const;
+
     /** @brief Consulta el nom del problema
       \pre <em>cert</em>
       \post el resultat es el nom del parametre implicit

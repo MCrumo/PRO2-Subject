@@ -21,7 +21,6 @@
 
 int main ()
 {
-    Excepcio error;
     Cjt_problemes cjt_p;
     Cjt_sessions cjt_s;
     Cjt_cursos cjt_c;
@@ -31,7 +30,7 @@ int main ()
     cjt_s.llegir_sessions();
     cjt_c.llegir_cursos();
     cjt_u.llegir_usuaris();
-    
+
     string c;
     while (c != "fin") {
         int nom_int;
@@ -46,8 +45,8 @@ int main ()
             if (cjt_s.existeix_sessio(nom)) {
                 error.throw_s1();
             } else {
-                Sessio s(nom);
-                s.afegir_problemes();
+                Sessio s();
+                s.llegir_sessio();
                 cjt_s.afegir_sessio(s);
                 cjt_s.escriure_sessions();
             }
