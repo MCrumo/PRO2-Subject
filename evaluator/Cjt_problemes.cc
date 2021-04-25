@@ -10,14 +10,17 @@ void Cjt_problemes::afegir_problema(const Problema& p) {
     if (it != llista_problemes.end()) throw ExcepcioEvaluator(e1);
     else {
         llista_problemes.insert(make_pair(p.nom_problema(), p));
-        cout << llista_problemes.size();
+        vector_problemes.push_back(p);
+        sort(vector_problemes.begin(), vector_problemes.end());
+        for(auto a : vector_problemes) cout << a.nom_problema() << endl;
+        cout << llista_problemes.size() << endl;
     }
 }
-
+/*
 bool Cjt_problemes::existeix_problema(string nom) {
     
 }
-
+*/
 Problema Cjt_problemes::buscar_problema(string nom) {
     map<string, Problema>::const_iterator it = llista_problemes.find(nom);
     if (it == llista_problemes.end()) throw ExcepcioEvaluator(e2);
