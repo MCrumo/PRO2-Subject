@@ -1,0 +1,46 @@
+#include <map>
+
+m.size();
+m.empty();
+
+    RECORREGUTS:
+    
+for (map<string, info_persona>::const_iterator it = d.begin(); it != d.end(); ++it) {
+cout << it->first << " " << it->second.edat << " " << it->second.pes << endl;
+}
+
+it->second.edat += 10; // correcte
+it->first = "Maria"; // incorrecte, no es pot canviar la clau
+
+    CONSULTES:
+    
+map<string, info_persona>::const_iterator it = d.find("Albert");
+if (it == d.end()) cout << "L'Albert no hi és" << endl;
+else cout << "L'Albert pesa " << it->second.pes << " kilos" << endl;
+
+d["Albert"].pes // si no esxisteix l'Albert, crea un nou map amb aquella calu i valors 0
+
+    AFEGIR VALROS:
+    
+d["Albert"].edat = 18 // Crea si no existia la calu i modifica el valor si ja existia
+d.insert(make_pair("Manel", info));
+// equivalent a d.insert(pair<string, info_persona>("Manel", info));
+
+    TREURE ELEMENTS:
+    
+if (d.erase("Albert") == 0) cout << "Albert no hi era" << endl;
+else cout << "Hem esborrat Albert" << endl;
+    
+it = d.find("Albert");
+if (it != d.end()) d.erase(it);
+
+Si sabem que Albert pertany a d podem fer simplement!!!
+d.erase(d.find("Albert")); // equivalent a d.erase("Albert");
+
+
+    FAQS:
+
+passar un map com a parametre s'ha de fer sense el const!
+
+map<string, info_persona, greater<T> > d;
+tambe hi ha el less<T>
