@@ -28,8 +28,8 @@ public:
     //Modificadores
     
     /** @brief Modifica el conjunt de problemes per afegir-li p
-      \pre el parametre implicit no conte cap problema amb el nom de p
-      \post s'ha afegit el problema p al parametre implicit
+      \pre <em>cert</em>
+      \post s'ha afegit el problema p al parametre implicit i en cas d'existir s'ha impres pel canal estandard de sortida un error
     */
     void afegir_problema(const Problema& p);
     
@@ -54,12 +54,6 @@ public:
       \post el parametre implicit conte el conjunt de problemes llegits del canal estandard d'entrada
     */
     void llegir_problemes();
-    
-    /** @brief Operació d'escriptura del total de problemes
-      \pre <em>cert</em>
-      \post s'han escrit pel canal estandard de sortida el total de problemes del parametre implicit
-    */
-    void escriure_problemes() const;
     
     /** @brief Operació d'escriptura de tots els problemes
       \pre <em>cert</em>
