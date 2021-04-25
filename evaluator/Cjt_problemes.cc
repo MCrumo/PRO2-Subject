@@ -1,29 +1,43 @@
 #include "Cjt_problemes.hh"
 
-Cjt_problemes::Cjt_problemes() {
-    
-}
+const char *e1 = "El problema ja existeix";
+const char *e2 = "El problema no existeix";
 
-void    Cjt_problemes::afegir_problema(const Problema& p) {
-    //map
+Cjt_problemes::Cjt_problemes() {}
+
+void Cjt_problemes::afegir_problema(const Problema& p) {
+    map<string, Problema>::const_iterator it = llista_problemes.find(p.nom_problema());
+    if (it != llista_problemes.end()) throw ExcepcioEvaluator(e1);
+    else {
+        llista_problemes.insert(make_pair(p.nom_problema(), p));
+        cout << llista_problemes.size();
+    }
 }
 
 bool Cjt_problemes::existeix_problema(string nom) {
-    //map
+    
 }
 
 Problema Cjt_problemes::buscar_problema(string nom) {
-    //map
+    map<string, Problema>::const_iterator it = llista_problemes.find(nom);
+    if (it == llista_problemes.end()) throw ExcepcioEvaluator(e2);
+    else {
+        return it->second;
+    }
 }
 
 void Cjt_problemes::llegir_problemes() {
-    
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        Problema p;
+        p.llegir_problema();
+        llista_problemes.insert(make_pair(p.nom_problema(), p));
+    }
 }
 
-void Cjt_problemes::escriure_problemes() {
-    
-}
-
-void Cjt_problemes::llistar_problemes() {
-    
+void Cjt_problemes::llistar_problemes() const{
+    for (map<string, Problema>::const_iterator it = llista_problemes.begin(); it != llista_problemes.end(); ++it) {
+        it->second.escriure_problema();
+    }
 }
