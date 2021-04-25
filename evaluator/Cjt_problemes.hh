@@ -8,6 +8,8 @@
 #include "Problema.hh"
 #ifndef NO_DIAGRAM
 #include <map>
+#include <algorithm>
+#include <vector>
 #endif
 
 /** @class Cjt_problemes
@@ -63,6 +65,7 @@ public:
     
 private:
     map<string, Problema> llista_problemes;
+    vector<Problema> vector_problemes;
 };
 
 #endif

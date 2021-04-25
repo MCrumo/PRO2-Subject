@@ -12,7 +12,6 @@ void Cjt_problemes::afegir_problema(const Problema& p) {
         llista_problemes.insert(make_pair(p.nom_problema(), p));
         vector_problemes.push_back(p);
         sort(vector_problemes.begin(), vector_problemes.end());
-        for(auto a : vector_problemes) cout << a.nom_problema() << endl;
         cout << llista_problemes.size() << endl;
     }
 }
@@ -40,7 +39,7 @@ void Cjt_problemes::llegir_problemes() {
 }
 
 void Cjt_problemes::llistar_problemes() const{
-    for (map<string, Problema>::const_iterator it = llista_problemes.begin(); it != llista_problemes.end(); ++it) {
-        it->second.escriure_problema();
+    for (int i = 0; i < vector_problemes.size(); ++i) {
+        vector_problemes[i].escriure_problema();
     }
 }
