@@ -114,6 +114,12 @@ public:
       \post s'han escrit els atributs del parametre implicit al canal estandard de sortida
     */
     void escriure_curs() const;
+    
+private:
+    int id;
+    int u_inscrits;
+    int u_completats;
+    vector<string> llista_sessions;
 };
 
 #endif

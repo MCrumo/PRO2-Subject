@@ -7,7 +7,6 @@
 
 #include "Problema.hh"
 #ifndef NO_DIAGRAM
-#include <map>
 #include <algorithm>
 #include <vector>
 #endif

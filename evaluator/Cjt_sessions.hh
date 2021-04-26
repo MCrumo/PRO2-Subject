@@ -25,18 +25,12 @@ public:
     //Modificadores
     
     /** @brief Afegeix una sessio al conjunt de sessions
-      \pre el parametre implicit no conte cap sessio amb el nom de s
-      \post s'ha afegit la sessio s al parametre implicit
+      \pre <em>cert</em>
+      \post s'ha afegit la sessio s al parametre implicit i en cas que ja existis, s'ha impres un missatge d'error
     */
-    void afegir_sessio(const Sessio& s);
+    void afegir_sessio(Sessio& s);
     
     //Consultores
-    
-    /** @brief Consulta si hi ha una certa sessio al conjunt de sessions
-      \pre nom es un string
-      \post retorna ture si hi ha una sessio amb aquell identificador al parametre implicit
-    */
-    bool existeix_sessio(string nom);
     
     /** @brief Consulta si hi ha problemes repetits al conjunt de sessions
       \pre <em>cert</em>
@@ -48,7 +42,7 @@ public:
       \pre el parametre implicit conte una sessio amb nom "nom"
       \post el resultat es la sessio amb nom "nom" que conte el parametre implicit
     */
-    Sessio buscar_sessio(string nom) const;
+    Sessio buscar_sessio(string nom);
     
     //Lectura i escriptura
     
@@ -58,19 +52,14 @@ public:
     */
     void llegir_sessions();
     
-    /** @brief Operació d'escriptura del total de sessions
-      \pre <em>cert</em>
-      \post s'han escrit pel canal estandard de sortida el total de sessions del parametre implicit
-    */
-    void escriure_sessions() const;
-    
     /** @brief Operació d'escriptura de totes les sessions
       \pre <em>cert</em>
       \post s'han escrit pel canal estandard de sortida les sessions del parametre implicit en ordre ascendent de l'identificador
     */
     void llistar_sessions() const;
     
-    
+private:
+    map<string, Sessio> llista_sessions;
 };
 #endif
 

@@ -41,15 +41,9 @@ int main ()
             cjt_p.afegir_problema(p);
         }
         else if (c == "nueva_sesion" or c == "ns") {
-            cin >> nom;
-            if (cjt_s.existeix_sessio(nom)) {
-                error.throw_s1();
-            } else {
-                Sessio s();
-                s.llegir_sessio();
-                cjt_s.afegir_sessio(s);
-                cjt_s.escriure_sessions();
-            }
+            Sessio s;
+            s.llegir_sessio();
+            cjt_s.afegir_sessio(s);
         }
         else if (c == "nuevo_curso" or c == "nc") {
             Cjt_sessions noves_s;
@@ -179,12 +173,7 @@ int main ()
         }
         else if (c == "escribir_sesion" or c == "es") {
             cin >> nom;
-            if (not cjt_s.existeix_sessio(nom)) {
-                error.throw_s2();
-            } else {
-                cin >> nom;
-                (cjt_s.buscar_sessio(nom)).escriure_sessio();
-            }
+            (cjt_s.buscar_sessio(nom)).escriure_sessio();
         }
         else if (c == "listar_cursos" or c == "lc") {
             cjt_c.llistar_cursos();

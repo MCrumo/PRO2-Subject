@@ -48,10 +48,16 @@ public:
     //Consultores
     
     /** @brief Compara els problemes entre dues sessions
-      \pre sessio 1 i sessio 2
-      \post true si s1 i s2 tenen algun problema en comu
+      \pre arbre 1
+      \post true si el parametre implicit i a1 tenen algun problema en comu
     */
-    static bool comp_problemes(const Sessio& s1, const Sessio& s2);
+    void cmp_problemes(const BinTree<string>& a1, const BinTree<string>& a2, bool& v);
+    
+    /** @brief Troba si hi ha un cret n a l'arbre a
+      \pre arbre a i string n
+      \post true si a conte n
+    */
+    bool trobar_valor(const BinTree<string>& a, string n);
     
     /** @brief Consulta els problemes de la sessio
       \pre <em>cert</em>
@@ -85,11 +91,17 @@ public:
     */
     void llegir_sessio();
     
+    /** @brief Operacio d'escriptura dels problemes de sessio
+      \pre <em>cert</em>
+      \post s'han escrit els atributs (problemes) del parametre implicit al canal estandard de sortida
+    */
+    void escriure_sessio_p(const BinTree<string>& t) const;
+    
     /** @brief Operacio d'escriptura de sessio
       \pre <em>cert</em>
-      \post s'han escrit els atributs del parametre implicit al canal estandard de sortida
+      \post s'han escrit tots els atributs del parametre implicit al canal estandard de sortida
     */
-    void escriure_sessio(const BinTree<string>& t) const;
+    void escriure_sessio() const;
 
 private:
     string id;
