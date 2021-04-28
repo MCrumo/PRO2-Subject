@@ -139,7 +139,7 @@ int main ()
             cin >> nom;
             (cjt_p.buscar_problema(nom)).escriure_problema();
         }//1r llençara l'error o executara escriure_problema?!!!
-        else if (c == "listar_sesiones" or c == "lc") {
+        else if (c == "listar_sesiones" or c == "ls") {
             cjt_s.llistar_sessions();
         }
         else if (c == "escribir_sesion" or c == "es") {
@@ -156,7 +156,7 @@ int main ()
         else if (c == "listar_usuarios" or c == "lu") {
             cjt_u.llistar_usuaris();
         }
-        else if (c == "escribir_usuario" or c == "eu") { llistar_enviables
+        else if (c == "escribir_usuario" or c == "eu") {
             cin >> nom;
             b = cjt_u.existeix_usuari(nom);
             if (b) (cjt_u.buscar_usuari(nom)).escriure_usuari();

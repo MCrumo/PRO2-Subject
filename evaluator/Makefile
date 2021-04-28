@@ -30,7 +30,7 @@ Cjt_problemes.o: Cjt_problemes.cc
 Problema.o: Problema.cc
 	g++ -c Problema.cc $(OPCIONS)
 
-clean:
+clear:
 	rm *.exe
 	rm *.o
 

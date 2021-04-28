@@ -1,6 +1,9 @@
 #include "Usuari.hh"
 
-Usuari::Usuari() { }
+Usuari::Usuari() {
+    curs_inscrit = 0;
+    env_totals = 0;
+}
 
 Usuari::Usuari(string nom) {
     id = nom;

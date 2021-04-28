@@ -64,6 +64,7 @@ public:
     
 private:
     map<string, Problema> llista_problemes;
+    vector<Problema> vector_problemes;
 };
 
 #endif

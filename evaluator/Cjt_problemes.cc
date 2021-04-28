@@ -19,7 +19,7 @@ void Cjt_problemes::afegir_problema(const Problema& p) {
 bool Cjt_problemes::existeix_problema(string nom) {
     map<string, Problema>::const_iterator it = llista_problemes.find(nom);
     if (it == llista_problemes.end()) {
-        throw ExcepcioEvaluator(e1)
+        throw ExcepcioEvaluator(e1);
         return false;
     }
     else return true;
@@ -40,10 +40,12 @@ void Cjt_problemes::llegir_problemes() {
         Problema p;
         p.llegir_problema();
         llista_problemes.insert(make_pair(p.nom_problema(), p));
+        vector_problemes.push_back(p);
     }
+    sort(vector_problemes.begin(), vector_problemes.end());
 }
 
-void Cjt_problemes::llistar_problemes() const{
+void Cjt_problemes::llistar_problemes() const {
     for (int i = 0; i < vector_problemes.size(); ++i) {
         vector_problemes[i].escriure_problema();
     }
