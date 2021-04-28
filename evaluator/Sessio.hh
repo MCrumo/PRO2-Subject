@@ -48,34 +48,34 @@ public:
     //Consultores
     
     /** @brief Compara els problemes entre dues sessions
-      \pre arbre 1
-      \post true si el parametre implicit i a1 tenen algun problema en comu
+      \pre arbre a2 i v es fals
+      \post v es true si el parametre implicit i a2 tenen algun problema en comu
     */
-    void cmp_problemes(const BinTree<string>& a1, const BinTree<string>& a2, bool& v);
+    void cmp_problemes(const BinTree<string>& a2, bool& v) const;
     
     /** @brief Troba si hi ha un cret n a l'arbre a
       \pre arbre a i string n
       \post true si a conte n
     */
-    bool trobar_valor(const BinTree<string>& a, string n);
+    bool trobar_valor(const BinTree<string>& a, string n) const;
     
     /** @brief Consulta els problemes de la sessio
       \pre <em>cert</em>
       \post el resultat son els problemes de la sessio
     */
-    BinTree<string> consul_problemes();
+    BinTree<string> consul_problemes() const;
     
     /** @brief Consulta el nom de la sessio
       \pre <em>cert</em>
       \post el resultat es nom del parametre implicit
     */
-    string nom_sessio();
+    string nom_sessio() const;
     
     /** @brief Consulta el nombre de problemes del curs
       \pre <em>cert</em>
       \post el resultat es el nombre total de problemes del parametre implicit
     */
-    int total_problemes();
+    int total_problemes() const;
     
     /** @brief Consulta el nom dels problemes de la sessio
       \pre <em>cert</em>

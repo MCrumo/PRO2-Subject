@@ -81,7 +81,7 @@ public:
       \pre <em>cert</em>
       \post el resultat es el nom (enter) del curs al que esta inscrit i 0 si no esta inscrit a cap curs
     */
-    int consultar_curs();
+    int consultar_curs() const;
     
     //Lectura i escriptura
     
@@ -115,6 +115,13 @@ public:
     */
     void escriure_usuari() const;
     
+private:
+    string id;
+    int curs_inscrit;
+    int env_totals;
+    map<string, int> llista_resolts;
+    map<string, int> llista_enviables;
+    int sum(const map<string, int>& env) const;
 };
 
 

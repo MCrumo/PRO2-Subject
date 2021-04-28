@@ -26,7 +26,7 @@ public:
     
     /** @brief Afegeix una sessio al conjunt de sessions
       \pre <em>cert</em>
-      \post s'ha afegit la sessio s al parametre implicit i en cas que ja existis, s'ha impres un missatge d'error
+      \post s'ha afegit la sessio s al parametre implicit i s'ha escrit el total de sessions pero en cas que ja existis, s'ha impres un missatge d'error
     */
     void afegir_sessio(Sessio& s);
     

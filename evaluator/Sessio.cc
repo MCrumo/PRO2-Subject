@@ -21,31 +21,31 @@ void Sessio::afegir_problemes(BinTree<string>& t) {
     }
 }
 
-BinTree<string> Sessio::consul_problemes() {
+BinTree<string> Sessio::consul_problemes() const {
     return problemes_sessio;
 }
 
-string Sessio::nom_sessio() {
+string Sessio::nom_sessio() const {
     return id;
 }
 
-int Sessio::total_problemes() {
+int Sessio::total_problemes() const {
     return problemes_totals;
 }
 
 //vector<string> Sessio::nom_problemes() {}
 
-void Sessio::cmp_problemes(const BinTree<string>& s, const BinTree<string>& s1, bool& v_igual) {
-    if (not s.empty() and not v_igual){
-        cmp_problemes(s.left(), s1, v_igual);
-        cmp_problemes(s.right(), s1, v_igual);
-        if (trobar_valor(s1, s.value())){
+void Sessio::cmp_problemes(const BinTree<string>& a2, bool& v_igual) const {
+    if (not a2.empty() and not v_igual){
+        cmp_problemes(a2.left(), v_igual);
+        cmp_problemes(a2.right(), v_igual);
+        if (trobar_valor(problemes_sessio, a2.value())) {
             v_igual = true;
         }
     }
 }
 
-bool Sessio::trobar_valor(const BinTree<string>& a, string n) {
+bool Sessio::trobar_valor(const BinTree<string>& a, string n) const {
     bool b;
     if (a.empty()) b = false;
     else if (a.value() == n) b = true;
@@ -73,7 +73,7 @@ void Sessio::escriure_sessio_p(const BinTree<string>& t) const {
 }
 
 void Sessio::escriure_sessio() const {
-    cout << id << " ";
+    cout << id << " " << problemes_totals << " ";
     escriure_sessio_p(problemes_sessio);
     cout << endl;
 }

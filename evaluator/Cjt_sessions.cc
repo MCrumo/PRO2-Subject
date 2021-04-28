@@ -13,11 +13,17 @@ void Cjt_sessions::afegir_sessio(Sessio& s) {
         cout << llista_sessions.size() << endl;
     }
 }
-/*
+
 bool Cjt_sessions::problemes_repetits() {
-    
+    bool cond = false;
+    for (map<string, Sessio>::const_iterator it = llista_sessions.begin(); it != llista_sessions.end() and not cond; ++it) {
+        for (map<string, Sessio>::const_iterator it2 = ++it; it2 != llista_sessions.end() and not cond; ++it2) {
+            it->second.cmp_problemes(it2->second.consul_problemes(), cond);
+        }
+    }
+    return cond;
 }
-*/
+
 Sessio Cjt_sessions::buscar_sessio(string nom) {
     map<string, Sessio>::const_iterator it = llista_sessions.find(nom);
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e2);

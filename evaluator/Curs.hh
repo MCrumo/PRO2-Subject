@@ -28,16 +28,9 @@ public:
     \pre <em>cert</em>
     \post el resultat es un curs amb nom "nom" i un conjunt de sessions s
     */
-    Curs(int nom, const Cjt_sessions& s);
+    Curs(int nom, const vector<string>& s);
     
     //Modificadores
-    
-    /** @brief Afegeix un conjunt de sessions al curs
-    \pre <em>cert</em>
-    \post el parametre implicit passa a tenir les sessions originals més les sessions s
-    */
-    void afegir_sessions(const Cjt_sessions& s);
-    
     
     /** @brief Modificadora de l'atribut usuaris totals
         \pre <em>cert</em>
@@ -81,13 +74,13 @@ public:
       \pre <em>cert</em>
       \post el resultat es el nombre total de sessions del parametre implicit
     */
-    int total_sessions();
+    int total_sessions() const;
     
     /** @brief Consulta el nom de sessions del curs
       \pre <em>cert</em>
       \post el resultat es un vector de noms de les sessions del parametre implicit amb el mateix ordre en el que van ser llegides
     */
-    vector<string> nom_sessions();
+    vector<string> nom_sessions() const;
     
     /** @brief Consulta si el curs conte un cert problema
       \pre <em>cert</em>
@@ -96,6 +89,12 @@ public:
     bool conte_problema(string p);
     
     //Lectura i escriptura
+    
+    /** @brief Operacio de lectura d'un curs
+        \pre nom es de tipus enter i estan preparats al canal estandard d'endrada un conjunt de sessions
+        \post s'ha afegit la informacio al parametre implicit
+    */
+    void llegir_curs(int nom);
     
     /** @brief Operacio d'escriptura del total d'usuaris inscrits al curs
       \pre <em>cert</em>
@@ -120,6 +119,7 @@ private:
     int u_inscrits;
     int u_completats;
     vector<string> llista_sessions;
+    map<string, int> map_problemes; //PROFE RULES
 };
 
 #endif

@@ -42,7 +42,7 @@ public:
       \pre <em>cert</em>
       \post el resultat es el numero total de cursos del parametre implicit
     */
-    int total_cursos();
+    int total_cursos() const;
     
     /** @brief Consulta el curs amb identificador "nom"
       \pre el parametre implicit conte un curs amb nom "nom"
@@ -70,7 +70,8 @@ public:
     */
     void llistar_cursos() const;
     
-    
+private:
+    vector<Curs> llista_cursos;
 };
 
 #endif

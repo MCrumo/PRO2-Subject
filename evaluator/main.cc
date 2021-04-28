@@ -46,47 +46,29 @@ int main ()
             cjt_s.afegir_sessio(s);
         }
         else if (c == "nuevo_curso" or c == "nc") {
-            Cjt_sessions noves_s;
-            noves_s.llegir_sessions();
-            if (noves_s.problemes_repetits()) {
-                error.throw_p2();
-            } else {
-                Curs c(cjt_c.total_cursos() + 1, noves_s);
-                cjt_c.afegir_curs(c);
-                cjt_c.escriure_cursos();
-            }
+            Curs c;
+            c.llegir_curs(cjt_c.total_cursos() + 1);
+            cjt_c.afegir_curs(c); //llensara error o seguira executan?
+            cjt_c.escriure_cursos();
         }
         else if (c == "alta_usuario" or c == "a") {
             cin >> nom;
-            if (cjt_u.existeix_usuari(nom)) {
-                error.throw_u1();
-            } else {
-                Usuari u(nom);
-                cjt_u.afegir_usuari(u);
-                cjt_u.escriure_total_usuaris();
-            }
+            Usuari u(nom);
+            cjt_u.afegir_usuari(u);
         }
         else if (c == "baja_usuario" or c == "b") {
             cin >> nom;
-            if (not cjt_u.existeix_usuari(nom)) {
-                error.throw_u2();
-            } else {
-                cjt_u.eliminar_usuari(nom);
-                cjt_u.escriure_total_usuaris();
-            }
+            cjt_u.eliminar_usuari(nom);
         }
         else if (c == "inscribir_curso" or c == "i") {
             cin >> nom >> nom_int;
-            if (not cjt_u.existeix_usuari(nom)) {
-                error.throw_u2();
-            } if (not cjt_c.existeix_curs(nom_int)) {
-                error.throw_c1();
-            } 
+            bool a, b, c;
+            a = cjt_u.existeix_usuari(nom); // falta fer throw error!!
+            b = cjt_c.existeix_curs(nom_int); 
             Usuari u; 
             u = cjt_u.buscar_usuari(nom);
-            if (not u.curs_acabat()) {
-                error.throw_u3();
-            } else {
+            c = u.curs_acabat(); // falta fer throw error!!
+            if (a and b and c) {
                 u.inscriure_curs(nom_int);
                 Curs c;
                 c = cjt_c.buscar_curs(nom_int);
@@ -103,17 +85,18 @@ int main ()
             }
         } 
         else if (c == "sesion_problema" or c == "sp") {
+            /*
+             * Cjt_cursis:: string sesion_prob(int c const string& p) const;
+             */
             cin >> nom_int >> nom_2;
-            if (not cjt_c.existeix_curs(nom_int)) {
-                error.throw_c1();
-            } if (not cjt_p.existeix_problema(nom_2)) {
-                error.throw_p3();
-            } else {
+            bool a, b, c;
+            a = cjt_c.existeix_curs(nom_int);
+            b = cjt_p.existeix_problema(nom_2);
+            if (a and b) {
                 Curs c;
                 c = cjt_c.buscar_curs(nom_int);
-                if (not c.conte_problema(nom_2)) {
-                    error.throw_c2();
-                } else {
+                f = c.conte_problema(nom_2)); // fer el throw error
+                if (f) {
                     c.nom_sessio(nom_2);
                 }
             }
@@ -165,9 +148,8 @@ int main ()
         }
         else if (c == "escribir_problema" or c == "ep") {
             cin >> nom;
-            //1r llençara l'error o executara escriure_problema?!!!
             (cjt_p.buscar_problema(nom)).escriure_problema();
-        }
+        }//1r llençara l'error o executara escriure_problema?!!!
         else if (c == "listar_sesiones" or c == "lc") {
             cjt_s.llistar_sessions();
         }
@@ -180,11 +162,7 @@ int main ()
         }
         else if (c == "escribir_curso" or c == "ec") {
             cin >> nom_int; 
-            if (not cjt_c.existeix_curs(nom_int)) {
-                error.throw_c2();
-            } else {
-                (cjt_c.buscar_curs(nom_int)).escriure_curs();
-            }
+            (cjt_c.buscar_curs(nom_int)).escriure_curs();
         }
         else if (c == "listar_usuarios" or c == "lu") {
             cjt_u.llistar_usuaris();

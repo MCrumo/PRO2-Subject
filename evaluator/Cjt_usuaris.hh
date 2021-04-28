@@ -25,14 +25,14 @@ public:
     //Modificadores
     
     /** @brief Afegeix un usuari al conjunt d'usuaris
-      \pre el parametre implicit no conte cap usuari amb l'identificador de u
-      \post s'ha afegit l'usuari u al parametre implicit
+      \pre <em>cert</em>
+      \post s'ha afegit l'usuari u al parametre implicit i en cas d'existir s'ha llençat un missatge d'error
     */
     void afegir_usuari(const Usuari& u);
     
     /** @brief Elimina un usuari del conjunt d'usuaris
-      \pre el parametre implicit conte un usuari amb l'identificador "nom"
-      \post s'ha tret del parametre implicit l'usuari amb nom "nom"
+      \pre string "nom"
+      \post s'ha tret del parametre implicit l'usuari amb nom "nom" i en cas de no existir s'ha llençat un missatge d'error
     */
     void eliminar_usuari(string nom);
     
@@ -75,6 +75,9 @@ public:
       \post s'han escrit pel canal estàndard de sortida els usuaris del parametre implicit en ordre ascendent d'identificador
     */
     void llistar_usuaris() const;
+    
+private:
+    map<string, Usuari> llista_usuaris;
 };
 
 
