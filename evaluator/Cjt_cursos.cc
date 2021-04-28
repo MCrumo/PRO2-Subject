@@ -1,6 +1,6 @@
 #include "Cjt_cursos.hh"
 
-const char *e1 = "El curs no existeix";
+const char *e6 = "El curs no existeix";
 
 Cjt_cursos::Cjt_cursos() { }
 /*
@@ -13,7 +13,7 @@ void Cjt_cursos::afegir_curs(const Curs& c) {
 bool Cjt_cursos::existeix_curs(int nom) {
     int i = nom - 1;
     if (i < 0 or i >= llista_cursos.size()) {
-        throw ExcepcioEvaluator(e1);
+        throw ExcepcioEvaluator(e6);
         return false;
     }
     else return true;

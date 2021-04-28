@@ -11,7 +11,7 @@
 #include "Cjt_problemes.hh"
 #include "Cjt_sessions.hh"
 #include "Cjt_cursos.hh"
-#include "Cjt_usuaris.hh" 
+#include "Cjt_usuaris.hh"
 #ifndef NO_DIAGRAM
 #endif
 
@@ -19,7 +19,7 @@
 */
 
 int main ()
-{ //errors: e1, e2, e3, e4, e5, e6, e7, e7
+{
     Cjt_problemes cjt_p;
     Cjt_sessions cjt_s;
     Cjt_cursos cjt_c;
@@ -44,13 +44,13 @@ int main ()
             Sessio s;
             s.llegir_sessio();
             cjt_s.afegir_sessio(s);
-        }
+        }/*
         else if (c == "nuevo_curso" or c == "nc") {
             Curs c;
             c.llegir_curs(cjt_c.total_cursos() + 1);
-            cjt_c.afegir_curs(c); //llensara error o seguira executan?
+            cjt_c.afegir_curs(c); //llensara error o seguira executan? -> no acabat el .cc
             cjt_c.escriure_cursos();
-        }
+        } */
         else if (c == "alta_usuario" or c == "a") {
             cin >> nom;
             Usuari u(nom);
@@ -80,24 +80,24 @@ int main ()
             b = cjt_u.existeix_usuari(nom);
             if (b) (cjt_u.buscar_usuari(nom)).escriure_curs_inscrit();
         } 
+        /*
         else if (c == "sesion_problema" or c == "sp") {
-            /*
-             * Cjt_cursis:: string sesion_prob(int c const string& p) const;
-             */
+            //Cjt_cursis:: string sesion_prob(int c const string& p) const;
             cin >> nom_int >> nom_2;
             x = cjt_c.existeix_curs(nom_int);
             b = cjt_p.existeix_problema(nom_2);
             if (x and b) {
                 Curs c;
                 c = cjt_c.buscar_curs(nom_int);
-                y = c.conte_problema(nom_2); // fer el throw error
+                y = c.conte_problema(nom_2); // fer el throw error -> funcio inacavada!
                 if (y) c.nom_sessio(nom_2);
             }
         }
+        */
         else if (c == "problemas_resueltos" or c == "pr") {
             cin >> nom;
             b = cjt_u.existeix_usuari(nom);
-            if (b) (cjt_u.buscar_usuari(nom)).llistar_resolts();
+           // if (b) (cjt_u.buscar_usuari(nom)).llistar_resolts(); //-> ll_resol inacavada!
         }
         else if (c == "problemas_enviables" or c == "pe") {
             cin >> nom;
@@ -107,10 +107,9 @@ int main ()
             if (not (u.consultar_curs() > 0)) {
                 throw ExcepcioEvaluator("No esta inscrit");
             } 
-            else {
-                if (b) u.llistar_enviables();
-            }
+            // else if (b) u.llistar_enviables(); //-> ll_env inacavada!
         }
+        /*
         else if (c == "envio" or c == "e") {
             cin >> nom >> nom_2 >> nom_int; //u >> p >> r;
             Usuari u;
@@ -118,12 +117,12 @@ int main ()
             u = cjt_u.buscar_usuari(nom);
             p = cjt_p.buscar_problema(nom_2);
             u.incrementar_totals();
-            u.intent_resoldre(nom_2);
+            u.intent_resoldre(nom_2); //-> int_res inacavada!
             p.incrementar_envio();
             if (nom_int == 1) {
                 p.incrementar_correctes();
-                u.afegir_correcte(nom_2);
-                u.actualitzar_curs();
+                u.afegir_correcte(nom_2); // -> afg_corr inacavada!
+                u.actualitzar_curs(); // -> act_curs inacavada!
                 if (u.curs_acabat()) {
                     Curs c;
                     c = cjt_c.buscar_curs(u.consultar_curs());
@@ -132,6 +131,7 @@ int main ()
                 }
             }
         }
+        */
         else if (c == "listar_problemas" or c == "lp") {
             cjt_p.llistar_problemes();
         }
@@ -156,7 +156,7 @@ int main ()
         else if (c == "listar_usuarios" or c == "lu") {
             cjt_u.llistar_usuaris();
         }
-        else if (c == "escribir_usuario" or c == "eu") {
+        else if (c == "escribir_usuario" or c == "eu") { llistar_enviables
             cin >> nom;
             b = cjt_u.existeix_usuari(nom);
             if (b) (cjt_u.buscar_usuari(nom)).escriure_usuari();
@@ -164,4 +164,3 @@ int main ()
         cin >> c;
     }
 } 
-

@@ -15,11 +15,16 @@ void Cjt_problemes::afegir_problema(const Problema& p) {
         cout << llista_problemes.size() << endl;
     }
 }
-/*
+
 bool Cjt_problemes::existeix_problema(string nom) {
-    
+    map<string, Problema>::const_iterator it = llista_problemes.find(nom);
+    if (it == llista_problemes.end()) {
+        throw ExcepcioEvaluator(e1)
+        return false;
+    }
+    else return true;
 }
-*/
+
 Problema Cjt_problemes::buscar_problema(string nom) {
     map<string, Problema>::const_iterator it = llista_problemes.find(nom);
     if (it == llista_problemes.end()) throw ExcepcioEvaluator(e2);

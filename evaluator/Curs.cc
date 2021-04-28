@@ -1,6 +1,6 @@
 #include "Curs.hh" 
 
-const char *e1 = "Hi ha problemes repetits en les sessions";
+const char *e5 = "Hi ha problemes repetits en les sessions";
 
 Curs::Curs() {
     u_inscrits = 0;
