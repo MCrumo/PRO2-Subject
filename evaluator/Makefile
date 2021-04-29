@@ -1,10 +1,10 @@
 OPCIONS = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
 
-proves.exe: proves.o Problema.o Cjt_problemes.o Cjt_sessions.o Sessio.o Curs.o Cjt_cursos.o Usuari.o Cjt_usuaris.o
-	g++ -o proves.exe proves.o Problema.o Cjt_problemes.o Usuari.o Cjt_usuaris.o Cjt_sessions.o Sessio.o Curs.o Cjt_cursos.o
+program.exe: program.o Problema.o Cjt_problemes.o Cjt_sessions.o Sessio.o Curs.o Cjt_cursos.o Usuari.o Cjt_usuaris.o
+	g++ -o program.exe program.o Problema.o Cjt_problemes.o Usuari.o Cjt_usuaris.o Cjt_sessions.o Sessio.o Curs.o Cjt_cursos.o
 
-proves.o: proves.cc
-	g++ -c proves.cc $(OPCIONS)
+program.o: program.cc
+	g++ -c program.cc $(OPCIONS)
 
 Cjt_cursos.o: Cjt_cursos.cc
 	g++ -c Cjt_cursos.cc $(OPCIONS)

@@ -1,5 +1,8 @@
 #include "Usuari.hh"
 
+
+const char *e9 = "error: usuario inscrito en otro curso";
+
 Usuari::Usuari() {
     curs_inscrit = 0;
     env_totals = 0;
@@ -30,7 +33,10 @@ void Usuari::intent_resoldre(string p) {
 */
 bool Usuari::curs_acabat() const {
     if (curs_inscrit == 0) return true;
-    else return false;
+    else {
+        return false;
+        throw ExcepcioEvaluator(e9);
+    } 
 }
 
 string Usuari::nom_usuari() const {

@@ -1,7 +1,7 @@
 #include "Cjt_usuaris.hh"
 
-const char *e7 = "L'usuari ja existeix";
-const char *e8 = "L'usuari no existeix";
+const char *e7 = "error: el usuario ya existe";
+const char *e8 = "error: el usuario no existe";
 
 Cjt_usuaris::Cjt_usuaris() { }
 

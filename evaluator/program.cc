@@ -26,9 +26,9 @@ int main ()
     Cjt_usuaris cjt_u;
     
     cjt_p.llegir_problemes();
-    cjt_s.llegir_sessions();
-    cjt_c.llegir_cursos();
-    cjt_u.llegir_usuaris();
+    //cjt_s.llegir_sessions();
+    //cjt_c.llegir_cursos();
+    //cjt_u.llegir_usuaris();
     
     string c;
     while (c != "fin") {
@@ -38,12 +38,14 @@ int main ()
         if (c == "nuevo_problema" or c == "np") {
             cin >> nom;
             Problema p(nom);
-            cjt_p.afegir_problema(p);
+            try { cjt_p.afegir_problema(p); }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "nueva_sesion" or c == "ns") {
             Sessio s;
             s.llegir_sessio();
-            cjt_s.afegir_sessio(s);
+            try { cjt_s.afegir_sessio(s); }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }/*
         else if (c == "nuevo_curso" or c == "nc") { //Entrega_FINAL
             Curs c;
@@ -54,29 +56,37 @@ int main ()
         else if (c == "alta_usuario" or c == "a") {
             cin >> nom;
             Usuari u(nom);
-            cjt_u.afegir_usuari(u);
+            try { cjt_u.afegir_usuari(u); }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "baja_usuario" or c == "b") {
             cin >> nom;
-            cjt_u.eliminar_usuari(nom);
+            try { cjt_u.eliminar_usuari(nom); }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "inscribir_curso" or c == "i") {
             cin >> nom >> nom_int;
-            b = cjt_c.existeix_curs(nom_int); 
+            try { b = cjt_c.existeix_curs(nom_int); }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
             Usuari u; 
-            u = cjt_u.buscar_usuari(nom);
-            y = u.curs_acabat(); // falta fer throw error!!
-            if (b and y) {
-                u.inscriure_curs(nom_int);
-                Curs c;
-                c = cjt_c.buscar_curs(nom_int);
-                c.incrementar_usuari();
-                c.escriure_usuaris();
+            try { u = cjt_u.buscar_usuari(nom); }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
+            try {
+                y = u.curs_acabat(); // falta fer throw error!!
+                if (b and y) {
+                    u.inscriure_curs(nom_int);
+                    Curs c;
+                    c = cjt_c.buscar_curs(nom_int);
+                    c.incrementar_usuari();
+                    c.escriure_usuaris();
+                }
             }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "curso_usuario" or c == "cu") {
             cin >> nom;
-            (cjt_u.buscar_usuari(nom)).escriure_curs_inscrit();
+            try { (cjt_u.buscar_usuari(nom)).escriure_curs_inscrit(); }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         } 
         /*
         else if (c == "sesion_problema" or c == "sp") {

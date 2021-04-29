@@ -11,7 +11,7 @@ Problema::Problema(string nom) {
     id = nom;
     e_correctes = 0;
     e_totals = 0;
-    ratio = 0;
+    ratio = 1.0;
 }
 
 void Problema::incrementar_envio() {
