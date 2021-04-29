@@ -114,4 +114,93 @@ MarcTerStegen(0,0,0,0)
 MartaTorrejon(0,0,0,0)
 Pedri(0,0,0,0)
 SerginhoDest(0,0,0,0)
-SergioBusquets(0,0,0,0) 
+SergioBusquets(0,0,0,0)
+#nuevo_problema S03
+error: el problema ya existe
+#np S04
+78
+#np M08
+79
+#np M09
+80
+#nueva_sesion maps
+error: la sesion ya existe
+#ns maps_y_sets_sel
+18
+#nuevo_problema G01
+81
+#np G02
+82
+#np G03
+83
+#np G04
+84
+#np G05
+85
+#np G06
+86
+#np G07
+87
+#np G08
+88
+#np G09
+89
+#np G10
+90
+#np G11
+91
+#np G12
+92
+#nueva_sesion grafos_1
+19
+#ns grafos_2
+20
+#baja_usuario AnsuFati
+15
+#b AnsuFati
+error: el usuario no existe
+#alta_usuario OusmaneDembele
+16
+#a SergioBusquets
+error: el usuario ya existe
+#inscribir_curso Pedri 1
+1
+#i AnsuFati 1
+error: el usuario no existe
+#i Pedri 2
+error: usuario inscrito en otro curso
+#i LionelMessi 5
+error: el curso no existe
+#i AitanaBonmati 2
+1
+#i MarcTerStegen 3
+1
+#i LiekeMartens 1
+2
+#lu
+AitanaBonmati(0,0,0,2)
+AlexiaPutellas(0,0,0,0)
+AntoineGriezmann(0,0,0,0)
+ClementLenglet(0,0,0,0)
+FrenkieDeJong(0,0,0,0)
+GerardPique(0,0,0,0)
+JenniferHermoso(0,0,0,0)
+JordiAlba(0,0,0,0)
+LiekeMartens(0,0,0,1)
+LionelMessi(0,0,0,0)
+MarcTerStegen(0,0,0,3)
+MartaTorrejon(0,0,0,0)
+OusmaneDembele(0,0,0,0)
+Pedri(0,0,0,1)
+SerginhoDest(0,0,0,0)
+SergioBusquets(0,0,0,0)
+#lc
+1 0 2 2 (tuplas vectores_0)
+2 0 1 7 (tuplas vectores_1 vectores_2 vectores_3 matrices pilas colas)
+3 0 1 9 (vectores_sel pilas_y_colas_sel listas_1 listas_2 arb_bin_1 arb_bin_2 sets maps colas_prior)
+#curso_usuario Pedri
+1
+#cu LionelMessi
+0
+#cu AnsuFati
+error: el usuario no existe

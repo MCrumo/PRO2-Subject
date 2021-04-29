@@ -22,7 +22,7 @@ void Cjt_usuaris::eliminar_usuari(string nom) {
         cout << llista_usuaris.size() << endl; 
     }
 }
-
+/* NO UTILITZADA AL MAIN
 bool Cjt_usuaris::existeix_usuari(string nom) {
     map<string, Usuari>::const_iterator it = llista_usuaris.find(nom);
     if (it == llista_usuaris.end()) {
@@ -30,7 +30,7 @@ bool Cjt_usuaris::existeix_usuari(string nom) {
         return false;
     }
     else return true;
-}
+}*/
 
 int Cjt_usuaris::total_usuaris() {
     return llista_usuaris.size();
@@ -38,7 +38,8 @@ int Cjt_usuaris::total_usuaris() {
 
 Usuari Cjt_usuaris::buscar_usuari(string nom) {
     map<string, Usuari>::const_iterator it = llista_usuaris.find(nom);
-    return it->second;
+    if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
+    else return it->second;
 }
 
 void Cjt_usuaris::llegir_usuaris() {

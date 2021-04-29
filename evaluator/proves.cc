@@ -33,7 +33,7 @@ int main ()
     string c;
     while (c != "fin") {
         int nom_int;
-        bool b, x, y;
+        bool b, y;
         string nom, nom_2;
         if (c == "nuevo_problema" or c == "np") {
             cin >> nom;
@@ -45,7 +45,7 @@ int main ()
             s.llegir_sessio();
             cjt_s.afegir_sessio(s);
         }/*
-        else if (c == "nuevo_curso" or c == "nc") {
+        else if (c == "nuevo_curso" or c == "nc") { //Entrega_FINAL
             Curs c;
             c.llegir_curs(cjt_c.total_cursos() + 1);
             cjt_c.afegir_curs(c); //llensara error o seguira executan? -> no acabat el .cc
@@ -62,12 +62,11 @@ int main ()
         }
         else if (c == "inscribir_curso" or c == "i") {
             cin >> nom >> nom_int;
-            x = cjt_u.existeix_usuari(nom); // falta fer throw error!!
             b = cjt_c.existeix_curs(nom_int); 
             Usuari u; 
             u = cjt_u.buscar_usuari(nom);
             y = u.curs_acabat(); // falta fer throw error!!
-            if (x and b and y) {
+            if (b and y) {
                 u.inscriure_curs(nom_int);
                 Curs c;
                 c = cjt_c.buscar_curs(nom_int);
@@ -77,8 +76,7 @@ int main ()
         }
         else if (c == "curso_usuario" or c == "cu") {
             cin >> nom;
-            b = cjt_u.existeix_usuari(nom);
-            if (b) (cjt_u.buscar_usuari(nom)).escriure_curs_inscrit();
+            (cjt_u.buscar_usuari(nom)).escriure_curs_inscrit();
         } 
         /*
         else if (c == "sesion_problema" or c == "sp") {
@@ -96,21 +94,19 @@ int main ()
         */
         else if (c == "problemas_resueltos" or c == "pr") {
             cin >> nom;
-            b = cjt_u.existeix_usuari(nom);
-           // if (b) (cjt_u.buscar_usuari(nom)).llistar_resolts(); //-> ll_resol inacavada!
+           //(cjt_u.buscar_usuari(nom)).llistar_resolts(); //-> ll_resol inacavada!
         }
         else if (c == "problemas_enviables" or c == "pe") {
             cin >> nom;
             Usuari u; 
             u = cjt_u.buscar_usuari(nom);
-            b = cjt_u.existeix_usuari(nom);
             if (not (u.consultar_curs() > 0)) {
                 throw ExcepcioEvaluator("No esta inscrit");
             } 
-            // else if (b) u.llistar_enviables(); //-> ll_env inacavada!
+            // else u.llistar_enviables(); //-> ll_env inacavada!
         }
         /*
-        else if (c == "envio" or c == "e") {
+        else if (c == "envio" or c == "e") { //Entrega_FINAL
             cin >> nom >> nom_2 >> nom_int; //u >> p >> r;
             Usuari u;
             Problema p;
@@ -138,7 +134,7 @@ int main ()
         else if (c == "escribir_problema" or c == "ep") {
             cin >> nom;
             (cjt_p.buscar_problema(nom)).escriure_problema();
-        }//1r llençara l'error o executara escriure_problema?!!!
+        }
         else if (c == "listar_sesiones" or c == "ls") {
             cjt_s.llistar_sessions();
         }
@@ -158,8 +154,7 @@ int main ()
         }
         else if (c == "escribir_usuario" or c == "eu") {
             cin >> nom;
-            b = cjt_u.existeix_usuari(nom);
-            if (b) (cjt_u.buscar_usuari(nom)).escriure_usuari();
+            (cjt_u.buscar_usuari(nom)).escriure_usuari();
         }
         cin >> c;
     }
