@@ -34,7 +34,6 @@ int main ()
     while (c != "fin") {
         string cmd = "#" + c + " ";
         int nom_int;
-        bool b;
         string nom, nom_2;
         if (c == "nuevo_problema" or c == "np") {
             cin >> nom;
@@ -73,7 +72,7 @@ int main ()
                 try { 
                     cjt_c.existeix_curs(nom_int);
                     try {
-                        cjt_u.buscar_usuari(nom).inscriure_curs(c, cjt_s);
+                        (cjt_u.buscar_usuari(nom)).inscriure_curs(c, cjt_s);
                         cjt_c.buscar_curs(nom_int).incrementar_usuari();
                     }
                     catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
