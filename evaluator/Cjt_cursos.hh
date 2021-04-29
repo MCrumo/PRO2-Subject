@@ -34,9 +34,9 @@ public:
     
     /** @brief Consulta si hi ha un cert curs al conjunt de cursos
       \pre l'identificador de curs es de tipus enter
-      \post retorna ture si hi ha un curs amb aquell identificador i false en cas contrari
+      \post llença un error si el curs amb id "nom" no existeix
     */
-    bool existeix_curs(int nom);
+    void existeix_curs(int nom);
     
     /** @brief Consulta el numero total de cursos del conjunt
       \pre <em>cert</em>

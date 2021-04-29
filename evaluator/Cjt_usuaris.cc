@@ -22,15 +22,15 @@ void Cjt_usuaris::eliminar_usuari(string nom) {
         cout << llista_usuaris.size() << endl; 
     }
 }
-/* NO UTILITZADA AL MAIN
-bool Cjt_usuaris::existeix_usuari(string nom) {
+
+void Cjt_usuaris::existeix_usuari(string nom) {
     map<string, Usuari>::const_iterator it = llista_usuaris.find(nom);
     if (it == llista_usuaris.end()) {
         throw ExcepcioEvaluator(e8);
-        return false;
+        // return false; ->for bool
     }
-    else return true;
-}*/
+    //else return true; ->for bool
+}
 
 int Cjt_usuaris::total_usuaris() {
     return llista_usuaris.size();

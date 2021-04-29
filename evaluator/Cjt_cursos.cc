@@ -1,6 +1,6 @@
 #include "Cjt_cursos.hh"
 
-const char *e6 = "El curs no existeix";
+const char *e6 = "error: el curso no existe";
 
 Cjt_cursos::Cjt_cursos() { }
 /*
@@ -10,13 +10,13 @@ void Cjt_cursos::afegir_curs(const Curs& c) {
 }
 */
 
-bool Cjt_cursos::existeix_curs(int nom) {
+void Cjt_cursos::existeix_curs(int nom) {
     int i = nom - 1;
-    if (i < 0 or i >= llista_cursos.size()) {
+    if (llista_cursos.empty() or i < 0 or i >= llista_cursos.size()) {
         throw ExcepcioEvaluator(e6);
-        return false;
+        // return false; ->for bool
     }
-    else return true;
+    // else return true; ->for bool
 }
 
 int Cjt_cursos::total_cursos() const{
@@ -24,7 +24,11 @@ int Cjt_cursos::total_cursos() const{
 }
 
 Curs Cjt_cursos::buscar_curs(int nom) {
-    return llista_cursos[nom - 1];
+    int i = nom - 1;
+    if (llista_cursos.empty() or i < 0 or i >= llista_cursos.size()) {
+        throw ExcepcioEvaluator(e6);
+    }
+    else return llista_cursos[i];
 }
 
 void Cjt_cursos::llegir_cursos() {

@@ -6,6 +6,9 @@
 #define USUARI
 
 #include "Curs.hh"
+#ifndef NO_DIAGRAM
+#include <utility>
+#endif
 
 /** @class Usuari
     @brief Representa un usuari del Evaluator.
@@ -34,10 +37,10 @@ public:
     //Modificadores
     
     /** @brief Inscriu l'usuari a un curs
-      \pre existeix un curs amb nom "nom" al conjunt de cursos i l'usuari no esta inscrit a cap curs
-      \post el parametre implicit passa a estar inscrit al curs amb nom "nom"
+      \pre <em>cert</em>
+      \post el parametre implicit passa a estar inscrit al curs amb nom "nom" i s'afegeix al parametre implicit els problemes que ja pot resoldre, en cas que ja estigui inscrit en algun curs, s'imprimeix un missatge d'error
     */
-    void inscriure_curs(int nom);
+    void inscriure_curs(const Curs& c, const Cjt_sessions& cjt_s);
     
     /** @brief Modifica el nombre d'enviaments totals de l'usuari
       \pre <em>cert</em>
@@ -120,8 +123,10 @@ private:
     int curs_inscrit;
     int env_totals;
     map<string, int> llista_resolts;
-    map<string, int> llista_enviables; // pair string int
+    map<string, pair<string, int> > llista_enviables; // pair string int
+    //#include<utility> pari<string, int> a; a.first a.second
     int sum(const map<string, int>& env) const;
+    int sumPair (const map<string, pair<string, int> >& res) const;
 };
 
 

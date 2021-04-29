@@ -40,9 +40,9 @@ public:
     
     /** @brief Consulta si hi ha un cert usuari al conjunt d'usuaris
       \pre <em>cert</em>
-      \post retorna ture si hi ha un usuari amb aquell identificador i false en cas contrari
+      \post llença un error si l'usuari amb id "nom" no existeix
     */
-    bool existeix_usuari(string nom);
+    void existeix_usuari(string nom);
     
     /** @brief Consulta el total d'usuaris del conjunt
       \pre <em>cert</em>

@@ -17,6 +17,7 @@ Curs::Curs(int nom, const vector<string>& s) {
 
 void Curs::incrementar_usuari() {
     u_inscrits += 1;
+    cout << u_inscrits << endl;
 }
 
 void Curs::incrementar_completats() {

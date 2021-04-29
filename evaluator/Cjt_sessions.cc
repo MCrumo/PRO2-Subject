@@ -24,7 +24,7 @@ bool Cjt_sessions::problemes_repetits() {
     return cond;
 }
 
-Sessio Cjt_sessions::buscar_sessio(string nom) {
+Sessio Cjt_sessions::buscar_sessio(string nom) const {
     map<string, Sessio>::const_iterator it = llista_sessions.find(nom);
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
     else {

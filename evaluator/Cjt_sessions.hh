@@ -42,7 +42,7 @@ public:
       \pre el parametre implicit conte una sessio amb nom "nom"
       \post el resultat es la sessio amb nom "nom" que conte el parametre implicit
     */
-    Sessio buscar_sessio(string nom);
+    Sessio buscar_sessio(string nom) const;
     
     //Lectura i escriptura
     

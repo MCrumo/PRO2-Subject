@@ -34,10 +34,11 @@ int main ()
     while (c != "fin") {
         string cmd = "#" + c + " ";
         int nom_int;
-        bool b, y;
+        bool b;
         string nom, nom_2;
         if (c == "nuevo_problema" or c == "np") {
             cin >> nom;
+            cout << cmd << nom << endl;
             Problema p(nom);
             try { cjt_p.afegir_problema(p); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
@@ -67,20 +68,17 @@ int main ()
         }
         else if (c == "inscribir_curso" or c == "i") {
             cin >> nom >> nom_int;
-            try { b = cjt_c.existeix_curs(nom_int); }
-            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
-            Usuari u; 
-            try { u = cjt_u.buscar_usuari(nom); }
-            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
             try {
-                y = u.curs_acabat(); // falta fer throw error!!
-                if (b and y) {
-                    u.inscriure_curs(nom_int);
-                    Curs c;
-                    c = cjt_c.buscar_curs(nom_int);
-                    c.incrementar_usuari();
-                    c.escriure_usuaris();
+                cjt_u.existeix_usuari(nom);
+                try { 
+                    cjt_c.existeix_curs(nom_int);
+                    try {
+                        cjt_u.buscar_usuari(nom).inscriure_curs(c, cjt_s);
+                        cjt_c.buscar_curs(nom_int).incrementar_usuari();
+                    }
+                    catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
                 }
+                catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
             }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
@@ -110,13 +108,12 @@ int main ()
         }
         else if (c == "problemas_enviables" or c == "pe") {
             cin >> nom;
-            Usuari u; 
-            try {
-                u = cjt_u.buscar_usuari(nom);
-                if (not (u.consultar_curs() > 0)) {
+            try { 
+                cjt_u.existeix_usuari(nom);
+                if (not (cjt_u.buscar_usuari(nom).consultar_curs() > 0)) {
                     cout << e10 << endl;
                 } 
-                else u.llistar_enviables(); //-> ll_env inacavada!
+                else cjt_u.buscar_usuari(nom).llistar_enviables();
             }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
