@@ -87,7 +87,7 @@ int main ()
             if (x and b) {
                 Curs c;
                 c = cjt_c.buscar_curs(nom_int);
-                y = c.conte_problema(nom_2); // fer el throw error -> funcio inacavada!
+                y = c.conte_problema(nom_2); //fer el throw error -> funcio inacavada!
                 if (y) c.nom_sessio(nom_2);
             }
         }
