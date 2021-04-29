@@ -47,6 +47,12 @@ public:
     
     //Consultores
     
+    /** @brief Consulta el problema inicial de la sessio
+      \pre <em>cert</em>
+      \post retorna el nom del problema inicial del parametre implicit
+    */
+    string problema_inicial() const;
+    
     /** @brief Compara els problemes entre dues sessions
       \pre arbre a2 i v es fals
       \post v es true si el parametre implicit i a2 tenen algun problema en comu

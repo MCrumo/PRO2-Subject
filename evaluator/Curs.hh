@@ -76,11 +76,11 @@ public:
     */
     int total_sessions() const;
     
-    /** @brief Consulta el nom de sessions del curs
-      \pre <em>cert</em>
-      \post el resultat es un vector de noms de les sessions del parametre implicit amb el mateix ordre en el que van ser llegides
+    /** @brief Consulta el nom de la iessima sessio del curs
+      \pre 0 <= i < llista_sessions.size()
+      \post el resultat es el nom iessim del parametre implicit
     */
-    vector<string> nom_sessions() const;
+    string consul_iessim(int i) const;
     
     /** @brief Consulta si el curs conte un cert problema
       \pre <em>cert</em>
@@ -119,7 +119,7 @@ private:
     int u_inscrits;
     int u_completats;
     vector<string> llista_sessions;
-    map<string, int> map_problemes; //PROFE RULES
+    map<string, int> map_problemes; //PROFE lab
 };
 
 #endif

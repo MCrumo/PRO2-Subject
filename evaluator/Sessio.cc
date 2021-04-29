@@ -21,6 +21,10 @@ void Sessio::afegir_problemes(BinTree<string>& t) {
     }
 }
 
+string problema_inicial() const {
+    return problemes_sessio.value();
+}
+
 BinTree<string> Sessio::consul_problemes() const {
     return problemes_sessio;
 }

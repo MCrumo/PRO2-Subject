@@ -120,7 +120,7 @@ private:
     int curs_inscrit;
     int env_totals;
     map<string, int> llista_resolts;
-    map<string, int> llista_enviables;
+    map<string, int> llista_enviables; // pair string int
     int sum(const map<string, int>& env) const;
 };
 

@@ -5,6 +5,7 @@ const char *e5 = "Hi ha problemes repetits en les sessions";
 Curs::Curs() {
     u_inscrits = 0;
     u_completats = 0;
+    llista_sessions = vector<string> (0);
 }
 
 Curs::Curs(int nom, const vector<string>& s) {
@@ -42,9 +43,11 @@ int Curs::usuaris_completats() const {
 int Curs::total_sessions() const {
     return llista_sessions.size();
 }
-/*
-//vector<string> Curs::nom_sessions() {}
 
+string Curs::consul_iessim(int i) const {
+    return llista_sessions[i];
+}
+/*
 bool Curs::conte_problema(string p) {
     throw ExcepcioEvaluator("El curs no conte aquest problema")
 }
