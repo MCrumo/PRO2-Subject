@@ -1,7 +1,7 @@
 #include "Cjt_problemes.hh"
 
-const char *e1 = "El problema ja existeix";
-const char *e2 = "El problema no existeix";
+const char *e1 = "error: el problema ya existe";
+const char *e2 = "error: el problema no existe";
 
 Cjt_problemes::Cjt_problemes() {}
 

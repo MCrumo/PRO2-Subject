@@ -21,7 +21,7 @@ void Sessio::afegir_problemes(BinTree<string>& t) {
     }
 }
 
-string problema_inicial() const {
+string Sessio::problema_inicial() const {
     return problemes_sessio.value();
 }
 
@@ -64,6 +64,10 @@ void Sessio::llegir_sessio() {
     cin >> id;
     afegir_problemes(problemes_sessio);
     
+}
+
+void Sessio::llegir_p_sessio() {
+    afegir_problemes(problemes_sessio);
 }
 
 void Sessio::escriure_sessio_p(const BinTree<string>& t) const {

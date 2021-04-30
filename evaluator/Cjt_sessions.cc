@@ -1,7 +1,7 @@
 #include "Cjt_sessions.hh"
 
-const char *e3 = "La sessio ja existeix";
-const char *e4 = "La sessio no existeix";
+const char *e3 = "error: la sesion ya existe";
+const char *e4 = "error: la sesion no existe";
 
 Cjt_sessions::Cjt_sessions() {}
 

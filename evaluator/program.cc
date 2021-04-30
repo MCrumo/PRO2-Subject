@@ -26,9 +26,9 @@ int main ()
     Cjt_usuaris cjt_u;
     
     cjt_p.llegir_problemes();
-    //cjt_s.llegir_sessions();
-    //cjt_c.llegir_cursos();
-    //cjt_u.llegir_usuaris();
+    cjt_s.llegir_sessions();
+    cjt_c.llegir_cursos();
+    cjt_u.llegir_usuaris();
     
     string c;
     while (c != "fin") {
@@ -43,8 +43,10 @@ int main ()
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "nueva_sesion" or c == "ns") {
-            Sessio s;
-            s.llegir_sessio();
+            cin >> nom;
+            cout << cmd << nom << endl;
+            Sessio s(nom);
+            s.llegir_p_sessio();
             try { cjt_s.afegir_sessio(s); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }/*
@@ -56,23 +58,26 @@ int main ()
         } */
         else if (c == "alta_usuario" or c == "a") {
             cin >> nom;
+            cout << cmd << nom << endl;
             Usuari u(nom);
             try { cjt_u.afegir_usuari(u); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "baja_usuario" or c == "b") {
             cin >> nom;
+            cout << cmd << nom << endl;
             try { cjt_u.eliminar_usuari(nom); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "inscribir_curso" or c == "i") {
             cin >> nom >> nom_int;
+            cout << cmd << nom << " " << nom_int << endl;
             try {
                 cjt_u.existeix_usuari(nom);
                 try { 
                     cjt_c.existeix_curs(nom_int);
                     try {
-                        (cjt_u.buscar_usuari(nom)).inscriure_curs(c, cjt_s);
+                        cjt_u.buscar_usuari(nom).inscriure_curs(cjt_c.buscar_curs(nom_int), cjt_s);
                         cjt_c.buscar_curs(nom_int).incrementar_usuari();
                     }
                     catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
@@ -83,6 +88,7 @@ int main ()
         }
         else if (c == "curso_usuario" or c == "cu") {
             cin >> nom;
+            cout << cmd << nom;
             try { (cjt_u.buscar_usuari(nom)).escriure_curs_inscrit(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         } 
@@ -102,17 +108,20 @@ int main ()
         */
         else if (c == "problemas_resueltos" or c == "pr") {
             cin >> nom;
-           try { (cjt_u.buscar_usuari(nom)).llistar_resolts(); }
-           catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
+            cout << cmd << nom << endl;
+            try { (cjt_u.buscar_usuari(nom)).llistar_resolts(); }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "problemas_enviables" or c == "pe") {
             cin >> nom;
+            cout << cmd << nom << endl;
             try { 
                 cjt_u.existeix_usuari(nom);
-                if (not (cjt_u.buscar_usuari(nom).consultar_curs() > 0)) {
-                    cout << e10 << endl;
-                } 
-                else cjt_u.buscar_usuari(nom).llistar_enviables();
+                try {
+                    cjt_u.buscar_usuari(nom).consultar_inscrit();
+                    cjt_u.buscar_usuari(nom).llistar_enviables();
+                }
+                catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
             }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
@@ -140,34 +149,42 @@ int main ()
         }
         */
         else if (c == "listar_problemas" or c == "lp") {
+            cout << cmd << endl;
             cjt_p.llistar_problemes();
         }
         else if (c == "escribir_problema" or c == "ep") {
             cin >> nom;
+            cout << cmd << nom << endl;
             try { (cjt_p.buscar_problema(nom)).escriure_problema(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "listar_sesiones" or c == "ls") {
+            cout << cmd << endl;
             cjt_s.llistar_sessions();
         }
         else if (c == "escribir_sesion" or c == "es") {
             cin >> nom;
+            cout << cmd << nom << endl;
             try { (cjt_s.buscar_sessio(nom)).escriure_sessio(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "listar_cursos" or c == "lc") {
+            cout << cmd << endl;
             cjt_c.llistar_cursos();
         }
         else if (c == "escribir_curso" or c == "ec") {
             cin >> nom_int; 
+            cout << cmd << nom << endl;
             try { (cjt_c.buscar_curs(nom_int)).escriure_curs(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "listar_usuarios" or c == "lu") {
+            cout << cmd << endl;
             cjt_u.llistar_usuaris();
         }
         else if (c == "escribir_usuario" or c == "eu") {
             cin >> nom;
+            cout << cmd << nom << endl;
             try { (cjt_u.buscar_usuari(nom)).escriure_usuari(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }

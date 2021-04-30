@@ -63,7 +63,7 @@ public:
       \pre arbre a i string n
       \post true si a conte n
     */
-    bool trobar_valor(const BinTree<string>& a, string n) const;
+    //bool trobar_valor(const BinTree<string>& a, string n) const;
     
     /** @brief Consulta els problemes de la sessio
       \pre <em>cert</em>
@@ -97,6 +97,12 @@ public:
     */
     void llegir_sessio();
     
+    /** @brief Operacio de lectura de sessio
+      \pre hi ha preparat al canal estandard d'entrada una sequencia d'identificadors de problemes en preordre
+      \post el parametre implicit passa a tenir els atributs llegits del canal estandard d'entrada
+    */
+    void llegir_p_sessio();
+    
     /** @brief Operacio d'escriptura dels problemes de sessio
       \pre <em>cert</em>
       \post s'han escrit els atributs (problemes) del parametre implicit al canal estandard de sortida
@@ -113,6 +119,7 @@ private:
     string id;
     BinTree<string> problemes_sessio;
     int problemes_totals;
+    bool trobar_valor(const BinTree<string>& a, string n) const;
 };
 
 #endif

@@ -59,6 +59,11 @@ int Usuari::consultar_curs() const {
     return curs_inscrit;
 }
 
+int Usuari::consultar_inscrit() const {
+    if (curs_inscrit == 0) throw ExcepcioEvaluator(e10);
+    else return curs_inscrit;
+}
+
 void Usuari::llegir_usuari() {
     cin >> id;
 }

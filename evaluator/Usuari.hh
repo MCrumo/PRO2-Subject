@@ -86,6 +86,12 @@ public:
     */
     int consultar_curs() const;
     
+    /** @brief Consulta a quin curs esta inscrit l'usuari
+        \pre <em>cert</em>
+        \post retorna el curs en el que esta insrict l'usuari i si no estava inscrit a cap curs llença una excepcio
+    */
+    int consultar_inscrit() const;
+    
     //Lectura i escriptura
     
     /** @brief Operacio de lectura d'un usuari
