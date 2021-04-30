@@ -32,19 +32,19 @@ int main ()
     
     string c;
     while (c != "fin") {
-        string cmd = "#" + c + " ";
+        string cmd = "#" + c;
         int nom_int;
         string nom, nom_2;
         if (c == "nuevo_problema" or c == "np") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             Problema p(nom);
             try { cjt_p.afegir_problema(p); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "nueva_sesion" or c == "ns") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             Sessio s(nom);
             s.llegir_p_sessio();
             try { cjt_s.afegir_sessio(s); }
@@ -58,27 +58,27 @@ int main ()
         } */
         else if (c == "alta_usuario" or c == "a") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             Usuari u(nom);
             try { cjt_u.afegir_usuari(u); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "baja_usuario" or c == "b") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             try { cjt_u.eliminar_usuari(nom); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "inscribir_curso" or c == "i") {
             cin >> nom >> nom_int;
-            cout << cmd << nom << " " << nom_int << endl;
+            cout << cmd << " " << nom << " " << nom_int << endl;
             try {
                 cjt_u.existeix_usuari(nom);
                 try { 
                     cjt_c.existeix_curs(nom_int);
                     try {
-                        cjt_u.buscar_usuari(nom).inscriure_curs(cjt_c.buscar_curs(nom_int), cjt_s);
-                        cjt_c.buscar_curs(nom_int).incrementar_usuari();
+                        cjt_u.insc_usuari_curs(nom, cjt_c.buscar_curs(nom_int), cjt_s);
+                        cjt_c.curs_inc_usuari(nom_int);
                     }
                     catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
                 }
@@ -88,7 +88,7 @@ int main ()
         }
         else if (c == "curso_usuario" or c == "cu") {
             cin >> nom;
-            cout << cmd << nom;
+            cout << cmd << " " << nom << endl;
             try { (cjt_u.buscar_usuari(nom)).escriure_curs_inscrit(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         } 
@@ -108,13 +108,13 @@ int main ()
         */
         else if (c == "problemas_resueltos" or c == "pr") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             try { (cjt_u.buscar_usuari(nom)).llistar_resolts(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "problemas_enviables" or c == "pe") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             try { 
                 cjt_u.existeix_usuari(nom);
                 try {
@@ -154,7 +154,7 @@ int main ()
         }
         else if (c == "escribir_problema" or c == "ep") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             try { (cjt_p.buscar_problema(nom)).escriure_problema(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
@@ -164,7 +164,7 @@ int main ()
         }
         else if (c == "escribir_sesion" or c == "es") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             try { (cjt_s.buscar_sessio(nom)).escriure_sessio(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
@@ -174,7 +174,7 @@ int main ()
         }
         else if (c == "escribir_curso" or c == "ec") {
             cin >> nom_int; 
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             try { (cjt_c.buscar_curs(nom_int)).escriure_curs(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
@@ -184,7 +184,7 @@ int main ()
         }
         else if (c == "escribir_usuario" or c == "eu") {
             cin >> nom;
-            cout << cmd << nom << endl;
+            cout << cmd << " " << nom << endl;
             try { (cjt_u.buscar_usuari(nom)).escriure_usuari(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }

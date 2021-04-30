@@ -30,6 +30,12 @@ public:
     */
     void afegir_curs(const Curs& c);
     
+    /** @brief Incrementa el total d'usuaris inscrits al curs "c" del parametre implicit
+      \pre <em>cert</em>
+      \post el total d'usuaris inscrits al curs "c" del parametre implicit augmenta en 1
+    */
+    void curs_inc_usuari(int u);
+    
     //Consultores
     
     /** @brief Consulta si hi ha un cert curs al conjunt de cursos

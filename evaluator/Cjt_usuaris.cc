@@ -23,6 +23,14 @@ void Cjt_usuaris::eliminar_usuari(string nom) {
     }
 }
 
+void Cjt_usuaris::insc_usuari_curs(string nom_u, const Curs& c, const Cjt_sessions& ses) {
+    map<string, Usuari>::iterator it = llista_usuaris.find(nom_u);
+    if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
+    else {
+        it->second.inscriure_curs(c, ses);
+    }
+}
+
 void Cjt_usuaris::existeix_usuari(string nom) {
     map<string, Usuari>::const_iterator it = llista_usuaris.find(nom);
     if (it == llista_usuaris.end()) {

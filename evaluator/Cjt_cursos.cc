@@ -10,6 +10,11 @@ void Cjt_cursos::afegir_curs(const Curs& c) {
 }
 */
 
+void Cjt_cursos::curs_inc_usuari(int nom_c) {
+    llista_cursos[nom_c - 1].incrementar_usuari();
+    cout << llista_cursos[nom_c - 1].usuaris_inscrits() << endl;
+}
+
 void Cjt_cursos::existeix_curs(int nom) {
     int i = nom - 1;
     if (llista_cursos.empty() or i < 0 or i >= llista_cursos.size()) {
@@ -24,11 +29,14 @@ int Cjt_cursos::total_cursos() const{
 }
 
 Curs Cjt_cursos::buscar_curs(int nom) {
+    /*
     int i = nom - 1;
     if (llista_cursos.empty() or i < 0 or i >= llista_cursos.size()) {
         throw ExcepcioEvaluator(e6);
     }
     else return llista_cursos[i];
+    */
+    return llista_cursos[nom - 1];
 }
 
 void Cjt_cursos::llegir_cursos() {

@@ -36,6 +36,12 @@ public:
     */
     void eliminar_usuari(string nom);
     
+    /** @brief Incsriu un usuari al curs c
+      \pre <em>cert</em>
+      \post l'usuari "u" del parametre implicit passar a estar inscrit al curs "c"
+    */
+    void insc_usuari_curs(string u, const Curs& c, const Cjt_sessions& ses);
+    
     //Consultores
     
     /** @brief Consulta si hi ha un cert usuari al conjunt d'usuaris
