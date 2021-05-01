@@ -35,5 +35,5 @@ clear:
 	rm *.o
 	rm *.tar
 tar:
-	tar -cvf practica.tar program.cc Makefile Curs.hh Cjt_cursos.hh Problema.hh Cjt_problemes.hh Sessio.hh Cjt_sessions.hh Usuari.hh Cjt_usuaris.hh 
+	tar -cvf practica.tar program.cc Makefile Curs.hh Cjt_cursos.hh Problema.hh Cjt_problemes.hh Sessio.hh Cjt_sessions.hh Usuari.hh Cjt_usuaris.hh ExcepcioEvaluator.hh
 
