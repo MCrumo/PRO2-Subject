@@ -40,13 +40,13 @@ public:
       \pre <em>cert</em>
       \post l'usuari "u" del parametre implicit passar a estar inscrit al curs "c"
     */
-    void insc_usuari_curs(string u, const Curs& c, const Cjt_sessions& ses);
+    void insc_usuari_curs(const string& u, const int& c, const Cjt_cursos& cs, const Cjt_sessions& ses);
     
     //Consultores
     
     /** @brief Consulta si hi ha un cert usuari al conjunt d'usuaris
       \pre <em>cert</em>
-      \post llença un error si l'usuari amb id "nom" no existeix
+      \post llença un error si l'usuari amb id "nom" no esta al parametre implicit
     */
     void existeix_usuari(string nom);
     
@@ -70,6 +70,12 @@ public:
     */
     void llegir_usuaris();
     
+    /** @brief Operació d'escriptura del curs al que esta inscrit l'usuari "u"
+      \pre <em>cert</em>
+      \post s'han escrit pel canal estàndard de sortida el el curs al que esta inscrit l'usuari "u" del parametre implicit i 0 si no esta inscrit en cap curs
+    */
+    void escriure_curs_inscrit(string u) const ;
+    
     /** @brief Operació d'escriptura del total d'usuaris
       \pre <em>cert</em>
       \post s'han escrit pel canal estàndard de sortida el total d'usuaris del parametre implicit
@@ -81,6 +87,24 @@ public:
       \post s'han escrit pel canal estàndard de sortida els usuaris del parametre implicit en ordre ascendent d'identificador
     */
     void llistar_usuaris() const;
+    
+    /** @brief Operació d'escriptura dels problemes resolts d'un usuari
+      \pre existeix usuari amb id "u" al parametre implicit
+      \post s'han escrit pel canal estàndard de sortida el problemes resolts de l'usuari "u" del parametre implicit
+    */
+    void llistar_u_resolts(string u) const;
+    
+    /** @brief Operació d'escriptura dels problemes enviables d'un usuari
+      \pre existeix usuari amb id "u" al parametre implicit
+      \post s'han escrit pel canal estàndard de sortida el problemes enviables de l'usuari "u" del parametre implicit
+    */
+    void llistar_u_enviables(string u) const;
+    
+    /** @brief Operació d'escriptura d'un usuari
+      \pre existeix usuari amb id "u" al parametre implicit
+      \post s'han escrit pel canal estàndard de sortida els atributs de l'usuari "u" de parametre implicit
+    */
+    void escriure_usuari(string u) const;
     
 private:
     map<string, Usuari> llista_usuaris;

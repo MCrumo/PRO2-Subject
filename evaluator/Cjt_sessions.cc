@@ -15,6 +15,11 @@ void Cjt_sessions::afegir_sessio(Sessio& s) {
     }
 }
 
+void Cjt_sessions::existeix_sessio(string s) {
+    map<string, Sessio>::const_iterator it = llista_sessions.find(s);
+    if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
+}
+
 string Cjt_sessions::conte_s_problema(const vector<string>& ses, string nom_p) {
     map<string, Sessio>::iterator it;
     for (int i = 0; i < ses.size(); ++i) {
@@ -33,12 +38,20 @@ bool Cjt_sessions::problemes_repetits() {
     }
     return cond;
 }
-
+/*
 Sessio Cjt_sessions::buscar_sessio(string nom) const {
     map<string, Sessio>::const_iterator it = llista_sessions.find(nom);
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
     else {
         return it->second;
+    }
+}*/
+
+string Cjt_sessions::problema_s_inicial(string nom) const {
+    map<string, Sessio>::const_iterator it = llista_sessions.find(nom);
+    if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
+    else {
+        return it->second.problema_inicial();
     }
 }
 
@@ -57,3 +70,22 @@ void Cjt_sessions::llistar_sessions() const {
         it->second.escriure_sessio();
     }
 }
+
+void Cjt_sessions::escriure_sessio(string s) const {
+    map<string, Sessio>::const_iterator it = llista_sessions.find(s);
+    it->second.escriure_sessio();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -80,7 +80,7 @@ int main ()
                 try { 
                     cjt_c.existeix_curs(nom_int);
                     try {
-                        cjt_u.insc_usuari_curs(nom, cjt_c.buscar_curs(nom_int), cjt_s);
+                        cjt_u.insc_usuari_curs(nom, nom_int, cjt_c, cjt_s);
                         cjt_c.curs_inc_usuari(nom_int);
                     }
                     catch(exception& e) { cout << e.what() << endl; }
@@ -92,7 +92,7 @@ int main ()
         else if (c == "curso_usuario" or c == "cu") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { cjt_u.buscar_usuari(nom).escriure_curs_inscrit(); }
+            try { cjt_u.escriure_curs_inscrit(nom); }
             catch(exception& e) { cout << e.what() << endl; }
         } 
         else if (c == "sesion_problema" or c == "sp") {
@@ -116,7 +116,10 @@ int main ()
         else if (c == "problemas_resueltos" or c == "pr") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { cjt_u.buscar_usuari(nom).llistar_resolts(); }
+            try { 
+                cjt_u.existeix_usuari(nom);
+                cjt_u.llistar_u_resolts(nom); 
+            }
             catch(exception& e) { cout << e.what() << endl; }
         }
         else if (c == "problemas_enviables" or c == "pe") {
@@ -125,8 +128,7 @@ int main ()
             try { 
                 cjt_u.existeix_usuari(nom);
                 try {
-                    cjt_u.buscar_usuari(nom).consultar_inscrit();
-                    cjt_u.buscar_usuari(nom).llistar_enviables();
+                    cjt_u.llistar_u_enviables(nom);
                 }
                 catch(exception& e) { cout << e.what() << endl; }
             }
@@ -162,7 +164,10 @@ int main ()
         else if (c == "escribir_problema" or c == "ep") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { cjt_p.buscar_problema(nom).escriure_problema(); }
+            try { 
+                cjt_p.existeix_problema(nom);
+                cjt_p.escriure_problema(nom); 
+            }
             catch(exception& e) { cout << e.what() << endl; }
         }
         else if (c == "listar_sesiones" or c == "ls") {
@@ -172,7 +177,10 @@ int main ()
         else if (c == "escribir_sesion" or c == "es") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { cjt_s.buscar_sessio(nom).escriure_sessio(); }
+            try { 
+                cjt_s.existeix_sessio(nom);
+                cjt_s.escriure_sessio(nom); 
+            }
             catch(exception& e) { cout << e.what() << endl; }
         }
         else if (c == "listar_cursos" or c == "lc") {
@@ -182,7 +190,10 @@ int main ()
         else if (c == "escribir_curso" or c == "ec") {
             cin >> nom_int; 
             cout << cmd << " " << nom_int << endl;
-            try { cjt_c.buscar_curs(nom_int).escriure_curs(); }
+            try { 
+                cjt_c.existeix_curs(nom_int);
+                cjt_c.escriure_curs(nom_int);
+            }
             catch(exception& e) { cout << e.what() << endl; }
         }
         else if (c == "listar_usuarios" or c == "lu") {
@@ -192,7 +203,10 @@ int main ()
         else if (c == "escribir_usuario" or c == "eu") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { cjt_u.buscar_usuari(nom).escriure_usuari(); }
+            try {
+                cjt_u.existeix_usuari(nom);
+                cjt_u.escriure_usuari(nom);
+            }
             catch(exception& e) { cout << e.what() << endl; }
         }
         cin >> c;

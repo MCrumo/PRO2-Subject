@@ -25,14 +25,14 @@ void Cjt_problemes::existeix_problema(string nom) {
     }
     // else return true; ->for bool
 }
-
+/*
 Problema Cjt_problemes::buscar_problema(string nom) {
     map<string, Problema>::const_iterator it = llista_problemes.find(nom);
     if (it == llista_problemes.end()) throw ExcepcioEvaluator(e2);
     else {
         return it->second;
     }
-}
+}*/
 
 void Cjt_problemes::llegir_problemes() {
     int n;
@@ -42,8 +42,8 @@ void Cjt_problemes::llegir_problemes() {
         p.llegir_problema();
         llista_problemes.insert(make_pair(p.nom_problema(), p));
         vector_problemes.push_back(p);
+        sort(vector_problemes.begin(), vector_problemes.end());
     }
-    sort(vector_problemes.begin(), vector_problemes.end());
 }
 
 void Cjt_problemes::llistar_problemes() const {
@@ -51,3 +51,19 @@ void Cjt_problemes::llistar_problemes() const {
         vector_problemes[i].escriure_problema();
     }
 }
+
+void Cjt_problemes::escriure_problema(string p) const {
+    map<string, Problema>::const_iterator it = llista_problemes.find(p);
+    it->second.escriure_problema();
+}
+
+
+
+
+
+
+
+
+
+
+

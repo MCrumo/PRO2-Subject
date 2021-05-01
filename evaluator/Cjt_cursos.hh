@@ -31,8 +31,8 @@ public:
     void afegir_curs(const Curs& c);
     
     /** @brief Incrementa el total d'usuaris inscrits al curs "c" del parametre implicit
-      \pre <em>cert</em>
-      \post el total d'usuaris inscrits al curs "c" del parametre implicit augmenta en 1
+      \pre el curs amb id "u" pertany al parametre implicit
+      \post el total d'usuaris inscrits al curs "c" del parametre implicit augmenta en 1 i s'escriu pel canal estandar de sortida
     */
     void curs_inc_usuari(int u);
     
@@ -66,7 +66,19 @@ public:
       \pre el curs "c" pertany al parametre implicit
       \post s'ha retornat una llista de les sessions del curs "c"
     */
-    vector<string> consul_c_sessions(int c);
+    vector<string> consul_c_sessions(int c) const;
+    
+    /** @brief Consulta el total de sessions d'un curs
+      \pre el curs "c" pertany al parametre implicit
+      \post s'ha retornat el total de sessions del curs "c"
+    */
+    int total_sessions(int c) const;
+    
+    /** @brief Consulta el nom de la iessima sessio del curs "c"
+      \pre el curs "c" pertany al parametre implicit
+      \post s'ha retornat el nom de la iessima sessio del curs "c" del parametre implicit
+    */
+    string consul_c_iessim(const int& c, const int& i) const;
     
     //Lectura i escriptura
     
@@ -87,6 +99,12 @@ public:
       \post s'han escrit pel canal estandard de sortida els cursos del parametre implicit en ordre ascendent d'identificador
     */
     void llistar_cursos() const;
+    
+    /** @brief Operació d'escriptura d'un curs
+      \pre existeix curs amb id "c" al parametre implicit
+      \post s'han escrit pel canal estàndard de sortida els atributs del curs "c" de parametre implicit
+    */
+    void escriure_curs(int c) const;
     
 private:
     vector<Curs> llista_cursos;

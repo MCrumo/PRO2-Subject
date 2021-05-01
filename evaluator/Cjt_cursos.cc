@@ -34,17 +34,25 @@ void Cjt_cursos::existeix_curs(int nom) {
 int Cjt_cursos::total_cursos() const{
     return llista_cursos.size();
 }
-
+/*
 Curs Cjt_cursos::buscar_curs(int nom) {
     int i = nom - 1;
     if (llista_cursos.empty() or i < 0 or i >= llista_cursos.size()) {
         throw ExcepcioEvaluator(e6);
     }
     else return llista_cursos[i];
+}*/
+
+vector<string> Cjt_cursos::consul_c_sessions(int c) const {
+    return llista_cursos[c - 1].consul_sessions();
 }
 
-vector<string> Cjt_cursos::consul_c_sessions(int c) {
-    return llista_cursos[c - 1].consul_sessions();
+int Cjt_cursos::total_sessions(int c) const {
+    return llista_cursos[c - 1].total_sessions();
+}
+
+string Cjt_cursos::consul_c_iessim(const int& c, const int& i) const {
+    return llista_cursos[c - 1].consul_iessim(i);
 }
 
 void Cjt_cursos::llegir_cursos() {
@@ -67,6 +75,9 @@ void Cjt_cursos::llistar_cursos() const {
     }
 }
 
+void Cjt_cursos::escriure_curs(int c) const {
+    llista_cursos[c - 1].escriure_curs();
+}
 
 
 

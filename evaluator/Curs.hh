@@ -80,7 +80,7 @@ public:
       \pre 0 <= i < llista_sessions.size()
       \post el resultat es el nom iessim del parametre implicit
     */
-    string consul_iessim(int i) const;
+    string consul_iessim(const int& i) const;
     
     /** @brief Consulta les sessions del curs
       \pre <em>cert</em>
@@ -125,7 +125,7 @@ private:
     int u_inscrits;
     int u_completats;
     vector<string> llista_sessions;
-    map<string, int> map_problemes; //PROFE lab
+    //map<string, int> map_problemes; //PROFE lab
 };
 
 #endif

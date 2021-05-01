@@ -44,7 +44,7 @@ int Curs::total_sessions() const {
     return llista_sessions.size();
 }
 
-string Curs::consul_iessim(int i) const {
+string Curs::consul_iessim(const int& i) const{
     return llista_sessions[i];
 }
 

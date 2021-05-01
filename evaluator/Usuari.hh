@@ -5,7 +5,7 @@
 #ifndef USUARI
 #define USUARI
 
-#include "Curs.hh"
+#include "Cjt_cursos.hh"
 #ifndef NO_DIAGRAM
 #include <utility>
 #endif
@@ -37,10 +37,10 @@ public:
     //Modificadores
     
     /** @brief Inscriu l'usuari a un curs
-      \pre <em>cert</em>
-      \post el parametre implicit passa a estar inscrit al curs amb nom "nom" i s'afegeix al parametre implicit els problemes que ja pot resoldre, en cas que ja estigui inscrit en algun curs, s'imprimeix un missatge d'error
+      \pre "c" es un difentificador valid de curs
+      \post el parametre implicit passa a estar inscrit al curs amb nom "c" i s'afegeix al parametre implicit els problemes que ja pot resoldre, en cas que ja estigui inscrit en algun curs s'imprimeix un missatge d'error
     */
-    void inscriure_curs(const Curs& c, const Cjt_sessions& cjt_s);
+    void inscriure_curs(const int& c, const Cjt_cursos& cs, const Cjt_sessions& cjt_s);
     
     /** @brief Modifica el nombre d'enviaments totals de l'usuari
       \pre <em>cert</em>
@@ -131,6 +131,7 @@ private:
     map<string, int> llista_resolts;
     map<string, pair<string, int> > llista_enviables; // pair string int
     //#include<utility> pari<string, int> a; a.first a.second
+    set<string> llista_intentats;
     int sum(const map<string, int>& env) const;
     int sumPair (const map<string, pair<string, int> >& res) const;
 };

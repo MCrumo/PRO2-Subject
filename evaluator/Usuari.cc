@@ -15,14 +15,14 @@ Usuari::Usuari(string nom) {
     env_totals = 0;
 }
 //Cursss!!!
-void Usuari::inscriure_curs(const Curs& c, const Cjt_sessions& ses) {
+void Usuari::inscriure_curs(const int& nom_c, const Cjt_cursos& cs, const Cjt_sessions& ses) {
     if (curs_inscrit == 0) {
-        curs_inscrit = c.nom_curs();
+        curs_inscrit = nom_c;
         pair<string, int> info;
         string nom_sessio, problema;
-        for (int i = 0; i < c.total_sessions(); ++i) {
-            nom_sessio = c.consul_iessim(i);
-            problema = ses.buscar_sessio(nom_sessio).problema_inicial();
+        for (int i = 0; i < cs.total_sessions(nom_c); ++i) {
+            nom_sessio = cs.consul_c_iessim(nom_c, i);
+            problema = ses.problema_s_inicial(nom_sessio);
             info.first = "";
             info.second = 0;
             llista_enviables.insert(make_pair(problema, info));
@@ -85,7 +85,7 @@ void Usuari::escriure_curs_inscrit() const {
 }
 
 void Usuari::escriure_usuari() const {
-    int intents = sumPair(llista_enviables) + sum(llista_resolts);
+    //int intents = sumPair(llista_enviables) + sum(llista_resolts);
     cout << id << "(" << env_totals << "," << llista_resolts.size() << "," << intents << "," << curs_inscrit << ")" << endl;
 }
 

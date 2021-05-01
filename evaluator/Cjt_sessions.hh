@@ -32,6 +32,12 @@ public:
     
     //Consultores
     
+    /** @brief Consulta si hi ha una certa sessio al conjunt de sessions
+      \pre <em>cert</em>
+      \post llença un error si la sessio amb id "s" no esta al parametre implicit
+    */
+    void existeix_sessio(string s);
+    
     /** @brief Consulta si hi ha un problema al conjunt de sessions
       \pre existeix el roblema "nom_p" i ses es un subconjunt del parametre implicit
       \post retorna el nom de la sessio on esta el problema "nom_p" i llença un error en cas que el problema no estigui a ses
@@ -45,10 +51,16 @@ public:
     bool problemes_repetits();
     
     /** @brief Consulta una sessio del conjunt
-      \pre el parametre implicit conte una sessio amb nom "nom"
-      \post el resultat es la sessio amb nom "nom" que conte el parametre implicit
+      \pre <em>cert</em>
+      \post el resultat es la sessio amb nom "nom" que conte el parametre implicit, s'ha llençat un missatge d'error si "nom" no pertany al parametre implicit
     */
     Sessio buscar_sessio(string nom) const;
+    
+    /** @brief Consulta el problema inicial d'una sessio
+      \pre <em>cert</em>
+      \post el resultat es el nom del problema inicial de la sessio "s", s'ha llençat un missatge d'error si "s" no pertany al parametre implicit
+    */
+    string problema_s_inicial(string s) const;
     
     //Lectura i escriptura
     
@@ -63,6 +75,12 @@ public:
       \post s'han escrit pel canal estandard de sortida les sessions del parametre implicit en ordre ascendent de l'identificador
     */
     void llistar_sessions() const;
+    
+    /** @brief Operació d'escriptura d'una sessio
+      \pre existeix sessio amb id "s" al parametre implicit
+      \post s'han escrit pel canal estàndard de sortida els atributs de la sessio "s" del parametre implicit
+    */
+    void escriure_sessio(string s) const;
     
 private:
     map<string, Sessio> llista_sessions;

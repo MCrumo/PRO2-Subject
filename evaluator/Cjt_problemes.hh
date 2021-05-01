@@ -62,6 +62,12 @@ public:
     */
     void llistar_problemes() const;
     
+    /** @brief Operació d'escriptura d'un problema
+      \pre existeix problema amb id "p" al parametre implicit
+      \post s'han escrit pel canal estàndard de sortida els atributs del problema "u" del parametre implicit
+    */
+    void escriure_problema(string p) const;
+    
 private:
     map<string, Problema> llista_problemes;
     vector<Problema> vector_problemes;

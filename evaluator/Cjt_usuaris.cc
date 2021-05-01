@@ -25,12 +25,9 @@ int Cjt_usuaris::eliminar_usuari(string nom) {
     }
 }
 
-void Cjt_usuaris::insc_usuari_curs(string nom_u, const Curs& c, const Cjt_sessions& ses) {
+void Cjt_usuaris::insc_usuari_curs(const string& nom_u, const int& nom_c, const Cjt_cursos& cs, const Cjt_sessions& ses) {
     map<string, Usuari>::iterator it = llista_usuaris.find(nom_u);
-    if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
-    else {
-        it->second.inscriure_curs(c, ses);
-    }
+    it->second.inscriure_curs(nom_c, cs, ses);
 }
 
 void Cjt_usuaris::existeix_usuari(string nom) {
@@ -45,12 +42,12 @@ void Cjt_usuaris::existeix_usuari(string nom) {
 int Cjt_usuaris::total_usuaris() {
     return llista_usuaris.size();
 }
-
+/*
 Usuari Cjt_usuaris::buscar_usuari(string nom) {
     map<string, Usuari>::const_iterator it = llista_usuaris.find(nom);
     if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
     else return it->second;
-}
+}*/
 
 void Cjt_usuaris::llegir_usuaris() {
     int n;
@@ -62,6 +59,12 @@ void Cjt_usuaris::llegir_usuaris() {
     }
 }
 
+void Cjt_usuaris::escriure_curs_inscrit(string u) const {
+    map<string, Usuari>::const_iterator it = llista_usuaris.find(u);
+    if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
+    else it->second.escriure_curs_inscrit();
+}
+
 //void Cjt_usuaris::escriure_total_usuaris() const {}
 
 void Cjt_usuaris::llistar_usuaris() const {
@@ -70,10 +73,21 @@ void Cjt_usuaris::llistar_usuaris() const {
     }
 }
 
+void Cjt_usuaris::llistar_u_resolts(string u) const {
+    map<string, Usuari>::const_iterator it = llista_usuaris.find(u);
+    it->second.llistar_resolts();
+}
 
+void Cjt_usuaris::llistar_u_enviables(string u) const {
+    map<string, Usuari>::const_iterator it = llista_usuaris.find(u);
+    it->second.consultar_inscrit();
+    it->second.llistar_enviables();
+}
 
-
-
+void Cjt_usuaris::escriure_usuari(string u) const {
+    map<string, Usuari>::const_iterator it = llista_usuaris.find(u);
+    it->second.escriure_usuari();
+}
 
 
 
