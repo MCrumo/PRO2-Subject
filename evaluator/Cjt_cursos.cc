@@ -29,14 +29,15 @@ int Cjt_cursos::total_cursos() const{
 }
 
 Curs Cjt_cursos::buscar_curs(int nom) {
-    /*
     int i = nom - 1;
     if (llista_cursos.empty() or i < 0 or i >= llista_cursos.size()) {
         throw ExcepcioEvaluator(e6);
     }
     else return llista_cursos[i];
-    */
-    return llista_cursos[nom - 1];
+}
+
+vector<string> Cjt_cursos::consul_c_sessions(int c) {
+    return llista_cursos[c - 1].consul_sessions();
 }
 
 void Cjt_cursos::llegir_cursos() {

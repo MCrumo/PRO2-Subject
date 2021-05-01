@@ -2,6 +2,7 @@
 
 const char *e3 = "error: la sesion ya existe";
 const char *e4 = "error: la sesion no existe";
+const char *e12 = "error: el problema no pertenece al curso";
 
 Cjt_sessions::Cjt_sessions() {}
 
@@ -12,6 +13,15 @@ void Cjt_sessions::afegir_sessio(Sessio& s) {
         llista_sessions.insert(make_pair(s.nom_sessio(), s));
         cout << llista_sessions.size() << endl;
     }
+}
+
+string Cjt_sessions::conte_s_problema(const vector<string>& ses, string nom_p) {
+    map<string, Sessio>::iterator it;
+    for (int i = 0; i < ses.size(); ++i) {
+        it = llista_sessions.find(ses[i]);
+        if (it->second.conte_problema(nom_p)) return it->second.nom_sessio();
+    }
+    throw ExcepcioEvaluator(e12);
 }
 
 bool Cjt_sessions::problemes_repetits() {

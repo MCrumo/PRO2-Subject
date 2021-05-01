@@ -47,6 +47,10 @@ int Curs::total_sessions() const {
 string Curs::consul_iessim(int i) const {
     return llista_sessions[i];
 }
+
+vector<string> Curs::consul_sessions() const {
+    return llista_sessions;
+}
 /*
 bool Curs::conte_problema(string p) {
     throw ExcepcioEvaluator("El curs no conte aquest problema")

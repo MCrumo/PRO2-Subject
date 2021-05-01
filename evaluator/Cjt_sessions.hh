@@ -32,6 +32,12 @@ public:
     
     //Consultores
     
+    /** @brief Consulta si hi ha un problema al conjunt de sessions
+      \pre existeix el roblema "nom_p" i ses es un subconjunt del parametre implicit
+      \post retorna el nom de la sessio on esta el problema "nom_p" i llença un error en cas que el problema no estigui a ses
+    */
+    string conte_s_problema(const vector<string>& ses, string nom_p);
+    
     /** @brief Consulta si hi ha problemes repetits al conjunt de sessions
       \pre <em>cert</em>
       \post true si han problemes repetits entre dues o mes sessions, false en cas contrari

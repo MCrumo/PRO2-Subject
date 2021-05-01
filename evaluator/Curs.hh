@@ -82,6 +82,12 @@ public:
     */
     string consul_iessim(int i) const;
     
+    /** @brief Consulta les sessions del curs
+      \pre <em>cert</em>
+      \post el resultat son les sessions del parametre implicit
+    */
+    vector<string> consul_sessions() const;
+    
     /** @brief Consulta si el curs conte un cert problema
       \pre <em>cert</em>
       \post true si el curs conte el problema p, false en cas contrari

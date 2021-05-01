@@ -56,6 +56,12 @@ public:
     */
     Curs buscar_curs(int nom);
     
+    /** @brief Consulta les sessions d'un curs
+      \pre el curs "c" pertany al parametre implicit
+      \post s'ha retornat una llista de les sessions del curs "c"
+    */
+    vector<string> consul_c_sessions(int c);
+    
     //Lectura i escriptura
     
     /** @brief Operació de lectura d'un conjunt de cursos

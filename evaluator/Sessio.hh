@@ -47,6 +47,12 @@ public:
     
     //Consultores
     
+    /** @brief Consulta si p esta entre el conjunt de problemes
+      \pre <em>cert</em>
+      \post retorna true si el problema "p" pertany al parametre implicit
+    */
+    bool conte_problema(string p);
+    
     /** @brief Consulta el problema inicial de la sessio
       \pre <em>cert</em>
       \post retorna el nom del problema inicial del parametre implicit

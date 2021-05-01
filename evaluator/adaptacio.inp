@@ -92,4 +92,35 @@ lc
 curso_usuario Pedri
 cu LionelMessi
 cu AnsuFati
+sesion_problema 1 V01
+sp 0 V01
+sp 1 V20
+sp 1 V30
+sp 2 V06
+sp 3 V06
+sp 4 CP01
+problemas_enviables Pedri
+pe AnsuFati
+pe SerginhoDest
+pe AitanaBonmati
+pe MarcTerStegen
+pe LiekeMartens
+problemas_resueltos Pedri
+pr LuisSuarez
+escribir_sesion grafos_2
+es grafos_3
+es colas_prior
+escribir_curso 3
+ec 0
+ec 1
+escribir_problema G12
+ep G999
+ep T01
+escribir_usuario MarcTerStegen
+eu LionelMessi
+eu LuisSuarez
+ls
+lp
+b AitanaBonmati
+ec 2
 fin

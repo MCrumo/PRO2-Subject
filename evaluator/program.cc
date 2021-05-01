@@ -89,27 +89,32 @@ int main ()
         else if (c == "curso_usuario" or c == "cu") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { (cjt_u.buscar_usuari(nom)).escriure_curs_inscrit(); }
+            try { cjt_u.buscar_usuari(nom).escriure_curs_inscrit(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         } 
-        /*
         else if (c == "sesion_problema" or c == "sp") {
             //Cjt_cursis:: string sesion_prob(int c const string& p) const;
-            cin >> nom_int >> nom_2;
-            x = cjt_c.existeix_curs(nom_int);
-            b = cjt_p.existeix_problema(nom_2);
-            if (x and b) {
-                Curs c;
-                c = cjt_c.buscar_curs(nom_int);
-                y = c.conte_problema(nom_2); //fer el throw error -> funcio inacavada!
-                if (y) c.nom_sessio(nom_2);
+            cin >> nom_int >> nom;
+            cout << cmd << " " << nom_int << " " << nom << endl;
+            try {
+                cjt_c.existeix_curs(nom_int);
+                try {
+                    cjt_p.existeix_problema(nom);
+                    try {//no puc posar v directament a cjt_s.c_s_p( >< , );
+                        vector<string> v = cjt_c.consul_c_sessions(nom_int);
+                        nom_2 = cjt_s.conte_s_problema(v, nom);
+                        cout << nom_2 << endl;
+                    }
+                    catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
+                }
+                catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
             }
+            catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
-        */
         else if (c == "problemas_resueltos" or c == "pr") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { (cjt_u.buscar_usuari(nom)).llistar_resolts(); }
+            try { cjt_u.buscar_usuari(nom).llistar_resolts(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "problemas_enviables" or c == "pe") {
@@ -155,7 +160,7 @@ int main ()
         else if (c == "escribir_problema" or c == "ep") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { (cjt_p.buscar_problema(nom)).escriure_problema(); }
+            try { cjt_p.buscar_problema(nom).escriure_problema(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "listar_sesiones" or c == "ls") {
@@ -165,7 +170,7 @@ int main ()
         else if (c == "escribir_sesion" or c == "es") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { (cjt_s.buscar_sessio(nom)).escriure_sessio(); }
+            try { cjt_s.buscar_sessio(nom).escriure_sessio(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "listar_cursos" or c == "lc") {
@@ -174,8 +179,8 @@ int main ()
         }
         else if (c == "escribir_curso" or c == "ec") {
             cin >> nom_int; 
-            cout << cmd << " " << nom << endl;
-            try { (cjt_c.buscar_curs(nom_int)).escriure_curs(); }
+            cout << cmd << " " << nom_int << endl;
+            try { cjt_c.buscar_curs(nom_int).escriure_curs(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         else if (c == "listar_usuarios" or c == "lu") {
@@ -185,7 +190,7 @@ int main ()
         else if (c == "escribir_usuario" or c == "eu") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
-            try { (cjt_u.buscar_usuari(nom)).escriure_usuari(); }
+            try { cjt_u.buscar_usuari(nom).escriure_usuari(); }
             catch(ExcepcioEvaluator e) { cout << e.what() << endl; }
         }
         cin >> c;

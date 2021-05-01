@@ -38,9 +38,9 @@ public:
     
     /** @brief Consulta si hi ha un cert problema al conjunt de problemes
       \pre <em>cert</em>
-      \post retorna ture si hi ha un problema amb identificador "nom" al parametre implicit
+      \post llença un error si no hi ha un problema amb identificador "nom" al parametre implicit
     */
-    bool existeix_problema(string nom);
+    void existeix_problema(string nom);
     
     /** @brief Consulta el problema amb identificador "nom"
       \pre el parametre implicit conte un problema amb nom "nom"
