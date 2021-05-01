@@ -36,6 +36,12 @@ public:
     */
     void curs_inc_usuari(int u);
     
+    /** @brief Modifica els usuaris del curs c
+      \pre <em>cert</em>
+      \post decrementa les usuaris inscrits de c si l'identificador es valid
+    */
+    void actual_usuaris(int c);
+    
     //Consultores
     
     /** @brief Consulta si hi ha un cert curs al conjunt de cursos

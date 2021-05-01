@@ -15,6 +15,13 @@ void Cjt_cursos::curs_inc_usuari(int nom_c) {
     cout << llista_cursos[nom_c - 1].usuaris_inscrits() << endl;
 }
 
+void Cjt_cursos::actual_usuaris(int c) {
+    int i = c - 1;
+    if ( i >= 0 and i < llista_cursos.size()) {
+        llista_cursos[i].decrementar_inscrits();
+    }
+}
+
 void Cjt_cursos::existeix_curs(int nom) {
     int i = nom - 1;
     if (llista_cursos.empty() or i < 0 or i >= llista_cursos.size()) {

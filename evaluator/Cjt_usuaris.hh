@@ -32,9 +32,9 @@ public:
     
     /** @brief Elimina un usuari del conjunt d'usuaris
       \pre string "nom"
-      \post s'ha tret del parametre implicit l'usuari amb nom "nom" i en cas de no existir s'ha llençat un missatge d'error
+      \post s'ha tret del parametre implicit l'usuari amb nom "nom" i en retorna el curs on estava inscrit, en cas de no existir s'ha llençat un missatge d'error
     */
-    void eliminar_usuari(string nom);
+    int eliminar_usuari(string nom);
     
     /** @brief Incsriu un usuari al curs c
       \pre <em>cert</em>

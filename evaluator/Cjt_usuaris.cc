@@ -14,12 +14,14 @@ void Cjt_usuaris::afegir_usuari(const Usuari& u) {
     }
 }
 
-void Cjt_usuaris::eliminar_usuari(string nom) {
+int Cjt_usuaris::eliminar_usuari(string nom) {
     map<string, Usuari>::iterator it = llista_usuaris.find(nom);
     if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
     else {
+        int c = it->second.consultar_curs();
         llista_usuaris.erase(it);
         cout << llista_usuaris.size() << endl; 
+        return c;
     }
 }
 

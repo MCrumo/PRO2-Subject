@@ -390,4 +390,4 @@ V25(0,0,1)
 #b AitanaBonmati
 15
 #ec 2
-2 0 1 7 (tuplas vectores_1 vectores_2 vectores_3 matrices pilas colas)
+2 0 0 7 (tuplas vectores_1 vectores_2 vectores_3 matrices pilas colas)
