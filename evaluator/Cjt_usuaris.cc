@@ -53,11 +53,7 @@ void Cjt_usuaris::curs_acabat(int c) { //GitHub
     llista_usuaris[c - 1].curs_acabat();
 }
 */
-/*
-void Cjt_usuaris::insc_c_usuari(string u, int c, const vector<string>& p_inicials) {
-  GH!  
-}
-*/
+
 void Cjt_usuaris::llegir_usuaris() {
     int n;
     cin >> n;

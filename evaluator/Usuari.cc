@@ -46,7 +46,7 @@ void Usuari::intent_resoldre(string p) {
 void Usuari::inc_p_intentat(string problema) {
     llista_intentats.insert(problema);
 }
-
+/*
 bool Usuari::curs_acabat() const {
     if (curs_inscrit == 0) return true;
     else {
@@ -54,7 +54,7 @@ bool Usuari::curs_acabat() const {
         throw ExcepcioEvaluator(e9);
     } 
 }
-
+*/
 string Usuari::nom_usuari() const {
     return id;
 }

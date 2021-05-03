@@ -42,7 +42,7 @@ public:
       \pre existeix el roblema "nom_p" i ses es un subconjunt del parametre implicit
       \post retorna el nom de la sessio on esta el problema "nom_p" i llença un error en cas que el problema no estigui a ses
     */
-    string conte_s_problema(const vector<string>& ses, string nom_p);
+    string existeix_s_problema(const vector<string>& ses, string nom_p);
     
     /** @brief Consulta si hi ha problemes repetits al conjunt de sessions
       \pre <em>cert</em>
@@ -61,8 +61,6 @@ public:
       \post el resultat es el nom del problema inicial de la sessio "s", s'ha llençat un missatge d'error si "s" no pertany al parametre implicit
     */
     string problema_s_inicial(string s) const;
-    
-    string existeix_s_problema(const vector<string>& v, string p);
     
     //Lectura i escriptura
     

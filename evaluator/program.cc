@@ -32,9 +32,9 @@ int main ()
     
     string c;
     while (c != "fin") {
-        string cmd = "#" + c;
+        string cmd, nom;
+        cmd = "#" + c;
         int nom_int;
-        string nom, nom_2;
         if (c == "nuevo_problema" or c == "np") {
             cin >> nom;
             cout << cmd << " " << nom << endl;
@@ -80,11 +80,6 @@ int main ()
                 try { 
                     cjt_c.existeix_curs(nom_int);
                     try {
-                        /*cjt_u.curs_acabat(nom_int);
-                        vector<string> s = cjt_c.llista_sessions(nom_int);
-                        vector<string> p = cjt_s.problemes_inicials(s);
-                        cjt_u.insc_c_usuari(nom, nom_int, p);
-                        */
                         cjt_u.insc_usuari_curs(nom, nom_int, cjt_c, cjt_s);
                         cjt_c.curs_inc_usuari(nom_int);
                     }
@@ -107,16 +102,9 @@ int main ()
                 cjt_c.existeix_curs(nom_int);
                 try {
                     cjt_p.existeix_problema(nom);
-                    try {//no puc posar v directament a cjt_s.c_s_p( >< , );
-                        /*
-                        vector<string> v = cjt_c.consul_c_sessions(nom_int);
-                        nom_2 = cjt_s.conte_s_problema(v, nom);
-                        cout << nom_2 << endl;
-                        */
-                        //github.com
-                        vector<string> v = cjt_c.consul_c_sessions(nom_int);
-                        nom_2 = cjt_s.existeix_s_problema(v, nom);
-                        cout << nom_2 << endl;
+                    try {
+                        vector<string> ses = cjt_c.consul_c_sessions(nom_int);
+                        cout << cjt_s.existeix_s_problema(ses, nom) << endl;
                     }
                     catch(exception& e) { cout << e.what() << endl; }
                 }
