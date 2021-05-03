@@ -80,6 +80,11 @@ int main ()
                 try { 
                     cjt_c.existeix_curs(nom_int);
                     try {
+                        /*cjt_u.curs_acabat(nom_int);
+                        vector<string> s = cjt_c.llista_sessions(nom_int);
+                        vector<string> p = cjt_s.problemes_inicials(s);
+                        cjt_u.insc_c_usuari(nom, nom_int, p);
+                        */
                         cjt_u.insc_usuari_curs(nom, nom_int, cjt_c, cjt_s);
                         cjt_c.curs_inc_usuari(nom_int);
                     }
@@ -103,8 +108,14 @@ int main ()
                 try {
                     cjt_p.existeix_problema(nom);
                     try {//no puc posar v directament a cjt_s.c_s_p( >< , );
+                        /*
                         vector<string> v = cjt_c.consul_c_sessions(nom_int);
                         nom_2 = cjt_s.conte_s_problema(v, nom);
+                        cout << nom_2 << endl;
+                        */
+                        //github.com
+                        vector<string> v = cjt_c.consul_c_sessions(nom_int);
+                        nom_2 = cjt_s.existeix_s_problema(v, nom);
                         cout << nom_2 << endl;
                     }
                     catch(exception& e) { cout << e.what() << endl; }

@@ -60,7 +60,9 @@ public:
       \pre el parametre implicit conte un usuari amb nom "nom"
       \post el resultat es l'usuari amb nom "nom" que conte el parametre implicit
     */
-    Usuari buscar_usuari(string nom);
+    //Usuari buscar_usuari(string nom);
+    
+    void curs_acabat(int c);
     
     //Lectura i escriptura
     

@@ -45,6 +45,8 @@ public:
     */
     void afegir_problemes(BinTree<string>& t);
     
+    bool existeix_problema(string p);
+    
     //Consultores
     
     /** @brief Consulta si p esta entre el conjunt de problemes

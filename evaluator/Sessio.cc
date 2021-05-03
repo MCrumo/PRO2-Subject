@@ -41,6 +41,10 @@ int Sessio::total_problemes() const {
     return problemes_totals;
 }
 
+bool Sessio::existeix_problema(string p) {
+    return trobar_valor(problemes_sessio, p);
+}
+
 //vector<string> Sessio::nom_problemes() {}
 
 void Sessio::cmp_problemes(const BinTree<string>& a2, bool& v_igual) const {
@@ -58,7 +62,7 @@ bool Sessio::trobar_valor(const BinTree<string>& a, string n) const {
     if (a.empty()) b = false;
     else if (a.value() == n) b = true;
     else {
-        b = trobar_valor(a.left(),n);
+        b = trobar_valor(a.left(), n);
         if (not b) b = trobar_valor(a.right(), n);
     }
     return b;

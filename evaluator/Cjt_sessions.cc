@@ -38,6 +38,14 @@ bool Cjt_sessions::problemes_repetits() {
     }
     return cond;
 }
+
+string Cjt_sessions::existeix_s_problema(const vector<string>& v, string p){
+        for (int i = 0; i < v.size(); ++i) {
+            if (llista_sessions[v[i]].existeix_problema(p)) return v[i];
+        }
+        throw ExcepcioEvaluator(e12);
+    }
+
 /*
 Sessio Cjt_sessions::buscar_sessio(string nom) const {
     map<string, Sessio>::const_iterator it = llista_sessions.find(nom);

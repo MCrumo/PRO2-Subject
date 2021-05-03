@@ -41,8 +41,12 @@ void Usuari::actualitzar_curs() {
 }
 
 void Usuari::intent_resoldre(string p) {
+}*/
+
+void Usuari::inc_p_intentat(string problema) {
+    llista_intentats.insert(problema);
 }
-*/
+
 bool Usuari::curs_acabat() const {
     if (curs_inscrit == 0) return true;
     else {
@@ -85,24 +89,7 @@ void Usuari::escriure_curs_inscrit() const {
 }
 
 void Usuari::escriure_usuari() const {
-    //int intents = sumPair(llista_enviables) + sum(llista_resolts);
-    cout << id << "(" << env_totals << "," << llista_resolts.size() << "," << intents << "," << curs_inscrit << ")" << endl;
-}
-
-int Usuari::sum(const map<string, int>& mapa) const {
-    int sum = 0;
-    for (map<string, int>::const_iterator it = mapa.begin(); it != mapa.end(); ++it) {
-        sum += it->second;
-    }
-    return sum;
-}
-
-int Usuari::sumPair(const map<string, pair<string, int> >& mapa2) const {
-    int sum = 0;
-    for (map<string, pair<string, int> >::const_iterator it = mapa2.begin(); it != mapa2.end(); ++it) {
-        sum += it->second.second;
-    }
-    return sum;
+    cout << id << "(" << env_totals << "," << llista_resolts.size() << "," << llista_intentats.size() << "," << curs_inscrit << ")" << endl;
 }
 
 

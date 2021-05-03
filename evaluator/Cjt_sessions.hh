@@ -54,13 +54,15 @@ public:
       \pre <em>cert</em>
       \post el resultat es la sessio amb nom "nom" que conte el parametre implicit, s'ha llençat un missatge d'error si "nom" no pertany al parametre implicit
     */
-    Sessio buscar_sessio(string nom) const;
+    //Sessio buscar_sessio(string nom) const;
     
     /** @brief Consulta el problema inicial d'una sessio
       \pre <em>cert</em>
       \post el resultat es el nom del problema inicial de la sessio "s", s'ha llençat un missatge d'error si "s" no pertany al parametre implicit
     */
     string problema_s_inicial(string s) const;
+    
+    string existeix_s_problema(const vector<string>& v, string p);
     
     //Lectura i escriptura
     

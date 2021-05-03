@@ -8,6 +8,7 @@
 #include "Cjt_cursos.hh"
 #ifndef NO_DIAGRAM
 #include <utility>
+#include <set>
 #endif
 
 /** @class Usuari
@@ -65,6 +66,12 @@ public:
       \post el parametre implicit passa a tenir els problemes que ha intentat resoldre inicialment mes 1 en cas que sigui el primer cop que intenta resoldre el problema amb nom "p" 
     */
     void intent_resoldre(string p);
+    
+    /** @brief Afegeix un problema intentat al parametre implicit
+        \pre <em>cert</em>
+        \post afegeix el problema si no estava al parametre implicit
+    */
+    void inc_p_intentat(string problema);
     
     //Consultores
     
@@ -129,13 +136,9 @@ private:
     int curs_inscrit;
     int env_totals;
     map<string, int> llista_resolts;
-    map<string, pair<string, int> > llista_enviables; // pair string int
-    //#include<utility> pari<string, int> a; a.first a.second
+    map<string, pair<string, int> > llista_enviables; 
     set<string> llista_intentats;
-    int sum(const map<string, int>& env) const;
-    int sumPair (const map<string, pair<string, int> >& res) const;
 };
-
 
 #endif
 
