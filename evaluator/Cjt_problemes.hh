@@ -60,7 +60,7 @@ public:
       \pre <em>cert</em>
       \post s'han escrit pel canal estandard de sortida els problemes del parametre implicit en ordre ascendent de ratio i en cas d'empat per odre creixent d'identificador
     */
-    void llistar_problemes() const;
+    void llistar_problemes();
     
     /** @brief Operació d'escriptura d'un problema
       \pre existeix problema amb id "p" al parametre implicit

@@ -48,10 +48,11 @@ Usuari Cjt_usuaris::buscar_usuari(string nom) {
     if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
     else return it->second;
 }*/
-
-void Cjt_usuaris::curs_acabat(int c) { //GH
+/*
+void Cjt_usuaris::curs_acabat(int c) { //GitHub
     llista_usuaris[c - 1].curs_acabat();
 }
+*/
 /*
 void Cjt_usuaris::insc_c_usuari(string u, int c, const vector<string>& p_inicials) {
   GH!  

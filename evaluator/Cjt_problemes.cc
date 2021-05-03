@@ -12,7 +12,7 @@ void Cjt_problemes::afegir_problema(const Problema& p) {
     else {
         llista_problemes.insert(make_pair(p.nom_problema(), p));
         vector_problemes.push_back(p);
-        sort(vector_problemes.begin(), vector_problemes.end());
+        //sort(vector_problemes.begin(), vector_problemes.end());
         cout << llista_problemes.size() << endl;
     }
 }
@@ -42,11 +42,12 @@ void Cjt_problemes::llegir_problemes() {
         p.llegir_problema();
         llista_problemes.insert(make_pair(p.nom_problema(), p));
         vector_problemes.push_back(p);
-        sort(vector_problemes.begin(), vector_problemes.end());
+        //sort(vector_problemes.begin(), vector_problemes.end());
     }
 }
 
-void Cjt_problemes::llistar_problemes() const {
+void Cjt_problemes::llistar_problemes() {
+    sort(vector_problemes.begin(), vector_problemes.end());
     for (int i = 0; i < vector_problemes.size(); ++i) {
         vector_problemes[i].escriure_problema();
     }
