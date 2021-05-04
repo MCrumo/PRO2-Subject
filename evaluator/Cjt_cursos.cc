@@ -3,12 +3,12 @@
 const char *e6 = "error: el curso no existe";
 
 Cjt_cursos::Cjt_cursos() { }
-/*
+
 void Cjt_cursos::afegir_curs(const Curs& c) {
-    if(...)
-        llista_cursos.push_back(c);
+    llista_cursos.push_back(c);
+    cout << llista_cursos.size() << endl;
 }
-*/
+
 
 void Cjt_cursos::curs_inc_usuari(int nom_c) {
     llista_cursos[nom_c - 1].incrementar_usuari();

@@ -49,13 +49,17 @@ int main ()
             s.llegir_p_sessio();
             try { cjt_s.afegir_sessio(s); }
             catch(exception& e) { cout << e.what() << endl; }
-        }/*
+        }
         else if (c == "nuevo_curso" or c == "nc") { //Entrega_FINAL
+            cout << cmd << endl;
             Curs c;
             c.llegir_curs(cjt_c.total_cursos() + 1);
-            cjt_c.afegir_curs(c); //llensara error o seguira executan? -> no acabat el .cc
-            cjt_c.escriure_cursos();
-        } */
+            try {
+                cjt_s.validar_problemes(c.consul_sessions());
+                cjt_c.afegir_curs(c);
+            }
+            catch(exception& e) { cout << e.what() << endl; }
+        }
         else if (c == "alta_usuario" or c == "a") {
             cin >> nom;
             cout << cmd << " " << nom << endl;

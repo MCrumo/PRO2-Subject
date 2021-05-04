@@ -92,7 +92,9 @@ public:
       \pre <em>cert</em>
       \post true si el curs conte el problema p, false en cas contrari
     */
-    bool conte_problema(string p);
+    //bool conte_problema(string p);
+    
+    void validar_sessions(const Cjt_sessions& ses);
     
     //Lectura i escriptura
     

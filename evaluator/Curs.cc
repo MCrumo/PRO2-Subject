@@ -52,6 +52,11 @@ vector<string> Curs::consul_sessions() const {
     return llista_sessions;
 }
 /*
+void Curs::validar_sessions(const Cjt_sessions& ses) {
+    ses.validar_problemes(llista_sessions);
+}*/
+
+/*
 bool Curs::conte_problema(string p) {
     throw ExcepcioEvaluator("El curs no conte aquest problema")
 }

@@ -3,6 +3,7 @@
 const char *e3 = "error: la sesion ya existe";
 const char *e4 = "error: la sesion no existe";
 const char *e12 = "error: el problema no pertenece al curso";
+const char *e13 = "error: curso mal formado";
 
 Cjt_sessions::Cjt_sessions() {}
 
@@ -28,7 +29,7 @@ string Cjt_sessions::conte_s_problema(const vector<string>& ses, string nom_p) {
     }
     throw ExcepcioEvaluator(e12);
 }*/
-
+/*
 bool Cjt_sessions::problemes_repetits() {
     bool cond = false;
     for (map<string, Sessio>::const_iterator it = llista_sessions.begin(); it != llista_sessions.end() and not cond; ++it) {
@@ -38,6 +39,7 @@ bool Cjt_sessions::problemes_repetits() {
     }
     return cond;
 }
+*/
 
 string Cjt_sessions::existeix_s_problema(const vector<string>& ses, string p){
         for (int i = 0; i < ses.size(); ++i) {
@@ -54,6 +56,16 @@ Sessio Cjt_sessions::buscar_sessio(string nom) const {
         return it->second;
     }
 }*/
+
+void Cjt_sessions::validar_problemes(const vector<string>& ses) {
+    bool cond = false;
+    for (int i = 0; i < ses.size() - 1 and not cond; ++i) {
+        for (int j = i + 1; j < ses.size() and not cond; ++j) {
+            (llista_sessions[ses[i]]).cmp_problemes(llista_sessions[ses[j]].consul_problemes(), cond);
+        }
+    }
+    if (cond) throw ExcepcioEvaluator(e13);
+}
 
 string Cjt_sessions::problema_s_inicial(string nom) const {
     map<string, Sessio>::const_iterator it = llista_sessions.find(nom);

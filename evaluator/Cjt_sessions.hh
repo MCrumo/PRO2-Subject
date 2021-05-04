@@ -62,6 +62,8 @@ public:
     */
     string problema_s_inicial(string s) const;
     
+    void validar_problemes(const vector<string>& ses);
+    
     //Lectura i escriptura
     
     /** @brief Operació de lectura d'un conjunt de sessions
