@@ -16,10 +16,12 @@ Problema::Problema(string nom) {
 
 void Problema::incrementar_envio() {
     e_totals += 1;
+    ratio = (1 + e_totals) / double(1 + e_correctes);
 }
 
 void Problema::incrementar_correctes() {
     e_correctes += 1;
+    ratio = (1 + e_totals) / double(1 + e_correctes);
 }
 
 void Problema::actualitzar_ratio() {

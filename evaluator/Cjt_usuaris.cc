@@ -30,6 +30,18 @@ void Cjt_usuaris::insc_usuari_curs(const string& nom_u, const int& nom_c, const 
     it->second.inscriure_curs(nom_c, cs, ses);
 }
 
+void Cjt_usuaris::inc_p_intentat(string u, string p) {
+    llista_usuaris[u].inc_p_intentat(p);
+}
+
+void Cjt_usuaris::envio_correcte(string u, string p) {
+    llista_usuaris[u].envio_correcte(p);
+}
+
+void Cjt_usuaris::inc_env_totals(string u) {
+    llista_usuaris[u].incrementar_totals();
+}
+
 void Cjt_usuaris::existeix_usuari(string nom) {
     map<string, Usuari>::const_iterator it = llista_usuaris.find(nom);
     if (it == llista_usuaris.end()) {

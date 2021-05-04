@@ -34,6 +34,18 @@ public:
     */
     void afegir_problema(const Problema& p);
     
+    /** @brief Incrementa els enviaments totals d'un problema
+      \pre el problema "p" pertany al parametre implicit
+      \post el problema "p" passa a tenir els enviaments totals inicials mes 1
+    */
+    void incrementar_envio(string p);
+    
+    /** @brief Incrementa els enviaments correctes d'un problema
+      \pre el problema "p" pertany al parametre implicit
+      \post el problema "p" passa a tenir els enviaments correctes inicials mes 1
+    */
+    void incrementar_correcte(string p);
+    
     //Consultores
     
     /** @brief Consulta si hi ha un cert problema al conjunt de problemes

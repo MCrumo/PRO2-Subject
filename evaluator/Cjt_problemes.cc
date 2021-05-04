@@ -17,6 +17,14 @@ void Cjt_problemes::afegir_problema(const Problema& p) {
     }
 }
 
+void Cjt_problemes::incrementar_envio(string p) {
+    llista_problemes[p].incrementar_envio();
+}
+
+void Cjt_problemes::incrementar_correcte(string p) {
+    llista_problemes[p].incrementar_correctes();
+}
+
 void Cjt_problemes::existeix_problema(string nom) {
     map<string, Problema>::const_iterator it = llista_problemes.find(nom);
     if (it == llista_problemes.end()) {

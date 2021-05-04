@@ -67,11 +67,17 @@ public:
     */
     void intent_resoldre(string p);
     
-    /** @brief Afegeix un problema intentat al parametre implicit
+    /** @brief Afegeix un problema intentat al parametre implicit i incrementa l'enviament al problema
         \pre <em>cert</em>
-        \post afegeix el problema si no estava al parametre implicit
+        \post afegeix el problema si no estava al parametre implicit i incrementa l'envio al problema es cas que sigui un dels podblemes enviables del parametre implicit
     */
     void inc_p_intentat(string problema);
+    
+    /** @brief Afegeig un enviament correcte a l'usuari
+      \pre <em>cert</em>
+      \post l'usuari passa a tenir els problemes resolts inicials mes "p" i problemes enviables inicials menys "p"
+    */
+    void envio_correcte(string p);
     
     //Consultores
     
@@ -135,9 +141,9 @@ private:
     string id;
     int curs_inscrit;
     int env_totals;
-    map<string, int> llista_resolts;
-    map<string, pair<string, int> > llista_enviables; 
     set<string> llista_intentats;
+    map<string, int> llista_resolts;
+    map<string, pair<string, int> > llista_enviables;
 };
 
 #endif

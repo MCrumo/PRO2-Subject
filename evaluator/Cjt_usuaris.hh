@@ -42,6 +42,24 @@ public:
     */
     void insc_usuari_curs(const string& u, const int& c, const Cjt_cursos& cs, const Cjt_sessions& ses);
     
+    /** @brief Afegeix un nou enviament a un usuari
+      \pre l'usuari "u" pertany al parametre implicit
+      \post l'usuari "u" passa a tenir els enviaments totals inicials mes 1
+    */
+    void inc_env_totals(string u);
+    
+    /** @brief Afegeix un nou problema intentat a un usuari
+      \pre l'usuari "u" pertany al parametre implicit i "p" al conjunt de problemes que "u" pot fer un enviament
+      \post l'usuari "u" passa a tenir els problemes intentats inicials mes "p" (en cas que encara no l'hagues intentat)
+    */
+    void inc_p_intentat(string u, string p);
+    
+    /** @brief Afegeig un enviament correcte a un usuari
+      \pre l'usuari "u" pertany al parametre implicit i "p" al conjunt de problemes que "u" pot fer un enviament
+      \post l'usuari "u" passa a tenir els problemes correctes inicials mes "p"
+    */
+    void envio_correcte(string u, string p);
+    
     //Consultores
     
     /** @brief Consulta si hi ha un cert usuari al conjunt d'usuaris

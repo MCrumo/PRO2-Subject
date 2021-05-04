@@ -3,6 +3,8 @@
 
 const char *e9 = "error: usuario inscrito en otro curso";
 const char *e10 = "error: usuario no inscrito en ningun curso";
+const char *e14 = "error: el problema no pertenece a los problemas enviables";
+const char *e15 = "error: aquest problema ja ha sigut resolt";
 
 Usuari::Usuari() {
     curs_inscrit = 0;
@@ -43,9 +45,26 @@ void Usuari::actualitzar_curs() {
 void Usuari::intent_resoldre(string p) {
 }*/
 
-void Usuari::inc_p_intentat(string problema) {
-    llista_intentats.insert(problema);
+void Usuari::inc_p_intentat(string p) {
+    llista_intentats.insert(p);
+    map<string, pair<string, int> >::const_iterator it = llista_enviables.find(p);
+    if (it == llista_enviables.end()) throw ExcepcioEvaluator(e14);
+    else {
+        llista_enviables[p].second += 1;
+    }
 }
+
+void Usuari::envio_correcte(string p) {
+    map<string, int>::const_iterator it = llista_resolts.find(p);
+    map<string, pair<string, int> >::const_iterator it2 = llista_enviables.find(p);
+    if (it != llista_resolts.end()) throw ExcepcioEvaluator(e15);
+    if (it2 == llista_enviables.end()) throw ExcepcioEvaluator(e14);
+    else {
+        llista_resolts[p] = llista_enviables[p].second;
+        llista_enviables.erase(it2);
+    }
+}
+
 /*
 bool Usuari::curs_acabat() const {
     if (curs_inscrit == 0) return true;

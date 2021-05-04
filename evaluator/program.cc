@@ -18,7 +18,7 @@
 /** @brief Programa principal de la pràctica <em>Evaluator, plataforma de gestió de problemes i cursos de programació</em>.
 */
 
-int main ()
+int main () 
 {
     Cjt_problemes cjt_p;
     Cjt_sessions cjt_s;
@@ -81,15 +81,9 @@ int main ()
             cout << cmd << " " << nom << " " << nom_int << endl;
             try {
                 cjt_u.existeix_usuari(nom);
-                try { 
-                    cjt_c.existeix_curs(nom_int);
-                    try {
-                        cjt_u.insc_usuari_curs(nom, nom_int, cjt_c, cjt_s);
-                        cjt_c.curs_inc_usuari(nom_int);
-                    }
-                    catch(exception& e) { cout << e.what() << endl; }
-                }
-                catch(exception& e) { cout << e.what() << endl; }
+                cjt_c.existeix_curs(nom_int);
+                cjt_u.insc_usuari_curs(nom, nom_int, cjt_c, cjt_s);
+                cjt_c.curs_inc_usuari(nom_int);
             }
             catch(exception& e) { cout << e.what() << endl; }
         }
@@ -104,15 +98,9 @@ int main ()
             cout << cmd << " " << nom_int << " " << nom << endl;
             try {
                 cjt_c.existeix_curs(nom_int);
-                try {
-                    cjt_p.existeix_problema(nom);
-                    try {
-                        vector<string> ses = cjt_c.consul_c_sessions(nom_int);
-                        cout << cjt_s.existeix_s_problema(ses, nom) << endl;
-                    }
-                    catch(exception& e) { cout << e.what() << endl; }
-                }
-                catch(exception& e) { cout << e.what() << endl; }
+                cjt_p.existeix_problema(nom);
+                vector<string> ses = cjt_c.consul_c_sessions(nom_int);
+                cout << cjt_s.existeix_s_problema(ses, nom) << endl;
             }
             catch(exception& e) { cout << e.what() << endl; }
         }
@@ -130,16 +118,28 @@ int main ()
             cout << cmd << " " << nom << endl;
             try { 
                 cjt_u.existeix_usuari(nom);
-                try {
-                    cjt_u.llistar_u_enviables(nom);
-                }
-                catch(exception& e) { cout << e.what() << endl; }
+                cjt_u.llistar_u_enviables(nom);
             }
             catch(exception& e) { cout << e.what() << endl; }
         }
-        /*
-        else if (c == "envio" or c == "e") { //Entrega_FINAL
-            cin >> nom >> nom_2 >> nom_int; //u >> p >> r;
+        else if (c == "envio" or c == "e") {
+            string nom_p;
+            cin >> nom >> nom_p >> nom_int; //u >> p >> r;
+            cout << cmd << " " << nom << " " << nom_p << " " << nom_int << endl;
+            try {
+                cjt_u.existeix_usuari(nom);
+                cjt_p.incrementar_envio(nom_p);
+                cjt_u.inc_env_totals(nom);
+                cjt_u.inc_p_intentat(nom, nom_p);
+                if (nom_int == 1) {
+                    cjt_p.incrementar_correcte(nom_p);
+                    cjt_u.envio_correcte(nom, nom_p);
+                  //cjt_u.actual_enviables(nom, nom_p, cjt_s); no especif. ni imp.
+                  //cjt_u.actual_curs_insc(nom,)
+                }
+            }
+            catch(exception& e) {cout << e.what() << endl; }
+            /*
             Usuari u;
             Problema p;
             u = cjt_u.buscar_usuari(nom);
@@ -148,7 +148,7 @@ int main ()
             u.intent_resoldre(nom_2); //-> int_res inacavada!
             p.incrementar_envio();
             if (nom_int == 1) {
-                p.incrementar_correctes();
+                cjt_p.incrementar_correcte(nom_2);
                 u.afegir_correcte(nom_2); // -> afg_corr inacavada!
                 u.actualitzar_curs(); // -> act_curs inacavada!
                 if (u.curs_acabat()) {
@@ -157,9 +157,8 @@ int main ()
                     c.incrementar_completats();
                     c.decrementar_inscrits();
                 }
-            }
+            }*/
         }
-        */
         else if (c == "listar_problemas" or c == "lp") {
             cout << cmd << endl;
             cjt_p.llistar_problemes();
