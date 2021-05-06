@@ -47,6 +47,8 @@ public:
     
     bool existeix_problema(string p);
     
+    void actual_problemes(string p, map<string, int>& lle);
+    
     //Consultores
     
     /** @brief Consulta si p esta entre el conjunt de problemes
@@ -59,7 +61,7 @@ public:
       \pre <em>cert</em>
       \post retorna el nom del problema inicial del parametre implicit
     */
-    string problema_inicial() const;
+    //string problema_inicial() const;
     
     /** @brief Compara els problemes entre dues sessions
       \pre arbre a2 i v es fals
@@ -92,10 +94,10 @@ public:
     int total_problemes() const;
     
     /** @brief Consulta el nom dels problemes de la sessio
-      \pre <em>cert</em>
-      \post el resultat es un vector de noms dels problemes en postordre
+      \pre 0 <= i < el tamany de la llista de problemes
+      \post el resultat es el nom del problema a la iessima possicio
     */
-    vector<string> nom_problemes();
+    string consul_iessim(int i) const;
     
     //Lectura i escriptura
     
@@ -126,7 +128,9 @@ public:
 private:
     string id;
     BinTree<string> problemes_sessio;
-    int problemes_totals;
+    vector<string> llista_problemes;
+    void buscar_prerequisits(const BinTree<string>& a, map<string, int>& lle, string p);
+    //int problemes_totals;
     bool trobar_valor(const BinTree<string>& a, string n) const;
 };
 

@@ -42,6 +42,8 @@ public:
     */
     void actual_usuaris(int c);
     
+    void curs_completat(int c);
+    
     //Consultores
     
     /** @brief Consulta si hi ha un cert curs al conjunt de cursos
@@ -86,7 +88,9 @@ public:
       \pre estan preparats al canal estandard d'entrada un enter (que representa el nombre d'elements que llegirem) i les dades de tal nombre de cursos diferents
       \post el parametre implicit conte el conjunt de cursos llegits del canal estandard d'entrada
     */
-    void llegir_cursos();
+    void llegir_cursos(const Cjt_sessions& ses);
+    
+     string sessio_problema(int c, string p);
     
     /** @brief Operació d'escriptura del total de cursos
       \pre <em>cert</em>

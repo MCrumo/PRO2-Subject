@@ -1,6 +1,7 @@
 #include "Curs.hh" 
 
-const char *e5 = "Hi ha problemes repetits en les sessions";
+const char *e12 = "error: el problema no pertenece al curso";
+const char *e5 = "error: curso mal formado";
 
 Curs::Curs() {
     u_inscrits = 0;
@@ -26,6 +27,12 @@ void Curs::incrementar_completats() {
 void Curs::decrementar_inscrits() {
     if (u_inscrits - 1 <= 0) u_inscrits = 0;
     else u_inscrits -= 1;
+}
+
+string Curs::sessio_problema(string p) {
+    map<string, string>::const_iterator it = map_problemes.find(p);
+    if (it == map_problemes.end()) throw ExcepcioEvaluator(e12);
+    else return it->second;
 }
 
 int Curs::nom_curs() const {
@@ -65,7 +72,7 @@ void Curs::nom_sessio(string p) const {
     
 }
 */
-void Curs::llegir_curs(int nom) {
+void Curs::llegir_curs(int nom, const Cjt_sessions& ses) {
     int n;
     id = nom;
     cin >> n;
@@ -73,6 +80,12 @@ void Curs::llegir_curs(int nom) {
         string nom_s;
         cin >> nom_s;
         llista_sessions.push_back(nom_s);
+        for (int i = 0; i < ses.total_problemes(nom_s); ++i) {
+            string p = ses.consul_p_iessim(nom_s, i);
+            map<string, string>::const_iterator it = map_problemes.find(p);
+            if (it == map_problemes.end()) map_problemes.insert(make_pair(p, nom_s));
+            else throw ExcepcioEvaluator(e5);
+        }
     }
 }
 

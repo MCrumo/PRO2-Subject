@@ -7,7 +7,6 @@
 
 #include "Cjt_cursos.hh"
 #ifndef NO_DIAGRAM
-#include <utility>
 #include <set>
 #endif
 
@@ -79,6 +78,10 @@ public:
     */
     void envio_correcte(string p);
     
+    void actual_enviables(string p, Cjt_sessions& ses, string s);
+    
+    void fixar_inscrit(int c);
+    
     //Consultores
     
     /** @brief Consulta si l'usuari ha acabat el curs
@@ -97,13 +100,15 @@ public:
       \pre <em>cert</em>
       \post el resultat es el nom (enter) del curs al que esta inscrit i 0 si no esta inscrit a cap curs
     */
-    int consultar_curs() const;
+    int consul_curs() const;
     
     /** @brief Consulta a quin curs esta inscrit l'usuari
         \pre <em>cert</em>
         \post retorna el curs en el que esta insrict l'usuari i si no estava inscrit a cap curs llença una excepcio
     */
     int consultar_inscrit() const;
+    
+    int consul_enviables() const;
     
     //Lectura i escriptura
     
@@ -129,7 +134,7 @@ public:
       \pre <em>cert</em>
       \post s'han escrit pel canal estandard de sortida el curs al que esta inscrit l'usuari i 0 si no esta inscrit a cap curs 
     */
-    void escriure_curs_inscrit() const;
+    //void escriure_curs_inscrit() const;
     
     /** @brief Operacio d'escriptura d'usuari
       \pre <em>cert</em>
@@ -143,7 +148,7 @@ private:
     int env_totals;
     set<string> llista_intentats;
     map<string, int> llista_resolts;
-    map<string, pair<string, int> > llista_enviables;
+    map<string, int> llista_enviables;
 };
 
 #endif

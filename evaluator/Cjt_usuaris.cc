@@ -18,7 +18,7 @@ int Cjt_usuaris::eliminar_usuari(string nom) {
     map<string, Usuari>::iterator it = llista_usuaris.find(nom);
     if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
     else {
-        int c = it->second.consultar_curs();
+        int c = it->second.consul_curs();
         llista_usuaris.erase(it);
         cout << llista_usuaris.size() << endl; 
         return c;
@@ -36,6 +36,18 @@ void Cjt_usuaris::inc_p_intentat(string u, string p) {
 
 void Cjt_usuaris::envio_correcte(string u, string p) {
     llista_usuaris[u].envio_correcte(p);
+}
+//ses MUST be const!
+void Cjt_usuaris::actual_enviables(string u, string nom_p, Cjt_sessions& ses, string nom_s) {
+    llista_usuaris[u].actual_enviables(nom_p, ses, nom_s);
+}
+
+void Cjt_usuaris::actual_curs_insc(string u, Cjt_cursos& cs) {
+    if (llista_usuaris[u].consul_enviables() == 0) {
+        int c = llista_usuaris[u].consultar_inscrit();
+        cs.curs_completat(c);
+        llista_usuaris[u].fixar_inscrit(0);
+    }
 }
 
 void Cjt_usuaris::inc_env_totals(string u) {
@@ -66,6 +78,10 @@ void Cjt_usuaris::curs_acabat(int c) { //GitHub
 }
 */
 
+int Cjt_usuaris::consul_curs(string u) {
+    return llista_usuaris[u].consul_curs();
+}
+
 void Cjt_usuaris::llegir_usuaris() {
     int n;
     cin >> n;
@@ -79,7 +95,7 @@ void Cjt_usuaris::llegir_usuaris() {
 void Cjt_usuaris::escriure_curs_inscrit(string u) const {
     map<string, Usuari>::const_iterator it = llista_usuaris.find(u);
     if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
-    else it->second.escriure_curs_inscrit();
+    else cout << it->second.consul_curs() << endl;
 }
 
 //void Cjt_usuaris::escriure_total_usuaris() const {}

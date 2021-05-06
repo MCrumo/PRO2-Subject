@@ -60,6 +60,10 @@ public:
     */
     void envio_correcte(string u, string p);
     
+    void actual_enviables(string u, string p, Cjt_sessions& ses, string nom_s);
+    
+    void actual_curs_insc(string u, Cjt_cursos& cs);
+    
     //Consultores
     
     /** @brief Consulta si hi ha un cert usuari al conjunt d'usuaris
@@ -81,6 +85,8 @@ public:
     //Usuari buscar_usuari(string nom);
     
     void curs_acabat(int c);
+    
+    int consul_curs(string u);
     
     //Lectura i escriptura
     

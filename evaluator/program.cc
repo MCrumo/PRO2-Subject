@@ -27,7 +27,7 @@ int main ()
     
     cjt_p.llegir_problemes();
     cjt_s.llegir_sessions();
-    cjt_c.llegir_cursos();
+    cjt_c.llegir_cursos(cjt_s);
     cjt_u.llegir_usuaris();
     
     string c;
@@ -50,12 +50,12 @@ int main ()
             try { cjt_s.afegir_sessio(s); }
             catch(exception& e) { cout << e.what() << endl; }
         }
-        else if (c == "nuevo_curso" or c == "nc") { //Entrega_FINAL
+        else if (c == "nuevo_curso" or c == "nc") {
             cout << cmd << endl;
             Curs c;
-            c.llegir_curs(cjt_c.total_cursos() + 1);
             try {
-                cjt_s.validar_problemes(c.consul_sessions());
+                c.llegir_curs(cjt_c.total_cursos() + 1, cjt_s);
+                //cjt_s.validar_problemes(c.consul_sessions());
                 cjt_c.afegir_curs(c);
             }
             catch(exception& e) { cout << e.what() << endl; }
@@ -99,8 +99,10 @@ int main ()
             try {
                 cjt_c.existeix_curs(nom_int);
                 cjt_p.existeix_problema(nom);
+                cout << cjt_c.sessio_problema(nom_int, nom) << endl;
+                /*
                 vector<string> ses = cjt_c.consul_c_sessions(nom_int);
-                cout << cjt_s.existeix_s_problema(ses, nom) << endl;
+                cout << cjt_s.existeix_s_problema(ses, nom) << endl;*/
             }
             catch(exception& e) { cout << e.what() << endl; }
         }
@@ -134,8 +136,10 @@ int main ()
                 if (nom_int == 1) {
                     cjt_p.incrementar_correcte(nom_p);
                     cjt_u.envio_correcte(nom, nom_p);
-                  //cjt_u.actual_enviables(nom, nom_p, cjt_s); no especif. ni imp.
-                  //cjt_u.actual_curs_insc(nom,)
+                    string nom_s = cjt_c.sessio_problema(cjt_u.consul_curs(nom), nom_p);
+                    cjt_u.actual_enviables(nom, nom_p, cjt_s, nom_s);
+                    cjt_u.actual_curs_insc(nom, cjt_c);
+                    cjt_c.actual_usuaris(cjt_u.consul_curs(nom));
                 }
             }
             catch(exception& e) {cout << e.what() << endl; }

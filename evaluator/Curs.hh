@@ -50,6 +50,8 @@ public:
     */
     void decrementar_inscrits();
     
+    string sessio_problema(string p);
+    
     //Consultores
     
     /** @brief Consulta el nom (identificador) del curs
@@ -102,7 +104,7 @@ public:
         \pre nom es de tipus enter i estan preparats al canal estandard d'endrada un conjunt de sessions
         \post s'ha afegit la informacio al parametre implicit
     */
-    void llegir_curs(int nom);
+    void llegir_curs(int nom, const Cjt_sessions& ses);
     
     /** @brief Operacio d'escriptura del total d'usuaris inscrits al curs
       \pre <em>cert</em>
@@ -127,7 +129,8 @@ private:
     int u_inscrits;
     int u_completats;
     vector<string> llista_sessions;
-    //map<string, int> map_problemes; //PROFE lab
+    map<string, string> map_problemes; //PROFE lab
+    //<problema, nom sessio>
 };
 
 #endif

@@ -30,6 +30,8 @@ public:
     */
     void afegir_sessio(Sessio& s);
     
+    void actual_problemes(string s, string p, map<string, int>& lle);
+    
     //Consultores
     
     /** @brief Consulta si hi ha una certa sessio al conjunt de sessions
@@ -56,11 +58,13 @@ public:
     */
     //Sessio buscar_sessio(string nom) const;
     
-    /** @brief Consulta el problema inicial d'una sessio
-      \pre <em>cert</em>
-      \post el resultat es el nom del problema inicial de la sessio "s", s'ha llençat un missatge d'error si "s" no pertany al parametre implicit
+    /** @brief Consulta el problema iessim d'una sessio
+      \pre 0 <= i < llista d e problemes de la sessio "s"
+      \post el resultat es el nom del problema iessim de la sessio "s" del parametre implicit
     */
-    string problema_s_inicial(string s) const;
+    string consul_p_iessim(string s, int i) const;
+    
+    int total_problemes(string s) const;
     
     void validar_problemes(const vector<string>& ses);
     

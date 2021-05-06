@@ -31,6 +31,10 @@ void Cjt_cursos::existeix_curs(int nom) {
     // else return true; ->for bool
 }
 
+void Cjt_cursos::curs_completat(int c) {
+    llista_cursos[c - 1].incrementar_completats();
+}
+
 int Cjt_cursos::total_cursos() const{
     return llista_cursos.size();
 }
@@ -47,6 +51,10 @@ vector<string> Cjt_cursos::consul_c_sessions(int c) const {
     return llista_cursos[c - 1].consul_sessions();
 }
 
+string Cjt_cursos::sessio_problema(int c, string p) {
+    return llista_cursos[c - 1].sessio_problema(p);
+}
+
 int Cjt_cursos::total_sessions(int c) const {
     return llista_cursos[c - 1].total_sessions();
 }
@@ -55,12 +63,12 @@ string Cjt_cursos::consul_c_iessim(const int& c, const int& i) const {
     return llista_cursos[c - 1].consul_iessim(i);
 }
 
-void Cjt_cursos::llegir_cursos() {
+void Cjt_cursos::llegir_cursos(const Cjt_sessions& ses) {
     int n;
     cin >> n;
     for (int i = 0; i < n; ++i) {
         Curs c;
-        c.llegir_curs(i + 1);
+        c.llegir_curs(i + 1, ses);
         llista_cursos.push_back(c);
     }
 }

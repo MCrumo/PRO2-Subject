@@ -2,8 +2,6 @@
 
 const char *e3 = "error: la sesion ya existe";
 const char *e4 = "error: la sesion no existe";
-const char *e12 = "error: el problema no pertenece al curso";
-const char *e13 = "error: curso mal formado";
 
 Cjt_sessions::Cjt_sessions() {}
 
@@ -40,7 +38,7 @@ bool Cjt_sessions::problemes_repetits() {
     return cond;
 }
 */
-
+/*
 string Cjt_sessions::existeix_s_problema(const vector<string>& ses, string p){
         for (int i = 0; i < ses.size(); ++i) {
             if (llista_sessions[ses[i]].existeix_problema(p)) return ses[i];
@@ -48,14 +46,14 @@ string Cjt_sessions::existeix_s_problema(const vector<string>& ses, string p){
         throw ExcepcioEvaluator(e12);
     }
 
-/*
+
 Sessio Cjt_sessions::buscar_sessio(string nom) const {
     map<string, Sessio>::const_iterator it = llista_sessions.find(nom);
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
     else {
         return it->second;
     }
-}*/
+}
 
 void Cjt_sessions::validar_problemes(const vector<string>& ses) {
     bool cond = false;
@@ -64,15 +62,19 @@ void Cjt_sessions::validar_problemes(const vector<string>& ses) {
             (llista_sessions[ses[i]]).cmp_problemes(llista_sessions[ses[j]].consul_problemes(), cond);
         }
     }
-    if (cond) throw ExcepcioEvaluator(e13);
+    if (cond) throw ExcepcioEvaluator(e5);
+}*/
+
+string Cjt_sessions::consul_p_iessim(string s, int i) const {
+    map<string, Sessio>::const_iterator it = llista_sessions.find(s);
+    if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
+    else return it->second.consul_iessim(i);
 }
 
-string Cjt_sessions::problema_s_inicial(string nom) const {
-    map<string, Sessio>::const_iterator it = llista_sessions.find(nom);
+int Cjt_sessions::total_problemes(string s) const {
+    map<string, Sessio>::const_iterator it = llista_sessions.find(s);
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
-    else {
-        return it->second.problema_inicial();
-    }
+    else return it->second.total_problemes();
 }
 
 void Cjt_sessions::llegir_sessions() {
@@ -83,6 +85,10 @@ void Cjt_sessions::llegir_sessions() {
         s.llegir_sessio();
         llista_sessions.insert(make_pair(s.nom_sessio(), s));
     }
+}
+
+void Cjt_sessions::actual_problemes(string s, string p, map<string, int>& lle) {
+    llista_sessions[s].actual_problemes(p, lle);
 }
 
 void Cjt_sessions::llistar_sessions() const {
