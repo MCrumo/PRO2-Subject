@@ -15,17 +15,17 @@ Problema::Problema(string nom) {
 }
 
 void Problema::incrementar_envio() {
-    e_totals += 1;
-    ratio = (1 + e_totals) / double(1 + e_correctes);
+    ++e_totals;
+    ratio = actualitzar_ratio(e_totals, e_correctes);
 }
 
 void Problema::incrementar_correctes() {
-    e_correctes += 1;
-    ratio = (1 + e_totals) / double(1 + e_correctes);
+    ++e_correctes;
+    ratio = actualitzar_ratio(e_totals, e_correctes);
 }
 
-void Problema::actualitzar_ratio() {
-    ratio = (1 + e_totals) / double(1 + e_correctes);
+double Problema::actualitzar_ratio(int totals, int correctes) {
+    return (1 + totals) / double(1 + correctes);
 }
 
 string Problema::nom_problema() const {

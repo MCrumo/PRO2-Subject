@@ -141,7 +141,7 @@ int main ()
                     cjt_u.actual_curs_insc(nom, cjt_c);
                 }
             }
-            catch(exception& e) {cout << e.what() << endl; }
+            catch(exception& e) { cout << e.what() << endl; }
             /*
             Usuari u;
             Problema p;

@@ -52,7 +52,7 @@ public:
         \pre t i e son dos enters >= 0
         \post el parametre implicit passa a tenir ratio (t+1)/(e+1)
     */
-    void actualitzar_ratio();
+    //void actualitzar_ratio();
     
     //Consultores
     
@@ -102,6 +102,7 @@ private:
     int e_totals;
     int e_correctes;
     double ratio;
+    double actualitzar_ratio(int totals, int correctes);
 };
 
 #endif
