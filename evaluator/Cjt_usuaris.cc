@@ -25,7 +25,7 @@ int Cjt_usuaris::eliminar_usuari(string nom) {
     }
 }
 
-void Cjt_usuaris::insc_usuari_curs(const string& nom_u, const int& nom_c, const Cjt_cursos& cs, const Cjt_sessions& ses) {
+void Cjt_usuaris::insc_usuari_curs(const string& nom_u, const int& nom_c, const Cjt_cursos& cs, Cjt_sessions& ses) {
     map<string, Usuari>::iterator it = llista_usuaris.find(nom_u);
     it->second.inscriure_curs(nom_c, cs, ses);
 }

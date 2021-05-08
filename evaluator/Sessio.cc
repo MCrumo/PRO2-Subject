@@ -74,6 +74,48 @@ void Sessio::buscar_prerequisits(const BinTree<string>& a, map<string, int>& lle
         }
     }
 }
+
+void Sessio::afegir_enviables(const map<string, int>& llr, map<string, int>& lle) {
+    afegir_prerequisits(problemes_sessio, llr, lle);
+}
+
+void Sessio::afegir_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle) {
+    if (not a.empty()) {
+        map<string, int>::const_iterator it = llr.find(a.value());
+        if (it == llr.end()) { 
+            lle.insert(make_pair(a.value(), 0)); 
+        }
+        else {
+            if (not a.right().empty()) afegir_prerequisits(a.right(), llr, lle);
+            if (not a.left().empty()) afegir_prerequisits(a.left(), llr, lle);
+        }
+    }
+    /*
+    if a.value not in resolts
+        enviables.add(a.value)
+    else
+        if a.right not empty: afegir_prerequisits(a.right)
+        if a.left not empty afegir_prerequisits(a.left)
+    
+    if (not a.empty()) {
+        map<string, int>::const_iterator it = llr.find(a.value());
+        if (it != llr.end()) {
+            if (not a.left().empty()) {
+                it = llr.find(a.left().value());
+                if (it == llr.end()) lle.insert(make_pair(a.left().value(), 0));
+            }
+            if (not a.right().empty()) {
+                it = llr.find(a.right().value());
+                if (it == llr.end()) lle.insert(make_pair(a.right().value(), 0));
+            } else {
+                afegir_prerequisits(a.left(), llr, lle);
+                afegir_prerequisits(a.right(), llr, lle);
+            }
+        }
+        else lle.insert(make_pair(a.value(), 0));
+    }*/
+}
+
 /*
 void Sessio::cmp_problemes(const BinTree<string>& a2, bool& v_igual) const {
     if (not a2.empty() and not v_igual){

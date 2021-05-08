@@ -14,10 +14,16 @@ void Cjt_sessions::afegir_sessio(Sessio& s) {
     }
 }
 
+
+void Cjt_sessions::afegir_enviables(string nom_s, const map<string, int>& llr, map<string, int>& lle) {
+    llista_sessions[nom_s].afegir_enviables(llr, lle);
+}
+
 void Cjt_sessions::existeix_sessio(string s) {
     map<string, Sessio>::const_iterator it = llista_sessions.find(s);
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
 }
+
 /*
 string Cjt_sessions::conte_s_problema(const vector<string>& ses, string nom_p) {
     map<string, Sessio>::iterator it;

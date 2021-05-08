@@ -33,6 +33,7 @@ void Cjt_cursos::existeix_curs(int nom) {
 
 void Cjt_cursos::curs_completat(int c) {
     llista_cursos[c - 1].incrementar_completats();
+    llista_cursos[c - 1].decrementar_inscrits();
 }
 
 int Cjt_cursos::total_cursos() const{

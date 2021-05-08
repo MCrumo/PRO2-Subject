@@ -139,7 +139,6 @@ int main ()
                     string nom_s = cjt_c.sessio_problema(cjt_u.consul_curs(nom), nom_p);
                     cjt_u.actual_enviables(nom, nom_p, cjt_s, nom_s);
                     cjt_u.actual_curs_insc(nom, cjt_c);
-                    cjt_c.actual_usuaris(cjt_u.consul_curs(nom));
                 }
             }
             catch(exception& e) {cout << e.what() << endl; }

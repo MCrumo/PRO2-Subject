@@ -49,6 +49,8 @@ public:
     
     void actual_problemes(string p, map<string, int>& lle);
     
+    void afegir_enviables(const map<string, int>& llr, map<string, int>& lle);
+    
     //Consultores
     
     /** @brief Consulta si p esta entre el conjunt de problemes
@@ -130,6 +132,7 @@ private:
     BinTree<string> problemes_sessio;
     vector<string> llista_problemes;
     void buscar_prerequisits(const BinTree<string>& a, map<string, int>& lle, string p);
+    void afegir_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle);
     //int problemes_totals;
     bool trobar_valor(const BinTree<string>& a, string n) const;
 };

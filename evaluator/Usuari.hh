@@ -40,7 +40,7 @@ public:
       \pre "c" es un difentificador valid de curs
       \post el parametre implicit passa a estar inscrit al curs amb nom "c" i s'afegeix al parametre implicit els problemes que ja pot resoldre, en cas que ja estigui inscrit en algun curs s'imprimeix un missatge d'error
     */
-    void inscriure_curs(const int& c, const Cjt_cursos& cs, const Cjt_sessions& cjt_s);
+    void inscriure_curs(const int& c, const Cjt_cursos& cs,  Cjt_sessions& cjt_s);
     
     /** @brief Modifica el nombre d'enviaments totals de l'usuari
       \pre <em>cert</em>

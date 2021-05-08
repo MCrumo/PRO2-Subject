@@ -40,7 +40,7 @@ public:
       \pre <em>cert</em>
       \post l'usuari "u" del parametre implicit passar a estar inscrit al curs "c"
     */
-    void insc_usuari_curs(const string& u, const int& c, const Cjt_cursos& cs, const Cjt_sessions& ses);
+    void insc_usuari_curs(const string& u, const int& c, const Cjt_cursos& cs, Cjt_sessions& ses);
     
     /** @brief Afegeix un nou enviament a un usuari
       \pre l'usuari "u" pertany al parametre implicit
