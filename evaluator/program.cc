@@ -214,6 +214,7 @@ int main ()
             }
             catch(exception& e) { cout << e.what() << endl; }
         }
+        else cout << "error: comando no valido" << endl;
         cin >> c;
     }
 } 

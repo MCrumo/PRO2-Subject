@@ -1,0 +1,20 @@
+#nuevo_problema A05
+error: el problema ya existe
+#np L08
+error: el problema ya existe
+#np V11
+41
+#np V12
+42
+#nuevo_problema V13
+43
+#np V14
+44
+#nuevo_problema V11
+error: el problema ya existe
+#np V15
+45
+#nueva_sesion colas
+error: la sesion ya existe
+#ns vectores_3
+8

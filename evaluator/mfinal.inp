@@ -1,0 +1,61 @@
+40
+V01 V02 V03 V04 V05 V06 V07 V08 V09 V10
+T01 T02 T03 T04 T05
+P01 P02 P03 P04 P05 P06
+C01 C02 C03 C04 C05 C06
+L01 L02 L03 L04 L05 L06 L07 L08
+A01 A02 A03 A04 A05
+
+7
+vectores_1 V01 V02 V03 0 0 V05 0 0 V06 0 0
+vectores_2 V07 V06 V08 0 0 V09 0 0 V10 V05 0 0 V03 0 0
+tuplas T01 T02 0 0 T03 0 0
+pilas P01 P02 P03 0 0 0 P04 P05 0 0 0
+colas C01 C02 0 0 C03 0 0
+listas L01 L02 L03 0 0 L04 L05 L06 0 0 L07 0 0
+arboles A01 A02 0 0 A03 A04 0 0 0
+
+3
+2 vectores_1 tuplas
+4 vectores_2 tuplas pilas colas
+6 vectores_2 tuplas pilas colas listas arboles
+
+10
+nach
+kase0
+residente
+benet
+blake
+ayax
+prok
+kaze
+sfdk
+calle13
+
+nuevo_problema A05
+np L08
+np V11
+np V12
+nuevo_problema V13
+np V14
+nuevo_problema V11
+np V15
+fin
+nueva_sesion colas
+V11 V12 0 0 V13 0 0
+ns vectores_3
+V01 V11 0 0 V12 V13 0 0 V02 V14 0 0 V15 0 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+

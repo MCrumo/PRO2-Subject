@@ -82,7 +82,8 @@ public:
     
 private:
     map<string, Problema> llista_problemes;
-    vector<Problema> vector_problemes;
+    //vector<Problema> vector_problemes;
+    //set<Problema> set_problemes;
 };
 
 #endif
