@@ -52,17 +52,14 @@ void Cjt_problemes::llegir_problemes() {
 }
 
 void Cjt_problemes::llistar_problemes() {
-    vector<Problema> vp;
-    //if (vector_problemes.empty()) {
-        for (map<string, Problema>::const_iterator it = llista_problemes.begin(); it != llista_problemes.end(); ++it) {
-            //vector_problemes.push_back(it->second);
-            vp.push_back(it->second);
-        }
-    //}
-    //sort(vector_problemes.begin(), vector_problemes.end());
+    vector<Problema> vp(llista_problemes.size());
+    int i = 0;
+    for (map<string, Problema>::const_iterator it = llista_problemes.begin(); it != llista_problemes.end(); ++it) {
+        vp[i] = it->second;
+        ++i;
+    }
     sort(vp.begin(), vp.end());
     for (int i = 0; i < vp.size(); ++i) {
-        //vector_problemes[i].escriure_problema();
         vp[i].escriure_problema();
     }
 }

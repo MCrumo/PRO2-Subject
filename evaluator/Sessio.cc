@@ -58,19 +58,31 @@ string Sessio::consul_iessim(int i) const {
     return llista_problemes[i];
 }
 
-void Sessio::actual_problemes(string p, map<string, int>& lle) {
-    buscar_prerequisits(problemes_sessio, lle, p);
+void Sessio::actual_problemes(string p, const map<string, int>& llr, map<string, int>& lle) {
+    buscar_prerequisits(problemes_sessio, llr, lle, p);
+    /*for (int i = 0; i < p.size(); ++i) {
+        afegir_prerequisits(problemes_sessio, llr, lle);
+        i = 10000;
+    }*/
 }
-
-void Sessio::buscar_prerequisits(const BinTree<string>& a, map<string, int>& lle, string p) {
+//funcio ineficient!!!
+void Sessio::buscar_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle, string p) {
     if (not a.empty()) {
         if (a.value() == p) {
-            if (not a.left().empty()) lle.insert(make_pair(a.left().value(), 0));
-            if (not a.right().empty()) lle.insert(make_pair(a.right().value(), 0));
+            if (not a.left().empty()) {
+                map<string, int>::const_iterator it = llr.find(a.left().value());
+                if (it == llr.end()) lle.insert(make_pair(a.left().value(), 0));
+                else buscar_prerequisits(a.left(), llr, lle, a.left().value());
+            }
+            if (not a.right().empty()) {
+                map<string, int>::const_iterator it = llr.find(a.right().value());
+                if (it == llr.end()) lle.insert(make_pair(a.right().value(), 0));
+                else buscar_prerequisits(a.right(), llr, lle, a.right().value());
+            }
         }
         else {
-            buscar_prerequisits(a.left(), lle, p);
-            buscar_prerequisits(a.right(), lle, p);
+            buscar_prerequisits(a.left(), llr, lle, p);
+            buscar_prerequisits(a.right(), llr, lle, p);
         }
     }
 }
@@ -82,12 +94,13 @@ void Sessio::afegir_enviables(const map<string, int>& llr, map<string, int>& lle
 void Sessio::afegir_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle) {
     if (not a.empty()) {
         map<string, int>::const_iterator it = llr.find(a.value());
-        if (it == llr.end()) { 
+        //map<string, int>::const_iterator it2 = lle.find(a.value());
+        if (it == llr.end() /*and it2 == lle.end()*/) { 
             lle.insert(make_pair(a.value(), 0)); 
         }
         else {
-            if (not a.right().empty()) afegir_prerequisits(a.right(), llr, lle);
-            if (not a.left().empty()) afegir_prerequisits(a.left(), llr, lle);
+            afegir_prerequisits(a.right(), llr, lle);
+            afegir_prerequisits(a.left(), llr, lle);
         }
     }
     /*

@@ -129,7 +129,7 @@ private:
     int u_inscrits;
     int u_completats;
     vector<string> llista_sessions;
-    map<string, string> map_problemes; //PROFE lab
+    map<string, string> map_problemes;
     //<problema, nom sessio>
 };
 

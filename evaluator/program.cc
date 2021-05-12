@@ -100,9 +100,6 @@ int main ()
                 cjt_c.existeix_curs(nom_int);
                 cjt_p.existeix_problema(nom);
                 cout << cjt_c.sessio_problema(nom_int, nom) << endl;
-                /*
-                vector<string> ses = cjt_c.consul_c_sessions(nom_int);
-                cout << cjt_s.existeix_s_problema(ses, nom) << endl;*/
             }
             catch(exception& e) { cout << e.what() << endl; }
         }
@@ -128,20 +125,16 @@ int main ()
             string nom_p;
             cin >> nom >> nom_p >> nom_int; //u >> p >> r;
             cout << cmd << " " << nom << " " << nom_p << " " << nom_int << endl;
-            try {
-                cjt_u.existeix_usuari(nom);
-                cjt_p.incrementar_envio(nom_p);
-                cjt_u.inc_env_totals(nom);
-                cjt_u.inc_p_intentat(nom, nom_p);
-                if (nom_int == 1) {
-                    cjt_p.incrementar_correcte(nom_p);
-                    cjt_u.envio_correcte(nom, nom_p);
-                    string nom_s = cjt_c.sessio_problema(cjt_u.consul_curs(nom), nom_p);
-                    cjt_u.actual_enviables(nom, nom_p, cjt_s, nom_s);
-                    cjt_u.actual_curs_insc(nom, cjt_c);
-                }
+            cjt_p.incrementar_envio(nom_p);
+            cjt_u.inc_env_totals(nom);
+            cjt_u.inc_p_intentat(nom, nom_p);//sense throw
+            if (nom_int == 1) {
+                cjt_p.incrementar_correcte(nom_p);
+                cjt_u.envio_correcte(nom, nom_p);//sense throw
+                string nom_s = cjt_c.sessio_problema(cjt_u.consul_curs(nom), nom_p);
+                cjt_u.actual_enviables(nom, nom_p, cjt_s, nom_s);
+                cjt_u.actual_curs_insc(nom, cjt_c);
             }
-            catch(exception& e) { cout << e.what() << endl; }
             /*
             Usuari u;
             Problema p;
@@ -214,7 +207,6 @@ int main ()
             }
             catch(exception& e) { cout << e.what() << endl; }
         }
-        else cout << "error: comando no valido" << endl;
         cin >> c;
     }
 } 

@@ -8,13 +8,13 @@ Curs::Curs() {
     u_completats = 0;
     llista_sessions = vector<string> (0);
 }
-
+/*
 Curs::Curs(int nom, const vector<string>& s) {
     u_inscrits = 0;
     u_completats = 0;
     id = nom;
     llista_sessions = s;
-}
+}*/
 
 void Curs::incrementar_usuari() {
     u_inscrits += 1;

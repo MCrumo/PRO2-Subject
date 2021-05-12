@@ -93,8 +93,8 @@ void Cjt_sessions::llegir_sessions() {
     }
 }
 
-void Cjt_sessions::actual_problemes(string s, string p, map<string, int>& lle) {
-    llista_sessions[s].actual_problemes(p, lle);
+void Cjt_sessions::actual_problemes(string s, string p, const map<string, int>& llr,map<string, int>& lle) {
+    llista_sessions[s].actual_problemes(p, llr, lle);
 }
 
 void Cjt_sessions::llistar_sessions() const {

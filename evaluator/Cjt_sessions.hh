@@ -32,7 +32,7 @@ public:
     
     void afegir_enviables(string nom_s, const map<string, int>& llr, map<string, int>& lle);
     
-    void actual_problemes(string s, string p, map<string, int>& lle);
+    void actual_problemes(string s, string p, const map<string, int>& llr, map<string, int>& lle);
     
     //Consultores
     
