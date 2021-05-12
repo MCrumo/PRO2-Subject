@@ -6,7 +6,7 @@ const char *e5 = "error: curso mal formado";
 Curs::Curs() {
     u_inscrits = 0;
     u_completats = 0;
-    llista_sessions = vector<string> (0);
+    //llista_sessions = vector<string> (0);
 }
 /*
 Curs::Curs(int nom, const vector<string>& s) {
@@ -76,10 +76,11 @@ void Curs::llegir_curs(int nom, const Cjt_sessions& ses) {
     int n;
     id = nom;
     cin >> n;
+    llista_sessions = vector<string> (n);
     for (int i = 0; i < n; ++i) {
         string nom_s;
         cin >> nom_s;
-        llista_sessions.push_back(nom_s);
+        llista_sessions[i] = nom_s;
         for (int i = 0; i < ses.total_problemes(nom_s); ++i) {
             string p = ses.consul_p_iessim(nom_s, i);
             map<string, string>::const_iterator it = map_problemes.find(p);

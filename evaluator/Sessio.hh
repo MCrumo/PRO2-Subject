@@ -39,12 +39,6 @@ public:
     
     //Modificadores
     
-    /** @brief Afegeix un conjunt de problemes a la sessio
-      \pre estan preparats al canal estandar d'entrada un conjunt d'identificadors de problemes en preordre
-      \post s'han afegit els problemes al parametre implicit
-    */
-    void afegir_problemes(BinTree<string>& t);
-    
     bool existeix_problema(string p);
     
     void actual_problemes(string p, const map<string, int>& llr, map<string, int>& lle);
@@ -115,12 +109,6 @@ public:
     */
     void llegir_p_sessio();
     
-    /** @brief Operacio d'escriptura dels problemes de sessio
-      \pre <em>cert</em>
-      \post s'han escrit els atributs (problemes) del parametre implicit al canal estandard de sortida
-    */
-    void escriure_sessio_p(const BinTree<string>& t) const;
-    
     /** @brief Operacio d'escriptura de sessio
       \pre <em>cert</em>
       \post s'han escrit tots els atributs del parametre implicit al canal estandard de sortida
@@ -131,9 +119,10 @@ private:
     string id;
     BinTree<string> problemes_sessio;
     vector<string> llista_problemes;
-    void buscar_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle, string p);
+    void llegir_preordre(BinTree<string>& t);
+    void escriure_postordre(const BinTree<string>& t) const;
+    void buscar_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle, string p, bool& cond);
     void afegir_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle);
-    //int problemes_totals;
     bool trobar_valor(const BinTree<string>& a, string n) const;
 };
 

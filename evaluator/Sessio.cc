@@ -18,14 +18,14 @@ void Sessio::afegir_problemes(BinTree<string>& t) {
     }
 }*/
 
-void Sessio::afegir_problemes(BinTree<string>& t) {
+void Sessio::llegir_preordre(BinTree<string>& t) {
     string nom_p;
     if (cin >> nom_p and nom_p != "0") {
         llista_problemes.push_back(nom_p);
         BinTree<string> t1;
         BinTree<string> t2;
-        afegir_problemes(t1);
-        afegir_problemes(t2);
+        llegir_preordre(t1);
+        llegir_preordre(t2);
         t = BinTree<string> (nom_p, t1, t2);  
     }
 }
@@ -59,30 +59,32 @@ string Sessio::consul_iessim(int i) const {
 }
 
 void Sessio::actual_problemes(string p, const map<string, int>& llr, map<string, int>& lle) {
-    buscar_prerequisits(problemes_sessio, llr, lle, p);
+    bool cond = true;
+    buscar_prerequisits(problemes_sessio, llr, lle, p, cond);
     /*for (int i = 0; i < p.size(); ++i) {
         afegir_prerequisits(problemes_sessio, llr, lle);
         i = 10000;
     }*/
 }
 //funcio ineficient!!!
-void Sessio::buscar_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle, string p) {
+void Sessio::buscar_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle, string p, bool& cond) {
     if (not a.empty()) {
         if (a.value() == p) {
+            cond = false;
             if (not a.left().empty()) {
                 map<string, int>::const_iterator it = llr.find(a.left().value());
                 if (it == llr.end()) lle.insert(make_pair(a.left().value(), 0));
-                else buscar_prerequisits(a.left(), llr, lle, a.left().value());
+                else buscar_prerequisits(a.left(), llr, lle, a.left().value(), cond);
             }
             if (not a.right().empty()) {
                 map<string, int>::const_iterator it = llr.find(a.right().value());
                 if (it == llr.end()) lle.insert(make_pair(a.right().value(), 0));
-                else buscar_prerequisits(a.right(), llr, lle, a.right().value());
+                else buscar_prerequisits(a.right(), llr, lle, a.right().value(), cond);
             }
         }
         else {
-            buscar_prerequisits(a.left(), llr, lle, p);
-            buscar_prerequisits(a.right(), llr, lle, p);
+            if (cond) buscar_prerequisits(a.left(), llr, lle, p, cond);
+            if (cond) buscar_prerequisits(a.right(), llr, lle, p, cond);
         }
     }
 }
@@ -150,22 +152,22 @@ bool Sessio::trobar_valor(const BinTree<string>& a, string n) const {
     }
     return b;
 }*/
-
+/*
 void Sessio::llegir_sessio() {
     cin >> id;
-    afegir_problemes(problemes_sessio);
+    llegir_preordre(problemes_sessio);
     
 }
-
+*/
 void Sessio::llegir_p_sessio() {
-    afegir_problemes(problemes_sessio);
+    llegir_preordre(problemes_sessio);
 }
 
-void Sessio::escriure_sessio_p(const BinTree<string>& t) const {
+void Sessio::escriure_postordre(const BinTree<string>& t) const {
     if (not t.empty()) {
         cout << "(";
-        escriure_sessio_p(t.left());
-        escriure_sessio_p(t.right());
+        escriure_postordre(t.left());
+        escriure_postordre(t.right());
         cout << t.value();
         cout << ")";
     }
@@ -173,7 +175,7 @@ void Sessio::escriure_sessio_p(const BinTree<string>& t) const {
 
 void Sessio::escriure_sessio() const {
     cout << id << " " << llista_problemes.size() << " ";
-    escriure_sessio_p(problemes_sessio);
+    escriure_postordre(problemes_sessio);
     cout << endl;
 }
 

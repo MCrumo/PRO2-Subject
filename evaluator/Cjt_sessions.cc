@@ -87,9 +87,11 @@ void Cjt_sessions::llegir_sessions() {
     int n;
     cin >> n;
     for (int i = 0; i < n; ++i) {
-        Sessio s;
-        s.llegir_sessio();
-        llista_sessions.insert(make_pair(s.nom_sessio(), s));
+        string nom_s;
+        cin >> nom_s;
+        Sessio s(nom_s);
+        s.llegir_p_sessio();
+        llista_sessions.insert(make_pair(nom_s, s));
     }
 }
 
