@@ -5,6 +5,7 @@
 #ifndef SESSIO
 #define SESSIO
 
+#include "Cjt_problemes.hh"
 #include "Problema.hh"
 #include "BinTree.hh"
 #ifndef NO_DIAGRAM
@@ -41,9 +42,9 @@ public:
     
     bool existeix_problema(string p);
     
-    void actual_problemes(string p, const map<string, int>& llr, map<string, int>& lle);
+    void actual_problemes(string p, const Cjt_problemes& llr, Cjt_problemes& lle);
     
-    void afegir_enviables(const map<string, int>& llr, map<string, int>& lle);
+    void afegir_enviables(const Cjt_problemes& llr, Cjt_problemes& lle);
     
     //Consultores
     
@@ -121,8 +122,8 @@ private:
     vector<string> llista_problemes;
     void llegir_preordre(BinTree<string>& t);
     void escriure_postordre(const BinTree<string>& t) const;
-    void buscar_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle, string p, bool& cond);
-    void afegir_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle);
+    void buscar_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle, string p, bool& cond);
+    void afegir_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle);
     bool trobar_valor(const BinTree<string>& a, string n) const;
 };
 

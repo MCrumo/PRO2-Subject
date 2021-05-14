@@ -23,7 +23,7 @@ void Usuari::inscriure_curs(const int& nom_c, const Cjt_cursos& cs, Cjt_sessions
         string nom_sessio, problema;
         for (int i = 0; i < cs.total_sessions(nom_c); ++i) {
             nom_sessio = cs.consul_c_iessim(nom_c, i);
-            ses.afegir_enviables(nom_sessio, llista_resolts, llista_enviables);
+            ses.afegir_enviables(nom_sessio, cjt_resolts, cjt_enviables);
         }
     } else throw ExcepcioEvaluator(e9);
 }
@@ -43,20 +43,22 @@ void Usuari::intent_resoldre(string p) {
 
 void Usuari::inc_p_intentat(string p) {
     llista_intentats.insert(p);
-    llista_enviables[p] += 1;
+    //llista_enviables[p] += 1;
+    cjt_enviables.incrementar_envio(p);
 }
 
 void Usuari::envio_correcte(string p) {
-    llista_resolts[p] = llista_enviables[p];
-    llista_enviables.erase(p);
+    /*llista_resolts[p] = llista_enviables[p];
+    llista_enviables.erase(p);*/
+    cjt_enviables.intercanviar_problema(p, cjt_resolts);
 }
 
 void Usuari::actual_enviables(string p, Cjt_sessions& ses, string s) {
-    ses.actual_problemes(s, p, llista_resolts, llista_enviables);
+    ses.actual_problemes(s, p, cjt_resolts, cjt_enviables);
 }
 
-void Usuari::fixar_inscrit(int c) {
-    curs_inscrit = c;
+void Usuari::desinscriure() {
+    curs_inscrit = 0;
 }
 
 /*
@@ -82,23 +84,26 @@ int Usuari::consultar_inscrit() const {
 }
 
 int Usuari::consul_enviables() const {
-    return llista_enviables.size();
+    //return llista_enviables.size();
+    return cjt_enviables.problemes_totals();
 }
 
 void Usuari::llegir_usuari() {
     cin >> id;
 }
 
-void Usuari::llistar_resolts() const {//faltara implementar problemes_resolts
-    for (map<string, int>::const_iterator it = llista_resolts.begin(); it != llista_resolts.end(); ++it) {
+void Usuari::llistar_resolts() const {
+    /*for (map<string, int>::const_iterator it = llista_resolts.begin(); it != llista_resolts.end(); ++it) {
         cout << it->first << "(" << it->second << ")" << endl;
-    } 
+    } */
+    cjt_resolts.enumerar_problemes();
 }
 
 void Usuari::llistar_enviables() const {
-    for (map<string, int>::const_iterator it = llista_enviables.begin(); it != llista_enviables.end(); ++it) {
+    /*for (map<string, int>::const_iterator it = llista_enviables.begin(); it != llista_enviables.end(); ++it) {
         cout << it->first << "(" << it->second << ")" << endl;
-    }
+    }*/
+    cjt_enviables.enumerar_problemes();
 }
 /*
 void Usuari::escriure_curs_inscrit() const {
@@ -106,7 +111,7 @@ void Usuari::escriure_curs_inscrit() const {
 }*/
 
 void Usuari::escriure_usuari() const {
-    cout << id << "(" << env_totals << "," << llista_resolts.size() << "," << llista_intentats.size() << "," << curs_inscrit << ")" << endl;
+    cout << id << "(" << env_totals << "," << cjt_resolts.problemes_totals() << "," << llista_intentats.size() << "," << curs_inscrit << ")" << endl;
 }
 
 

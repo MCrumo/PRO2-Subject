@@ -46,7 +46,7 @@ void Cjt_usuaris::actual_curs_insc(string u, Cjt_cursos& cs) {
     if (llista_usuaris[u].consul_enviables() == 0) {
         int c = llista_usuaris[u].consultar_inscrit();
         cs.curs_completat(c);
-        llista_usuaris[u].fixar_inscrit(0);
+        llista_usuaris[u].desinscriure();
     }
 }
 

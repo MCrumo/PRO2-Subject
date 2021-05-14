@@ -24,10 +24,6 @@ void Problema::incrementar_correctes() {
     ratio = actualitzar_ratio(e_totals, e_correctes);
 }
 
-double Problema::actualitzar_ratio(int totals, int correctes) {
-    return (1 + totals) / double(1 + correctes);
-}
-
 string Problema::nom_problema() const {
     return id;
 }
@@ -55,6 +51,10 @@ void Problema::escriure_problema() const {
 bool Problema::operator<(const Problema& p) const {
     if (ratio != p.ratio) return ratio < p.ratio;
     else return id < p.id;
+}
+
+double Problema::actualitzar_ratio(int totals, int correctes) {
+    return (1 + totals) / double(1 + correctes);
 }
 
 

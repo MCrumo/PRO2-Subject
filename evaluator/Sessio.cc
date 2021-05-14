@@ -1,6 +1,6 @@
 #include "Sessio.hh" 
 
-Sessio::Sessio() { }
+Sessio::Sessio() {}
 
 Sessio::Sessio(string nom) {
     id = nom;
@@ -58,7 +58,7 @@ string Sessio::consul_iessim(int i) const {
     return llista_problemes[i];
 }
 
-void Sessio::actual_problemes(string p, const map<string, int>& llr, map<string, int>& lle) {
+void Sessio::actual_problemes(string p, const Cjt_problemes& llr, Cjt_problemes& lle) {
     bool cond = true;
     buscar_prerequisits(problemes_sessio, llr, lle, p, cond);
     /*for (int i = 0; i < p.size(); ++i) {
@@ -67,18 +67,18 @@ void Sessio::actual_problemes(string p, const map<string, int>& llr, map<string,
     }*/
 }
 //funcio ineficient!!!
-void Sessio::buscar_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle, string p, bool& cond) {
+void Sessio::buscar_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle, string p, bool& cond) {
     if (not a.empty()) {
         if (a.value() == p) {
             cond = false;
             if (not a.left().empty()) {
-                map<string, int>::const_iterator it = llr.find(a.left().value());
-                if (it == llr.end()) lle.insert(make_pair(a.left().value(), 0));
+                //map<string, int>::const_iterator it = llr.find(a.left().value());
+                if (not llr.conte_problema(a.left().value())) lle.afegir_nom_problema(a.left().value());
                 else buscar_prerequisits(a.left(), llr, lle, a.left().value(), cond);
             }
             if (not a.right().empty()) {
-                map<string, int>::const_iterator it = llr.find(a.right().value());
-                if (it == llr.end()) lle.insert(make_pair(a.right().value(), 0));
+                //map<string, int>::const_iterator it = llr.find(a.right().value());
+                if (not llr.conte_problema(a.right().value())) /* lle.insert(make_pair(a.right().value(), 0));*/ lle.afegir_nom_problema(a.right().value());
                 else buscar_prerequisits(a.right(), llr, lle, a.right().value(), cond);
             }
         }
@@ -89,16 +89,17 @@ void Sessio::buscar_prerequisits(const BinTree<string>& a, const map<string, int
     }
 }
 
-void Sessio::afegir_enviables(const map<string, int>& llr, map<string, int>& lle) {
+void Sessio::afegir_enviables(const Cjt_problemes& llr, Cjt_problemes& lle) {
     afegir_prerequisits(problemes_sessio, llr, lle);
 }
 
-void Sessio::afegir_prerequisits(const BinTree<string>& a, const map<string, int>& llr, map<string, int>& lle) {
+void Sessio::afegir_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle) {
     if (not a.empty()) {
-        map<string, int>::const_iterator it = llr.find(a.value());
+        //map<string, int>::const_iterator it = llr.find(a.value());
         //map<string, int>::const_iterator it2 = lle.find(a.value());
-        if (it == llr.end() /*and it2 == lle.end()*/) { 
-            lle.insert(make_pair(a.value(), 0)); 
+        if (not llr.conte_problema(a.value())) {
+            lle.afegir_nom_problema(a.value());
+            //lle.insert(make_pair(a.value(), 0)); 
         }
         else {
             afegir_prerequisits(a.right(), llr, lle);

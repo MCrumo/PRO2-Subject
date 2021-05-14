@@ -15,7 +15,7 @@ void Cjt_sessions::afegir_sessio(Sessio& s) {
 }
 
 
-void Cjt_sessions::afegir_enviables(string nom_s, const map<string, int>& llr, map<string, int>& lle) {
+void Cjt_sessions::afegir_enviables(string nom_s, const Cjt_problemes& llr, Cjt_problemes& lle) {
     llista_sessions[nom_s].afegir_enviables(llr, lle);
 }
 
@@ -95,7 +95,7 @@ void Cjt_sessions::llegir_sessions() {
     }
 }
 
-void Cjt_sessions::actual_problemes(string s, string p, const map<string, int>& llr,map<string, int>& lle) {
+void Cjt_sessions::actual_problemes(string s, string p, const Cjt_problemes& llr, Cjt_problemes& lle) {
     llista_sessions[s].actual_problemes(p, llr, lle);
 }
 

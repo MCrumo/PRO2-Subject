@@ -12,8 +12,8 @@ vectores_2 V07 V06 V08 0 0 V09 0 0 V10 V05 0 0 V03 0 0
 tuplas T01 T02 0 0 T03 0 0 
 pilas P01 P02 P03 0 0 0 P04 P05 0 0 0 
 colas C01 C02 0 0 C03 0 0 
-listas L01 L02 L03 0 0 L04 L05 L06 0 0 L07 0 0 0 0 0 
-arboles A01 A02 0 0 A03 A04 0 0 0 
+listas L01 L02 L03 0 0 L04 L05 L06 0 0 L07 0 0 0 0
+arboles A01 A02 0 0 A03 A04 0 0 0
 
 3
 2 vectores_1 tuplas
@@ -31,6 +31,21 @@ prok
 kaze
 sfdk
 calle13
+
+
+np L08
+np V11
+np V12
+nuevo_problema V13
+np V14
+nuevo_problema V11
+np V15
+i nach 1
+cu nach
+pe nach
+pr nach
+
+
 
 fin
 

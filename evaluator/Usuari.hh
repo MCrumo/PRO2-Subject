@@ -6,6 +6,7 @@
 #define USUARI
 
 #include "Cjt_cursos.hh"
+#include "Cjt_problemes.hh"
 #ifndef NO_DIAGRAM
 #include <set>
 #endif
@@ -80,7 +81,7 @@ public:
     
     void actual_enviables(string p, Cjt_sessions& ses, string s);
     
-    void fixar_inscrit(int c);
+    void desinscriure();
     
     //Consultores
     
@@ -149,6 +150,8 @@ private:
     set<string> llista_intentats;
     map<string, int> llista_resolts;
     map<string, int> llista_enviables;
+    Cjt_problemes cjt_resolts;
+    Cjt_problemes cjt_enviables;
 };
 
 #endif

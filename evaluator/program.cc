@@ -18,8 +18,8 @@
 /** @brief Programa principal de la pràctica <em>Evaluator, plataforma de gestió de problemes i cursos de programació</em>.
 */
 
-int main () 
-{
+int main() {
+    
     Cjt_problemes cjt_p;
     Cjt_sessions cjt_s;
     Cjt_cursos cjt_c;
@@ -39,10 +39,13 @@ int main ()
             cin >> nom;
             cout << cmd << " " << nom << endl;
             Problema p(nom);
-            try { cjt_p.afegir_problema(p); }
+            try { 
+                cjt_p.afegir_problema(p); 
+                cout << cjt_p.problemes_totals() << endl;
+            }
             catch(exception& e) { cout << e.what() << endl; }
         }
-        else if (c == "nueva_sesion" or c == "ns") {
+        else if (c == "nueva_sesion" or c == "ns") { 
             cin >> nom;
             cout << cmd << " " << nom << endl;
             Sessio s(nom);

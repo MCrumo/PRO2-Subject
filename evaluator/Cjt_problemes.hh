@@ -23,67 +23,102 @@ public:
     /** @brief Creadora per defecte.
         \pre <em>cert</em>
         \post el resultat es un conjunt de problemes buit
+        \cost constant
     */
     Cjt_problemes();
     
     //Modificadores
     
-    /** @brief Modifica el conjunt de problemes per afegir-li p
+    /** @brief Afegeix un problema al conjunt
       \pre <em>cert</em>
-      \post s'ha afegit el problema p al parametre implicit i en cas d'existir s'ha impres pel canal estandard de sortida un error
+      \post s'afegeix el problema "p" al parametre implicit si no hi estava i si ja pertanyia, es llença un error
+      \cost logaritmic
     */
     void afegir_problema(const Problema& p);
     
+    /** @brief Afegeix un problema al conjunt
+      \pre <em>cert</em>
+      \post s'afegeix el problema amb id = nom al parametre implicit si no hi estava i si ja pertanyia, es llença un error
+      \cost logaritmic
+    */
+    void afegir_nom_problema(string nom);
+    
+    /** @brief Intercanvia un problema entre dos conjunts de problemes
+      \pre <em>cert</em>
+      \post si el problema P amb id = nom no pertany al parametre implicit es llença un excepcio, sino s'afegeix el problema P a cjt_2 i s'elimina P del parametre implicit
+      \cost logaritmic
+    */
+    void intercanviar_problema(string nom, Cjt_problemes& cjt_2);    
+    
     /** @brief Incrementa els enviaments totals d'un problema
-      \pre el problema "p" pertany al parametre implicit
-      \post el problema "p" passa a tenir els enviaments totals inicials mes 1
+      \pre el problema P amb id = p pertany al parametre implicit
+      \post el problema P passa a tenir e_totals inicials + 1 
+      \cost constant
     */
     void incrementar_envio(string p);
     
     /** @brief Incrementa els enviaments correctes d'un problema
-      \pre el problema "p" pertany al parametre implicit
-      \post el problema "p" passa a tenir els enviaments correctes inicials mes 1
+      \pre el problema P amb id = p pertany al parametre implicit
+      \post el problema P passa a tenir e_correctes inicials + 1
+      \cost constant
     */
     void incrementar_correcte(string p);
     
     //Consultores
     
-    /** @brief Consulta si hi ha un cert problema al conjunt de problemes
+    /** @brief Consulta si existeix un problema al conjunt de problemes
       \pre <em>cert</em>
-      \post llença un error si no hi ha un problema amb identificador "nom" al parametre implicit
+      \post llença un error si no hi ha un problema amb id = nom al parametre implicit
+      \cost logaritmic
     */
-    void existeix_problema(string nom);
+    void existeix_problema(string nom) const;
     
-    /** @brief Consulta el problema amb identificador "nom"
-      \pre el parametre implicit conte un problema amb nom "nom"
-      \post el resultat es el problema amb nom "nom" que conte el parametre implicit
+    /** @brief Consulta si el conjunt de problemes conte un problema
+      \pre <em>cert</em>
+      \post retorna cert ci el problema amb id = nom pertany al parametre implicit
+      \cost logaritmic
     */
-    Problema buscar_problema(string nom);
+    bool conte_problema(string nom) const;
+    
+    /** @brief Consulta el total de problemes del conjunt 
+      \pre <em>cert</em>
+      \post el resultat es el nombre total de problemes del parametre implicit
+      \cost constant
+    */
+    int problemes_totals() const;
     
     //Lectura i escriptura
     
     /** @brief Operació de lectura d'un conjunt de porblemes
       \pre estan preparats al canal estandard d'entrada un enter (que representa el nombre d'elements que llegirem) i les dades de tal nombre de problemes diferents
-      \post el parametre implicit conte el conjunt de problemes llegits del canal estandard d'entrada
+      \post el parametre implicit conte el conjunt de problemes llegits al canal estandard d'entrada
+      \cost logaritmic en numero de problemes 
     */
     void llegir_problemes();
     
-    /** @brief Operació d'escriptura de tots els problemes
+    /** @brief Operació d'escriptura del conjunt de problemes
       \pre <em>cert</em>
-      \post s'han escrit pel canal estandard de sortida els problemes del parametre implicit en ordre ascendent de ratio i en cas d'empat per odre creixent d'identificador
+      \post s'han escrit pel canal estandard de sortida els atributs dels problemes del parametre implicit en ordre ascendent de ratio i en cas d'empat per odre creixent d'identificador
+      \cost n*log(n) on n es el total de problemes
     */
-    void llistar_problemes();
+    void llistar_problemes() const;
+    
+    /** @brief Operació d'escriptura del conjunt de problemes
+      \pre <em>cert</em>
+      \post s'ha escrit pel canal estandard de sortida la id i el nombre de e_totals dels problemes del parametre implicit en odre creixent d'identificador
+      \cost lineal
+    */
+    void enumerar_problemes() const;
     
     /** @brief Operació d'escriptura d'un problema
-      \pre existeix problema amb id "p" al parametre implicit
-      \post s'han escrit pel canal estàndard de sortida els atributs del problema "u" del parametre implicit
+      \pre existeix el problema P amb id = nom al parametre implicit
+      \post s'ha escrit pel canal estàndard de sortida els atributs del problema P del parametre implicit
+      \cost logaritmic
     */
-    void escriure_problema(string p) const;
+    void escriure_problema(string nom) const;
     
 private:
     map<string, Problema> llista_problemes;
-    //vector<Problema> vector_problemes;
-    //set<Problema> set_problemes;
 };
 
 #endif
