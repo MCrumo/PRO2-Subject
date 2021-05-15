@@ -30,7 +30,7 @@ public:
     Problema();
     
     /** @brief Creadora amb valors concrets.
-        \pre nom es de tipus string
+        \pre <em>cert</em>
         \post el resultat es un problema amb id = nom, e_totals = 0, e_correctes = 0 i ratio = 1
         \cost constant
     */

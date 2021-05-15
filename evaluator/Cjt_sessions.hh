@@ -19,6 +19,7 @@ public:
     /** @brief Creadora per defecte.
         \pre <em>cert</em>
         \post el resultat es un conjunt de sessions buit
+        \cost constant
     */
     Cjt_sessions();
     
@@ -26,39 +27,31 @@ public:
     
     /** @brief Afegeix una sessio al conjunt de sessions
       \pre <em>cert</em>
-      \post s'ha afegit la sessio s al parametre implicit i s'ha escrit el total de sessions pero en cas que ja existis, s'ha impres un missatge d'error
+      \post si la sessio s no pertany al parametre implicit, s'afegeix la sessio s al parametre implicit i s'escriu el total de sessions, si ja hi pertanyia s'imprimeix un missatge d'error
+      \cost logaritmic
     */
     void afegir_sessio(Sessio& s);
     
+    /** @brief 
+      \pre el parametre implicit conte una sessio amb id = nom_s, llr es un conjunt de problemes al igual que lle
+      \post 
+    */
     void afegir_enviables(string nom_s,const Cjt_problemes& llr, Cjt_problemes& lle);
     
+    /** @brief 
+      \pre <em>cert</em>
+      \post 
+    */
     void actual_problemes(string s, string p, const Cjt_problemes& llr, Cjt_problemes& lle);
     
     //Consultores
     
     /** @brief Consulta si hi ha una certa sessio al conjunt de sessions
       \pre <em>cert</em>
-      \post llença un error si la sessio amb id "s" no esta al parametre implicit
+      \post llença un error si la sessio amb id = nom no esta al parametre implicit
+      \cost logaritmic
     */
-    void existeix_sessio(string s);
-    
-    /** @brief Consulta si hi ha un problema al conjunt de sessions
-      \pre existeix el roblema "nom_p" i ses es un subconjunt del parametre implicit
-      \post retorna el nom de la sessio on esta el problema "nom_p" i llença un error en cas que el problema no estigui a ses
-    */
-    string existeix_s_problema(const vector<string>& ses, string nom_p);
-    
-    /** @brief Consulta si hi ha problemes repetits al conjunt de sessions
-      \pre <em>cert</em>
-      \post true si han problemes repetits entre dues o mes sessions, false en cas contrari
-    */
-    bool problemes_repetits();
-    
-    /** @brief Consulta una sessio del conjunt
-      \pre <em>cert</em>
-      \post el resultat es la sessio amb nom "nom" que conte el parametre implicit, s'ha llençat un missatge d'error si "nom" no pertany al parametre implicit
-    */
-    //Sessio buscar_sessio(string nom) const;
+    void existeix_sessio(string nom);
     
     /** @brief Consulta el problema iessim d'una sessio
       \pre 0 <= i < llista d e problemes de la sessio "s"
@@ -67,8 +60,6 @@ public:
     string consul_p_iessim(string s, int i) const;
     
     int total_problemes(string s) const;
-    
-    void validar_problemes(const vector<string>& ses);
     
     //Lectura i escriptura
     

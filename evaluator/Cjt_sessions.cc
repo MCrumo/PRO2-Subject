@@ -24,53 +24,6 @@ void Cjt_sessions::existeix_sessio(string s) {
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
 }
 
-/*
-string Cjt_sessions::conte_s_problema(const vector<string>& ses, string nom_p) {
-    map<string, Sessio>::iterator it;
-    for (int i = 0; i < ses.size(); ++i) {
-        it = llista_sessions.find(ses[i]);
-        if (it->second.conte_problema(nom_p)) return it->second.nom_sessio();
-    }
-    throw ExcepcioEvaluator(e12);
-}*/
-/*
-bool Cjt_sessions::problemes_repetits() {
-    bool cond = false;
-    for (map<string, Sessio>::const_iterator it = llista_sessions.begin(); it != llista_sessions.end() and not cond; ++it) {
-        for (map<string, Sessio>::const_iterator it2 = ++it; it2 != llista_sessions.end() and not cond; ++it2) {
-            it->second.cmp_problemes(it2->second.consul_problemes(), cond);
-        }
-    }
-    return cond;
-}
-*/
-/*
-string Cjt_sessions::existeix_s_problema(const vector<string>& ses, string p){
-        for (int i = 0; i < ses.size(); ++i) {
-            if (llista_sessions[ses[i]].existeix_problema(p)) return ses[i];
-        }
-        throw ExcepcioEvaluator(e12);
-    }
-
-
-Sessio Cjt_sessions::buscar_sessio(string nom) const {
-    map<string, Sessio>::const_iterator it = llista_sessions.find(nom);
-    if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
-    else {
-        return it->second;
-    }
-}
-
-void Cjt_sessions::validar_problemes(const vector<string>& ses) {
-    bool cond = false;
-    for (int i = 0; i < ses.size() - 1 and not cond; ++i) {
-        for (int j = i + 1; j < ses.size() and not cond; ++j) {
-            (llista_sessions[ses[i]]).cmp_problemes(llista_sessions[ses[j]].consul_problemes(), cond);
-        }
-    }
-    if (cond) throw ExcepcioEvaluator(e5);
-}*/
-
 string Cjt_sessions::consul_p_iessim(string s, int i) const {
     map<string, Sessio>::const_iterator it = llista_sessions.find(s);
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);

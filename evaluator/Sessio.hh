@@ -26,87 +26,61 @@ public:
     //Constructores
     
     /** @brief Creadora per defecte.
-        S'executa directament al declara una sessió.
         \pre <em>cert</em>
-        \post El resultat és una sessió sense nom i sense problemes
+        \post el resultat es una sessio sense nom i sense problemes
+        \cost constant
     */
     Sessio();
     
     /** @brief Creadora amb valors concrets.
-        \pre nom es de tipus string
-        \post el resultat es una sessio amb nom "nom" i sense problemes
+        \pre <em>cert</em>
+        \post el resultat es una sessio amb id = nom i sense problemes
+        \cost constant
     */
     Sessio(string nom);
     
     //Modificadores
     
-    bool existeix_problema(string p);
+    /** @brief Afegeix els seguents problemes que podra enviar l'usuari
+        \pre llr (llista resolts) es un conjunt de problemes al igual que lle (llista enviables) i el problema amb id = nom, pertany al parametre implicit
+        \post lle passa a tenir els probemes PP (on 0 <= PP <= 2) dels quals el problema amb id = nom es el seu prerrequisit mes proxim que no pertany a llr
+    */
+    void actual_problemes(string nom, const Cjt_problemes& llr, Cjt_problemes& lle);
     
-    void actual_problemes(string p, const Cjt_problemes& llr, Cjt_problemes& lle);
-    
+    /** @brief Afegeix els problemes inicials que pot enviar l'usuari just despres d'inscriure's a un curs
+        \pre llr (llista resolts) es un conjunt de problemes al igual que lle (llista enviables)
+        \post lle conte els problemes que no son prerreqisit de cap altre (o be perque son el problema inicial o be perque ja pertany a llr)
+    */
     void afegir_enviables(const Cjt_problemes& llr, Cjt_problemes& lle);
     
     //Consultores
     
-    /** @brief Consulta si p esta entre el conjunt de problemes
-      \pre <em>cert</em>
-      \post retorna true si el problema "p" pertany al parametre implicit
-    */
-    bool conte_problema(string p);
-    
-    /** @brief Consulta el problema inicial de la sessio
-      \pre <em>cert</em>
-      \post retorna el nom del problema inicial del parametre implicit
-    */
-    //string problema_inicial() const;
-    
-    /** @brief Compara els problemes entre dues sessions
-      \pre arbre a2 i v es fals
-      \post v es true si el parametre implicit i a2 tenen algun problema en comu
-    */
-    void cmp_problemes(const BinTree<string>& a2, bool& v) const;
-    
-    /** @brief Troba si hi ha un cret n a l'arbre a
-      \pre arbre a i string n
-      \post true si a conte n
-    */
-    //bool trobar_valor(const BinTree<string>& a, string n) const;
-    
-    /** @brief Consulta els problemes de la sessio
-      \pre <em>cert</em>
-      \post el resultat son els problemes de la sessio
-    */
-    BinTree<string> consul_problemes() const;
-    
     /** @brief Consulta el nom de la sessio
       \pre <em>cert</em>
-      \post el resultat es nom del parametre implicit
+      \post el resultat es la id del parametre implicit
+      \cost constant
     */
     string nom_sessio() const;
     
     /** @brief Consulta el nombre de problemes del curs
       \pre <em>cert</em>
       \post el resultat es el nombre total de problemes del parametre implicit
+      \cost constant
     */
     int total_problemes() const;
     
     /** @brief Consulta el nom dels problemes de la sessio
       \pre 0 <= i < el tamany de la llista de problemes
       \post el resultat es el nom del problema a la iessima possicio
+      \cost constant
     */
     string consul_iessim(int i) const;
     
     //Lectura i escriptura
     
-    /** @brief Operacio de lectura de sessio
-      \pre hi ha preparat al canal estandard d'entrada un string i una sequencia d'identificadors de problemes en preordre
-      \post el parametre implicit passa a tenir els atributs llegits del canal estandard d'entrada
-    */
-    void llegir_sessio();
-    
-    /** @brief Operacio de lectura de sessio
+    /** @brief Operacio de lectura dels problemes de la sessio
       \pre hi ha preparat al canal estandard d'entrada una sequencia d'identificadors de problemes en preordre
-      \post el parametre implicit passa a tenir els atributs llegits del canal estandard d'entrada
+      \post el parametre implicit passa a tenir els atributs llegits al canal estandard d'entrada
     */
     void llegir_p_sessio();
     
@@ -121,10 +95,9 @@ private:
     BinTree<string> problemes_sessio;
     vector<string> llista_problemes;
     void llegir_preordre(BinTree<string>& t);
-    void escriure_postordre(const BinTree<string>& t) const;
-    void buscar_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle, string p, bool& cond);
-    void afegir_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle);
-    bool trobar_valor(const BinTree<string>& a, string n) const;
+    static void escriure_postordre(const BinTree<string>& t);
+    static void buscar_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle, string p, bool& cond);
+    static void afegir_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle);
 };
 
 #endif
