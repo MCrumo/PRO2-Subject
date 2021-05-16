@@ -6,15 +6,7 @@ const char *e5 = "error: curso mal formado";
 Curs::Curs() {
     u_inscrits = 0;
     u_completats = 0;
-    //llista_sessions = vector<string> (0);
 }
-/*
-Curs::Curs(int nom, const vector<string>& s) {
-    u_inscrits = 0;
-    u_completats = 0;
-    id = nom;
-    llista_sessions = s;
-}*/
 
 void Curs::incrementar_usuari() {
     u_inscrits += 1;
@@ -25,11 +17,11 @@ void Curs::incrementar_completats() {
 }
 
 void Curs::decrementar_inscrits() {
-    if (u_inscrits - 1 <= 0) u_inscrits = 0;
+    if (u_inscrits < 1) throw ExcepcioEvaluator(e5);
     else u_inscrits -= 1;
 }
 
-string Curs::sessio_problema(string p) {
+string Curs::sessio_problema(string p) const {
     map<string, string>::const_iterator it = map_problemes.find(p);
     if (it == map_problemes.end()) throw ExcepcioEvaluator(e12);
     else return it->second;
@@ -51,27 +43,10 @@ int Curs::total_sessions() const {
     return llista_sessions.size();
 }
 
-string Curs::consul_iessim(const int& i) const{
+string Curs::consul_iessim(int i) const{
     return llista_sessions[i];
 }
 
-vector<string> Curs::consul_sessions() const {
-    return llista_sessions;
-}
-/*
-void Curs::validar_sessions(const Cjt_sessions& ses) {
-    ses.validar_problemes(llista_sessions);
-}*/
-
-/*
-bool Curs::conte_problema(string p) {
-    throw ExcepcioEvaluator("El curs no conte aquest problema")
-}
-
-void Curs::nom_sessio(string p) const {
-    
-}
-*/
 void Curs::llegir_curs(int nom, const Cjt_sessions& ses) {
     int n;
     id = nom;
@@ -90,10 +65,6 @@ void Curs::llegir_curs(int nom, const Cjt_sessions& ses) {
     }
 }
 
-void Curs::escriure_usuaris() const {
-    cout << u_inscrits << endl;
-}
-
 void Curs::escriure_curs() const {
     int len = llista_sessions.size();
     cout << id << " " << u_completats << " " << u_inscrits << " " << len << " (";
@@ -102,10 +73,6 @@ void Curs::escriure_curs() const {
     }
     cout << llista_sessions[len - 1] << ")" << endl;
 }
-
-
-
-
 
 
 

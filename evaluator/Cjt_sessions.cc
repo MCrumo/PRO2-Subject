@@ -19,6 +19,10 @@ void Cjt_sessions::afegir_enviables(string nom_s, const Cjt_problemes& llr, Cjt_
     llista_sessions[nom_s].afegir_enviables(llr, lle);
 }
 
+void Cjt_sessions::actual_problemes(string s, string p, const Cjt_problemes& llr, Cjt_problemes& lle) {
+    llista_sessions[s].actual_problemes(p, llr, lle);
+}
+
 void Cjt_sessions::existeix_sessio(string s) {
     map<string, Sessio>::const_iterator it = llista_sessions.find(s);
     if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
@@ -46,10 +50,6 @@ void Cjt_sessions::llegir_sessions() {
         s.llegir_p_sessio();
         llista_sessions.insert(make_pair(nom_s, s));
     }
-}
-
-void Cjt_sessions::actual_problemes(string s, string p, const Cjt_problemes& llr, Cjt_problemes& lle) {
-    llista_sessions[s].actual_problemes(p, llr, lle);
 }
 
 void Cjt_sessions::llistar_sessions() const {

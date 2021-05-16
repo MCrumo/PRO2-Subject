@@ -58,7 +58,6 @@ int main() {
             Curs c;
             try {
                 c.llegir_curs(cjt_c.total_cursos() + 1, cjt_s);
-                //cjt_s.validar_problemes(c.consul_sessions());
                 cjt_c.afegir_curs(c);
             }
             catch(exception& e) { cout << e.what() << endl; }

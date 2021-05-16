@@ -13,8 +13,7 @@
 
 /** @class Usuari
     @brief Representa un usuari del Evaluator.
-*/
-/*
+
     Conte la informació de l'usuari com ara: nom, a quins cursos està inscrit, registre de problemes resolts, quins pot enviar, nombre total d'enviaments per problema o quants jutgats com a correctes
 */
 

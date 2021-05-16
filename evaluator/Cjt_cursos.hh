@@ -19,68 +19,76 @@ public:
     /** @brief Creadora per defecte.
         \pre <em>cert</em>
         \post el resultat es un conjunt de cursos buit
+        \cost constant
     */
     Cjt_cursos();
     
     //Modificadores
     
-    /** @brief Afegeix el curs c al conjunt de cursos
-      \pre el parametre implicit no conte cap curs amb l'identificador de c
-      \post s'ha afegit el curs c al parametre implicit
+    /** @brief Afegeix un curs al conjunt
+      \pre el parametre implicit no conte cap curs igual al curs c
+      \post s'ha afegit el curs c al parametre implicit i s'escriu pel canal de sortida el total de cursos del parametre implicit
+      \cost lineal
     */
     void afegir_curs(const Curs& c);
     
-    /** @brief Incrementa el total d'usuaris inscrits al curs "c" del parametre implicit
-      \pre el curs amb id "u" pertany al parametre implicit
-      \post el total d'usuaris inscrits al curs "c" del parametre implicit augmenta en 1 i s'escriu pel canal estandar de sortida
+    /** @brief Incrementa el total d'usuaris inscrits a un curs
+      \pre el curs C amb id = nom pertany al parametre implicit
+      \post el total d'usuaris inscrits al curs C del parametre implicit augmenta en 1 i s'escriu pel canal estandar de sortida
+      \cost constant
     */
-    void curs_inc_usuari(int u);
+    void curs_inc_usuari(int nom);
     
-    /** @brief Modifica els usuaris del curs c
+    /** @brief Decrementa en 1 els usuaris inscrits a un curs
       \pre <em>cert</em>
-      \post decrementa les usuaris inscrits de c si l'identificador es valid
+      \post si nom es valid, decrementa els usuaris inscrits al curs amb id = nom del parametre implicit
+      \cost constant
     */
-    void actual_usuaris(int c);
+    void actual_usuaris(int nom);
     
-    void curs_completat(int c);
+    /** @brief Canvia els atributs del curs quan un usuari el completa
+      \pre "nom" es una id valida de curs
+      \post el curs amb id = nom del parametre implicit se li decrementa en 1 els usuari que l'han completat i els usuaris inscrits al curs
+      \cost constant
+    */    
+    void curs_completat(int nom);
     
     //Consultores
     
     /** @brief Consulta si hi ha un cert curs al conjunt de cursos
-      \pre l'identificador de curs es de tipus enter
-      \post llença un error si el curs amb id "nom" no existeix
+      \pre <em>cert</em>
+      \post llença un error si el curs amb id = nom no existeix
+      \cost constant
     */
-    void existeix_curs(int nom);
+    void existeix_curs(int nom) const;
     
     /** @brief Consulta el numero total de cursos del conjunt
       \pre <em>cert</em>
       \post el resultat es el numero total de cursos del parametre implicit
+      \cost constant
     */
     int total_cursos() const;
     
-    /** @brief Consulta el curs amb identificador "nom"
-      \pre el parametre implicit conte un curs amb nom "nom"
-      \post el resultat es el curs amb nom "nom" que conte el parametre implicit
-    */
-    Curs buscar_curs(int nom);
-    
-    /** @brief Consulta les sessions d'un curs
-      \pre el curs "c" pertany al parametre implicit
-      \post s'ha retornat una llista de les sessions del curs "c"
-    */
-    vector<string> consul_c_sessions(int c) const;
-    
     /** @brief Consulta el total de sessions d'un curs
-      \pre el curs "c" pertany al parametre implicit
-      \post s'ha retornat el total de sessions del curs "c"
+      \pre "nom" es una id valida de curs
+      \post s'ha retornat el total de sessions del curs amb id = nom
+      \cost constant
     */
-    int total_sessions(int c) const;
+    int total_sessions(int nom) const;
     
-    /** @brief Consulta el nom de la iessima sessio del curs "c"
-      \pre el curs "c" pertany al parametre implicit
-      \post s'ha retornat el nom de la iessima sessio del curs "c" del parametre implicit
+    /** @brief Consulta la id de la sessio que conte el problema nom_p d'un curs del conjunt
+      \pre "nom" es una id valida de curs
+      \post retorna la id de la sessio del curs amb id = nom del parametre implicit que conte el problema amb id = nom_p, si no hi ha cap sessio al parametre implicit que contingui el problema, s'imprimeix un missatge d'error
+      \cost logaritmic
     */
-    string consul_c_iessim(const int& c, const int& i) const;
+    string sessio_problema(int nom, string p);
+    
+    /** @brief Consulta el nom de la iessima sessio d'un curs
+      \pre "nom" es una id valida de curs
+      \post s'ha retornat el nom de la iessima sessio del curs amb id = nom del parametre implicit
+      \cost constant
+    */
+    string consul_c_iessim(int nom, int i) const;
     
     //Lectura i escriptura
     
@@ -90,25 +98,19 @@ public:
     */
     void llegir_cursos(const Cjt_sessions& ses);
     
-     string sessio_problema(int c, string p);
-    
-    /** @brief Operació d'escriptura del total de cursos
-      \pre <em>cert</em>
-      \post s'han escrit pel canal estandard de sortida el total de cursos del parametre implicit
-    */
-    void escriure_cursos() const;
-    
     /** @brief Operació d'escriptura de tots els cursos
       \pre <em>cert</em>
-      \post s'han escrit pel canal estandard de sortida els cursos del parametre implicit en ordre ascendent d'identificador
+      \post s'han escrit pel canal estandard de sortida els atributs dels cursos del parametre implicit en ordre ascendent d'id
+      \cost lineal
     */
     void llistar_cursos() const;
     
     /** @brief Operació d'escriptura d'un curs
-      \pre existeix curs amb id "c" al parametre implicit
-      \post s'han escrit pel canal estàndard de sortida els atributs del curs "c" de parametre implicit
+      \pre nom es una id valida de curs
+      \post s'han escrit pel canal estàndard de sortida els atributs del curs amb id = nom del parametre implicit
+      \cost constant
     */
-    void escriure_curs(int c) const;
+    void escriure_curs(int nom) const;
     
 private:
     vector<Curs> llista_cursos;

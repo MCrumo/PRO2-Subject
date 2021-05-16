@@ -32,11 +32,11 @@ public:
     */
     void afegir_sessio(Sessio& s);
     
-    /** @brief 
+    /** @brief
       \pre el parametre implicit conte una sessio amb id = nom_s, llr es un conjunt de problemes al igual que lle
       \post 
     */
-    void afegir_enviables(string nom_s,const Cjt_problemes& llr, Cjt_problemes& lle);
+    void afegir_enviables(string nom_s, const Cjt_problemes& llr, Cjt_problemes& lle);
     
     /** @brief 
       \pre <em>cert</em>
@@ -55,31 +55,39 @@ public:
     
     /** @brief Consulta el problema iessim d'una sessio
       \pre 0 <= i < llista d e problemes de la sessio "s"
-      \post el resultat es el nom del problema iessim de la sessio "s" del parametre implicit
+      \post el resultat es la id del problema iessim de la sessio amb id = nom del parametre implicit
+      \cost logaritmic
     */
-    string consul_p_iessim(string s, int i) const;
+    string consul_p_iessim(string nom, int i) const;
     
-    int total_problemes(string s) const;
+    /** @brief Consulta el total de problemes d'una sessio
+      \pre <em>cert</em>
+      \post si la sessio S amb id = nom pertany al parametre implicit consulta el total de problemes de S, si no hi pertany es llença un missatge d'error
+      \cost logaritmic
+    */
+    int total_problemes(string nom) const;
     
     //Lectura i escriptura
     
     /** @brief Operació de lectura d'un conjunt de sessions
-      \pre estan preparats al canal estandard d'entrada un enter (que representa el nombre d'elements que llegirem) i les dades de tal nombre de sessions diferents
+      \pre estan preparats al canal estandard d'entrada un enter (que representa el nombre de sessions que llegirem) i les dades de tal nombre de sessions diferents
       \post el parametre implicit conte el conjunt de sessions llegits del canal estandard d'entrada
     */
     void llegir_sessions();
     
-    /** @brief Operació d'escriptura de totes les sessions
+    /** @brief Operació d'escriptura del conjunt de sessions
       \pre <em>cert</em>
-      \post s'han escrit pel canal estandard de sortida les sessions del parametre implicit en ordre ascendent de l'identificador
+      \post s'han escrit pel canal estandard de sortida les sessions del parametre implicit en ordre ascendent d'id
+      \cost lineal
     */
     void llistar_sessions() const;
     
     /** @brief Operació d'escriptura d'una sessio
-      \pre existeix sessio amb id "s" al parametre implicit
-      \post s'han escrit pel canal estàndard de sortida els atributs de la sessio "s" del parametre implicit
+      \pre la sessio S amb id = nom pertany al parametre implicit
+      \post s'han escrit pel canal estàndard de sortida els atributs de la sessio S del parametre implicit
+      \cost logaritmic
     */
-    void escriure_sessio(string s) const;
+    void escriure_sessio(string nom) const;
     
 private:
     map<string, Sessio> llista_sessions;

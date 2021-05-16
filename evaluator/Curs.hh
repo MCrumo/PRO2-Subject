@@ -16,111 +16,94 @@
 class Curs 
 {   
 public:
-    //Constructoras
+    //Constructores
 
     /** @brief Creadora por defecte. 
     \pre <em>cert</em>
-    \post el resultat es un curs sense nom ni sessions
+    \post el resultat es un curs sense id, amb u_inscrits = 0, u_completats = 0 i sense sessions
+    \cost constant
     */  
     Curs();
     
-    /** @brief Creadora amb valors concrets.
-    \pre <em>cert</em>
-    \post el resultat es un curs amb nom "nom" i un conjunt de sessions s
-    */
-    Curs(int nom, const vector<string>& s);
-    
     //Modificadores
     
-    /** @brief Modificadora de l'atribut usuaris totals
+    /** @brief Augmenta en 1 els usuaris inscrits al curs
         \pre <em>cert</em>
-        \post el parametre implicit passa a tenir els usuaris totals inicials mes 1
+        \post el parametre implicit passa a tenir els u_inscrits inicials +1
+        \cost constant
     */
     void incrementar_usuari();
     
-    /** @brief Modificadora de l'atribut del total de gent que ha completat el curs
+    /** @brief Augmenta en 1 els usuaris que han completat el curs
         \pre <em>cert</em>
-        \post el parametre implicit passa a tenir el total de gent que ha completat el curs inicialment mes 1
+        \post el parametre implicit passa a tenir els u_completats inicials +1
+        \cost constant
     */
     void incrementar_completats();
     
-    /** @brief Modificadora de l'atribut del total de gent inscrita al curs
+    /** @brief Decrementa en 1 els usuaris inscrits al curs
         \pre <em>cert</em>
-        \post el parametre implicit passa a tenir el total de gent inscrits al curs inicialment menys 1
+        \post el parametre implicit passa a tenir els u_inscrits inicials -1
+        \cost constant
     */
     void decrementar_inscrits();
     
-    string sessio_problema(string p);
-    
     //Consultores
     
-    /** @brief Consulta el nom (identificador) del curs
+    /** @brief Consulta la id de la sessio que conte el problema nom_p
+        \pre <em>cert</em>
+        \post retorna la id de la sessio del parametre implicit que conte el problema amb id = nom_p, si no hi ha cap sessio al parametre implicit que contingui el problema, s'imprimeix un missatge d'error
+        \cost logaritmic
+    */
+    string sessio_problema(string nom_p) const;
+    
+    /** @brief Consulta la id del curs
       \pre <em>cert</em>
-      \post El resultat és l'identificador (enter) del parametre implicit
+      \post el resultat es la id del parametre implicit
+      \cost constant
     */
     int nom_curs() const;
     
-    /** @brief Consulta el nombre d'usuaris inscrits
+    /** @brief Consulta el nombre d'usuaris inscrits al curs
       \pre <em>cert</em>
-      \post el resultat es el nombre d'usuaris del parametre implicit
+      \post el resultat es el u_inscrits del parametre implicit
+      \cost constant
     */
     int usuaris_inscrits() const;
     
     /** @brief Consulta el nombre d'usuaris que han completat el curs
       \pre <em>cert</em>
-      \post el resultat es el nombre d'usuaris que han completat el curs del parametre implicit
+      \post el resultat es el u_completats del parametre implicit
+      \cost constant
     */
     int usuaris_completats() const;
     
-    /** @brief Consulta el nombre de sessions del curs
+    /** @brief Consulta el nombre total de sessions del curs
       \pre <em>cert</em>
       \post el resultat es el nombre total de sessions del parametre implicit
+      \cost constant
     */
     int total_sessions() const;
     
-    /** @brief Consulta el nom de la iessima sessio del curs
+    /** @brief Consulta la id de la iessima sessio del curs
       \pre 0 <= i < llista_sessions.size()
-      \post el resultat es el nom iessim del parametre implicit
+      \post el resultat es la id de la sessio situada a la iessima possicio del parametre implicit
+      \cost constant
     */
-    string consul_iessim(const int& i) const;
-    
-    /** @brief Consulta les sessions del curs
-      \pre <em>cert</em>
-      \post el resultat son les sessions del parametre implicit
-    */
-    vector<string> consul_sessions() const;
-    
-    /** @brief Consulta si el curs conte un cert problema
-      \pre <em>cert</em>
-      \post true si el curs conte el problema p, false en cas contrari
-    */
-    //bool conte_problema(string p);
-    
-    void validar_sessions(const Cjt_sessions& ses);
+    string consul_iessim(int i) const;
     
     //Lectura i escriptura
     
     /** @brief Operacio de lectura d'un curs
-        \pre nom es de tipus enter i estan preparats al canal estandard d'endrada un conjunt de sessions
-        \post s'ha afegit la informacio al parametre implicit
+        \pre nom es de tipus enter i ses es un conjunt de sessions, estan preparats al canal estandard d'endrada un llistat de sessions
+        \post el curs passa a tenir id = nom, el llistat de sessions llegits al canal d'entrada i un conjunt de problema/sessio al parametre implicit
     */
     void llegir_curs(int nom, const Cjt_sessions& ses);
-    
-    /** @brief Operacio d'escriptura del total d'usuaris inscrits al curs
-      \pre <em>cert</em>
-      \post s'ha escrit pel canal estandard de sortida el nombre total d'usuaris inscrits al curs del parametre implicit
-    */
-    void escriure_usuaris() const;
-    
-    /** @brief Escriu el nom de la sessio que conte el problema p
-      \pre el curs conte el problema p
-      \post s'ha escrit pel canal estandard de sortida el nom de la sessio que conte el problema p del parametre implicit
-    */
-    void nom_sessio(string p) const;
     
     /** @brief Operacio d'escriptura de curs
       \pre <em>cert</em>
       \post s'han escrit els atributs del parametre implicit al canal estandard de sortida
+      \cost lineal
     */
     void escriure_curs() const;
     
@@ -130,7 +113,6 @@ private:
     int u_completats;
     vector<string> llista_sessions;
     map<string, string> map_problemes;
-    //<problema, nom sessio>
 };
 
 #endif
