@@ -24,13 +24,13 @@ public:
 
     /** @brief Creadora por defecte.
     \pre <em>cert</em>
-    \post el resultat es un usuari sense nom ni informacio
+    \post el resultat es un usuari sense id, curs_inscrit = 0 i env_totals = 0
     */  
     Usuari();
     
     /** @brief Creadora amb valors concrets.
     \pre <em>cert</em>
-    \post el resultat es un usuari amb nom "nom" i total enviaments = 0, correctes = 0, no inscrit en cap curs i sense problemes resolts
+    \post el resultat es un usuari amb id = "nom" i total enviaments = 0, correctes = 0, no inscrit en cap curs i sense problemes resolts
     */
     Usuari(string nom);
     
@@ -48,47 +48,31 @@ public:
     */
     void incrementar_totals();
     
-     /** @brief Modifica els problemes correctes de l'usuari i els que pot enviar
-      \pre l'usuari esta inscrit al crus on apareix el problema amb nom "nom" i ha complert els prerrequisits per enviar el problema
-      \post el parametre implicit passa a tenir el problema amb nom "nom" com a correcte, el total de problemes correctes inicials mes 1 i mes problemes que podra resoldre en cas que aquest problema sigues prerrequisit d'algun altre
-    */
-    void afegir_correcte(string nom);
-    
-     /** @brief Modifica l'estat del curs en el que esta inscrit l'usuari
-      \pre <em>cert</em>
-      \post si l'usuari ha completat tots els problemes del curs, passa a completar el curs sino segueix inscrit al curs on estava
-    */
-    void actualitzar_curs();
-    
-    /** @brief Modifica el nombre de problemes que ha intentat resoldre
-      \pre l'usuari esta inscrit al crus on apareix el problema amb nom "nom" i ha complert els prerrequisits per eniar el problema
-      \post el parametre implicit passa a tenir els problemes que ha intentat resoldre inicialment mes 1 en cas que sigui el primer cop que intenta resoldre el problema amb nom "p" 
-    */
-    void intent_resoldre(string p);
-    
     /** @brief Afegeix un problema intentat al parametre implicit i incrementa l'enviament al problema
-        \pre <em>cert</em>
-        \post afegeix el problema si no estava al parametre implicit i incrementa l'envio al problema es cas que sigui un dels podblemes enviables del parametre implicit
+    \pre <em>cert</em>
+    \post afegeix el problema si no estava al parametre implicit i incrementa l'envio al problema es cas que sigui un dels podblemes enviables del parametre implicit
     */
     void inc_p_intentat(string problema);
     
     /** @brief Afegeig un enviament correcte a l'usuari
-      \pre <em>cert</em>
+      \pre p es una id valida de problema que pot intentar l'usuari
       \post l'usuari passa a tenir els problemes resolts inicials mes "p" i problemes enviables inicials menys "p"
     */
     void envio_correcte(string p);
     
+    /** @brief Afegeig un enviament correcte a l'usuari
+      \pre p es una id valida de problema que pot enviar l'usuari
+      \post l'usuari passa a tenir els problemes resolts inicials mes "p" i problemes enviables inicials menys "p"
+    */
     void actual_enviables(string p, Cjt_sessions& ses, string s);
     
+    /** @brief Desinscriu l'usuari del curs
+      \pre <em>cert</em>
+      \post l'usuari passa a tenir curs_inscrit = 0
+    */
     void desinscriure();
     
     //Consultores
-    
-    /** @brief Consulta si l'usuari ha acabat el curs
-      \pre <em>cert</em>
-      \post true si l'usuari ha acabat el curs false en cas contrari
-    */
-    bool curs_acabat() const;
     
     /** @brief Consulta el nom de l'usuari
       \pre <em>cert</em>
@@ -108,6 +92,10 @@ public:
     */
     int consultar_inscrit() const;
     
+    /** @brief Consulta el nombre total de problemes enviables
+        \pre <em>cert</em>
+        \post el resultat es el total de problemes de cjt_enviables del parametre implicit
+    */
     int consul_enviables() const;
     
     //Lectura i escriptura
@@ -130,12 +118,6 @@ public:
     */
     void llistar_enviables() const;
     
-    /** @brief Operacio d'escriptura del curs al que esta inscrit l'usuari
-      \pre <em>cert</em>
-      \post s'han escrit pel canal estandard de sortida el curs al que esta inscrit l'usuari i 0 si no esta inscrit a cap curs 
-    */
-    //void escriure_curs_inscrit() const;
-    
     /** @brief Operacio d'escriptura d'usuari
       \pre <em>cert</em>
       \post s'han escrit els atributs del parametre implicit al canal estandard de sortida
@@ -146,11 +128,13 @@ private:
     string id;
     int curs_inscrit;
     int env_totals;
+    //conjunt de tots els problemes intentats per l'usuari sense repeticions
     set<string> llista_intentats;
-    map<string, int> llista_resolts;
-    map<string, int> llista_enviables;
+    //conjut de problemes que ha resolt l'usuari
     Cjt_problemes cjt_resolts;
+    //conjunt de problemes que pot enivar l'usuari
     Cjt_problemes cjt_enviables;
+    //la interseccio entre el cjt_resolts i el cjt_enviables ha de ser buida
 };
 
 #endif

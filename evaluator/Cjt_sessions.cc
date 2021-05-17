@@ -36,7 +36,7 @@ string Cjt_sessions::consul_p_iessim(string s, int i) const {
 
 int Cjt_sessions::total_problemes(string s) const {
     map<string, Sessio>::const_iterator it = llista_sessions.find(s);
-    if (it == llista_sessions.end()) throw ExcepcioEvaluator(e4);
+    if (it == llista_sessions.end()) throw ExcepcioEvaluator("error: curso mal formado");
     else return it->second.total_problemes();
 }
 

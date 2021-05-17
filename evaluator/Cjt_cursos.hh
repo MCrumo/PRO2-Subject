@@ -90,6 +90,13 @@ public:
     */
     string consul_c_iessim(int nom, int i) const;
     
+    /** @brief Consulta els usuaris inscrits d'un curs
+      \pre "nom" es una id valida de curs
+      \post s'ha retornat els usuaris inscrits del curs amb id = nom del parametre implicit
+      \cost constant
+    */
+    int usuaris_inscrits(int nom) const;
+    
     //Lectura i escriptura
     
     /** @brief Operació de lectura d'un conjunt de cursos
@@ -113,6 +120,7 @@ public:
     void escriure_curs(int nom) const;
     
 private:
+    //vector de Cursos sense repeticio on la id de cada curs es la seva posicio +1
     vector<Curs> llista_cursos;
 };
 

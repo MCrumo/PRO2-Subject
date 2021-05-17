@@ -118,6 +118,7 @@ public:
     void escriure_problema(string nom) const;
     
 private:
+    //conjunt amb la clau de id de problema i Problema
     map<string, Problema> llista_problemes;
 };
 

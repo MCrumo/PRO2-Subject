@@ -2,6 +2,7 @@
  * @mainpage Pràctica de PRO2: Evaluator, plataforma de gestió de problemes i cursos de programació. 
 
  En aquesta pràctica farem una plataforma de cursos de programació anomenada Evaluator en la cual un conjunt d'usuaris podran anar completant aquests cursos.
+ La plataforma Evaluator integra una colecció de problemes de programació, un repositori de sessions compostes per problemes de tals colecció, un conjunt de cursos formats per una o més sessions i un conjunt d'usuaris registrats
 */
 
 /** @file main.cc
@@ -85,7 +86,9 @@ int main() {
                 cjt_u.existeix_usuari(nom);
                 cjt_c.existeix_curs(nom_int);
                 cjt_u.insc_usuari_curs(nom, nom_int, cjt_c, cjt_s);
+                cjt_u.actual_curs_insc(nom, cjt_c);
                 cjt_c.curs_inc_usuari(nom_int);
+                if (cjt_u.consul_curs(nom) > 0) cout << cjt_c.usuaris_inscrits(nom_int) << endl;
             }
             catch(exception& e) { cout << e.what() << endl; }
         }
@@ -137,25 +140,6 @@ int main() {
                 cjt_u.actual_enviables(nom, nom_p, cjt_s, nom_s);
                 cjt_u.actual_curs_insc(nom, cjt_c);
             }
-            /*
-            Usuari u;
-            Problema p;
-            u = cjt_u.buscar_usuari(nom);
-            p = cjt_p.buscar_problema(nom_2);
-            u.incrementar_totals();
-            u.intent_resoldre(nom_2); //-> int_res inacavada!
-            p.incrementar_envio();
-            if (nom_int == 1) {
-                cjt_p.incrementar_correcte(nom_2);
-                u.afegir_correcte(nom_2); // -> afg_corr inacavada!
-                u.actualitzar_curs(); // -> act_curs inacavada!
-                if (u.curs_acabat()) {
-                    Curs c;
-                    c = cjt_c.buscar_curs(u.consultar_curs());
-                    c.incrementar_completats();
-                    c.decrementar_inscrits();
-                }
-            }*/
         }
         else if (c == "listar_problemas" or c == "lp") {
             cout << cmd << endl;

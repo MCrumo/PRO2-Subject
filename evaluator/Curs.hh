@@ -111,7 +111,9 @@ private:
     int id;
     int u_inscrits;
     int u_completats;
+    //vector de les sessions que conte el curs sense repeticions
     vector<string> llista_sessions;
+    //conjunt amb claud id de problema i amb valor id de sessio
     map<string, string> map_problemes;
 };
 

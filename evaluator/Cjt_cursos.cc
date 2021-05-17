@@ -12,7 +12,6 @@ void Cjt_cursos::afegir_curs(const Curs& c) {
 
 void Cjt_cursos::curs_inc_usuari(int nom_c) {
     llista_cursos[nom_c - 1].incrementar_usuari();
-    cout << llista_cursos[nom_c - 1].usuaris_inscrits() << endl;
 }
 
 void Cjt_cursos::actual_usuaris(int c) {
@@ -49,6 +48,10 @@ string Cjt_cursos::sessio_problema(int c, string p) {
 
 string Cjt_cursos::consul_c_iessim(int c, int i) const {
     return llista_cursos[c - 1].consul_iessim(i);
+}
+
+int Cjt_cursos::usuaris_inscrits(int c) const {
+    return llista_cursos[c - 1].usuaris_inscrits();
 }
 
 void Cjt_cursos::llegir_cursos(const Cjt_sessions& ses) {

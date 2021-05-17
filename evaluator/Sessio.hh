@@ -92,8 +92,11 @@ public:
 
 private:
     string id;
+    //identificadors dels problemes amb la seva estructura de prerrequisits
     BinTree<string> problemes_sessio;
+    //identificadors dels problemes que conte la sessio
     vector<string> llista_problemes;
+    //metodes estatics que treballen amb BinTrees
     void llegir_preordre(BinTree<string>& t);
     static void escriure_postordre(const BinTree<string>& t);
     static void buscar_prerequisits(const BinTree<string>& a, const Cjt_problemes& llr, Cjt_problemes& lle, string p, bool& cond);

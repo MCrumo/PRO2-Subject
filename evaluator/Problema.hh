@@ -112,6 +112,7 @@ private:
     int e_totals;
     int e_correctes;
     double ratio;
+    //funcio estatica que aplica la formula de la ratio d'un problema
     static double actualitzar_ratio(int totals, int correctes);
 };
 

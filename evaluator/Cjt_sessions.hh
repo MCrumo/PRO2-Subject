@@ -32,15 +32,15 @@ public:
     */
     void afegir_sessio(Sessio& s);
     
-    /** @brief
+    /** @brief Afegeix els problemes inicials d'una sessio que pot enviar l'usuari just despres d'inscriure's a un curs
       \pre el parametre implicit conte una sessio amb id = nom_s, llr es un conjunt de problemes al igual que lle
-      \post 
+      \post lle conte els problemes que no son prerreqisit de cap altre (o be perque son el problema inicial o be perque ja pertany a llr)
     */
     void afegir_enviables(string nom_s, const Cjt_problemes& llr, Cjt_problemes& lle);
     
-    /** @brief 
-      \pre <em>cert</em>
-      \post 
+    /** @brief Afegeix els seguents problemes d'una sessio que podra enviar l'usuari
+      \pre llr (llista resolts) es un conjunt de problemes al igual que lle (llista enviables), el problema amb id = nom, pertany a la sessio amb id = s del parametre implicit
+      \post lle passa a tenir els probemes PP (on 0 <= PP <= 2) dels quals el problema amb id = nom es el seu prerrequisit mes proxim que no pertany a llr
     */
     void actual_problemes(string s, string p, const Cjt_problemes& llr, Cjt_problemes& lle);
     
@@ -90,6 +90,7 @@ public:
     void escriure_sessio(string nom) const;
     
 private:
+    //conjunt amb la clau id de sessio i Sessio
     map<string, Sessio> llista_sessions;
 };
 #endif

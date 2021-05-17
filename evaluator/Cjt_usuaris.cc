@@ -25,9 +25,13 @@ int Cjt_usuaris::eliminar_usuari(string nom) {
     }
 }
 
-void Cjt_usuaris::insc_usuari_curs(const string& nom_u, const int& nom_c, const Cjt_cursos& cs, Cjt_sessions& ses) {
+void Cjt_usuaris::insc_usuari_curs(string nom_u, int nom_c, const Cjt_cursos& cs, Cjt_sessions& ses) {
     map<string, Usuari>::iterator it = llista_usuaris.find(nom_u);
     it->second.inscriure_curs(nom_c, cs, ses);
+}
+
+void Cjt_usuaris::inc_env_totals(string u) {
+    llista_usuaris[u].incrementar_totals();
 }
 
 void Cjt_usuaris::inc_p_intentat(string u, string p) {
@@ -37,7 +41,7 @@ void Cjt_usuaris::inc_p_intentat(string u, string p) {
 void Cjt_usuaris::envio_correcte(string u, string p) {
     llista_usuaris[u].envio_correcte(p);
 }
-//ses MUST be const!
+
 void Cjt_usuaris::actual_enviables(string u, string nom_p, Cjt_sessions& ses, string nom_s) {
     llista_usuaris[u].actual_enviables(nom_p, ses, nom_s);
 }
@@ -50,33 +54,16 @@ void Cjt_usuaris::actual_curs_insc(string u, Cjt_cursos& cs) {
     }
 }
 
-void Cjt_usuaris::inc_env_totals(string u) {
-    llista_usuaris[u].incrementar_totals();
-}
-
 void Cjt_usuaris::existeix_usuari(string nom) {
     map<string, Usuari>::const_iterator it = llista_usuaris.find(nom);
     if (it == llista_usuaris.end()) {
         throw ExcepcioEvaluator(e8);
-        // return false; ->for bool
     }
-    //else return true; ->for bool
 }
 
 int Cjt_usuaris::total_usuaris() {
     return llista_usuaris.size();
 }
-/*
-Usuari Cjt_usuaris::buscar_usuari(string nom) {
-    map<string, Usuari>::const_iterator it = llista_usuaris.find(nom);
-    if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
-    else return it->second;
-}*/
-/*
-void Cjt_usuaris::curs_acabat(int c) { //GitHub
-    llista_usuaris[c - 1].curs_acabat();
-}
-*/
 
 int Cjt_usuaris::consul_curs(string u) {
     return llista_usuaris[u].consul_curs();
@@ -97,8 +84,6 @@ void Cjt_usuaris::escriure_curs_inscrit(string u) const {
     if (it == llista_usuaris.end()) throw ExcepcioEvaluator(e8);
     else cout << it->second.consul_curs() << endl;
 }
-
-//void Cjt_usuaris::escriure_total_usuaris() const {}
 
 void Cjt_usuaris::llistar_usuaris() const {
     for (map<string, Usuari>::const_iterator it = llista_usuaris.begin(); it != llista_usuaris.end(); ++it) {
