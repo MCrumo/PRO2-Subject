@@ -1,4 +1,4 @@
-40
+40 #llegim els problemes
 V01 V02 V03 V04 V05 V06 V07 V08 V09 V10
 T01 T02 T03 T04 T05
 P01 P02 P03 P04 P05 P06
@@ -6,7 +6,7 @@ C01 C02 C03 C04 C05 C06
 L01 L02 L03 L04 L05 L06 L07 L08
 A01 A02 A03 A04 A05
 
-7
+7 #llegim les sessions
 vectores_1 V01 V02 V03 0 0 V05 0 0 V06 0 0 
 vectores_2 V07 V06 V08 0 0 V09 0 0 V10 V05 0 0 V03 0 0 
 tuplas T01 T02 0 0 T03 0 0 
@@ -15,12 +15,12 @@ colas C01 C02 0 0 C03 0 0
 listas L01 L02 L03 0 0 L04 L05 L06 0 0 L07 0 0 0 0
 arboles A01 A02 0 0 A03 A04 0 0 0
 
-3
+3 #llegim els cursos
 2 vectores_1 tuplas
 4 vectores_2 tuplas pilas colas
 6 vectores_2 tuplas pilas colas listas arboles
 
-10
+10 #llegim els usuaris
 nach
 kase0
 residente
@@ -32,24 +32,97 @@ kaze
 sfdk
 calle13
 
-
-np L08
+#afegim problemes al conjunt per veure si es realitzaran be els envios a aquests problemes afegits posteriorment
 np V11
 np V12
-nuevo_problema V13
+nuevo_problema V13 #provem els dos tipus de sintaxi que accepta la comanda
 np V14
 nuevo_problema V11
 np V15
-i nach 1
-cu nach
-pe nach
+i nach 1 #inscrivim l'usuari al curs 1
+cu nach #per veure si han canviat les dades de l'usuari correctament
+pe nach #comprovem quin problemes pot enviar un cop inscrit
+pr nach #comprovem quin problemes ha resolt un cop inscrit
+ec 1 #per veure si s'ha inscrit l'usuari al curs
+ns vectores_3 V01 V02 V13 V06 V15 0 0 0 0 V14 0 0 V11 V12 V03 0 0 V05 0 0 0
+ls #per veure si s'inclou la sessio vectores_3 i els seus problemes
+envio nach V01 0 #realitzem envios amb diferents sintaxis
+e nach VO1 0
+e nach VO1 1
+envio nach T01 1
+pe nach #comprovem que han canviat les estadistiques de "nach" despres de fer envios 
 pr nach
-
-
+e nach T02 0
+e nach T02 1
+e nach T03 1
+pe nach #comprovem que ha acabat la sessio de tuples correctament
+e nach V02 1
+e nach V03 1
+e nach V05 1
+envio nach V06 0
+e nach V06 1
+pe nach #comprovem que nach ja no pot enviar mes problemes ja que els ha completat tost
+pr #comprovem que ha resolt tots els problemes del curs 1
+cu nach #comprovem que ja ha completat el curs 1
+lc #comprovem que s'han canviat les estadistiques del crus 1 ja que ha sigut completat
+nc 4 vectores_3 arboles colas tuplas #creem un nou curs amb la sessio que hem creat anteriorment
+lc #comprovem que s'ha afegit correctament
+i nach 5 #comprovem que no es pot inscriure ja que el crus no existeix
+i nach 4 #inscrivim nach a un altre crus que conte alguns problemes que ja ha completat al curs anterior
+curso_usuario nach #comprovem que s'ha inscrit correctament al crus 4
+i nach 2 #comprovem que no es pot inscriure al crus 2 ja que esta inscrit al 4
+pe nach #comprovem que nach no pot enviar cam problema de tuplas ja que els ha completat tots a un altre curs, pot enviar el problema inicial d'arboles i de vectores_3 ja n'ha completat algun
+e nach A01 1 #realitzem alguns enviaments
+e nach A02 1 
+e nach A03 1
+e nach V011 1
+pe nach #comprovem que ja nomes li queda un d'arbres i 3 de vectores_3 per poder enviar
+pr nach #mirem que s'hagin afegit els problemes resolts
+e nach V13 1
+e nach V14 0
+e nach V14 1
+e nach V12 0
+e nach V12 0
+e nach V12 1
+pe nach #comprovem que nomes li queda un problema de vectores_3
+e nach V15 1
+cu nach #comprovem que segueix inscrit al curs
+lc #comprovem les estadistiques dels cursos
+i kase0 2 #comprovem envios amb un altre usuari
+e kase0 V07 1 
+e kase0 V06 1
+e kase0 V10 1
+e kase0 V08 1
+e kase0 V09 1
+e kase0 V05 1
+e kase0 V03 1
+i nach 4 #comprovem que no es pot inscriure a que no ha completat el crus
+pe kase0 #comprovem que ha fet tots el problemes de vectores_2
+e kase0 T01 1 #continuem realitzant envios
+e kase0 T02 1
+e kase0 T03 1
+e kase0 C01 1
+e kase0 C02 1
+e kase0 C03 1
+pe kase0 #mirem que nomes li queden els problemes de pilas per enviar
+pr kase0 #mirem que hagin canviat els problemes resolts
+e kase0 P01 1
+e kase0 P02 1
+e kase0 P04 1
+e kase0 P05 1
+pe kase0 #mirem que nomes li queda el problema PO3 per completar el curs
+e kase0 P03 0
+e kase0 P03 1
+pe kase0 #mirem que ja no pot resoldre mes problemes
+pr kase0 #mirem que estiguin tots els problemes del curs 2
+cu kase0 #mirem que ja no esta inscrit a cap curs
+i kase0 1
+pe kase0 #comprovem que al haver fet el crus 2 ja te alguns problemes fets que tambe estan al crus 1
+lc #mirem que les estadistiques de cursos estiguin be
+lp #mirem que les estadistiques de problemes estiguin be
+lu #mirem que les estadistiques d'usuaris estiguin be
 
 fin
-
-
 
 
 

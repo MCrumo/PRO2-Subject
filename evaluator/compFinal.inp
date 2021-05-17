@@ -1,0 +1,131 @@
+40
+V01 V02 V03 V04 V05 V06 V07 V08 V09 V10
+T01 T02 T03 T04 T05
+P01 P02 P03 P04 P05 P06
+C01 C02 C03 C04 C05 C06
+L01 L02 L03 L04 L05 L06 L07 L08
+A01 A02 A03 A04 A05
+
+7
+vectores_1 V01 V02 V03 0 0 V05 0 0 V06 0 0 
+vectores_2 V07 V06 V08 0 0 V09 0 0 V10 V05 0 0 V03 0 0 
+tuplas T01 T02 0 0 T03 0 0 
+pilas P01 P02 P03 0 0 0 P04 P05 0 0 0 
+colas C01 C02 0 0 C03 0 0 
+listas L01 L02 L03 0 0 L04 L05 L06 0 0 L07 0 0 0 0
+arboles A01 A02 0 0 A03 A04 0 0 0
+
+3
+2 vectores_1 tuplas
+4 vectores_2 tuplas pilas colas
+6 vectores_2 tuplas pilas colas listas arboles
+
+10
+nach
+kase0
+residente
+benet
+blake
+ayax
+prok
+kaze
+sfdk
+calle13
+
+
+np V11
+np V12
+nuevo_problema V13
+np V14
+nuevo_problema V11
+np V15
+i nach 1 
+cu nach 
+pe nach 
+pr nach 
+ec 1 
+ns vectores_3 V01 V02 V13 V06 V15 0 0 0 0 V14 0 0 V11 V12 V03 0 0 V05 0 0 0
+ls 
+envio nach V01 0
+e nach V01 0
+e nach V01 1
+envio nach T01 1
+pe nach
+pr nach
+e nach T02 0
+e nach T02 1
+e nach T03 1
+pe nach
+e nach V02 1
+e nach V03 1
+e nach V05 1
+envio nach V06 0
+e nach V06 1
+pe nach
+pr nach
+cu nach
+lc 
+nc 4 vectores_3 arboles colas tuplas
+lc 
+i nach 5 
+i nach 4 
+curso_usuario nach 
+i nach 2
+
+pe nach 
+e nach A01 1
+e nach A02 1 
+e nach A03 1
+e nach V11 1
+pe nach 
+pr nach
+
+e nach V13 1
+e nach V14 0
+e nach V14 1
+e nach V12 0
+e nach V12 0
+e nach V12 1
+pe nach 
+
+e nach V15 1
+
+cu nach 
+lc 
+
+
+i kase0 2
+e kase0 V07 1 
+e kase0 V06 1
+e kase0 V10 1
+e kase0 V08 1
+e kase0 V09 1
+e kase0 V05 1
+e kase0 V03 1
+i nach 4 
+pe kase0
+e kase0 T01 1
+e kase0 T02 1
+e kase0 T03 1
+e kase0 C01 1
+e kase0 C02 1
+e kase0 C03 1
+pe kase0 
+pr kase0
+e kase0 P01 1
+e kase0 P02 1
+e kase0 P04 1
+e kase0 P05 1
+pe kase0
+e kase0 P03 0
+e kase0 P03 1
+pe kase0 
+pr kase0 
+cu kase0 
+i kase0 1
+pe kase0
+lc
+lp
+lu
+
+fin

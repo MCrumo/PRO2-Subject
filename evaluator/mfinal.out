@@ -1,0 +1,273 @@
+#np V11 //s'afegeixen els nous problemes
+41
+#np V12
+42
+#nuevo_problema V13
+43
+#np V14
+44
+#nuevo_problema V11
+error: el problema ya existe
+#np V15
+45
+#i nach 1 //s'ha incrit nach al curs 1 per anar fent envios i a l'hora anar comprovant
+que s'actualitxa correctament: el seus problemes enviables, el problemes resolts i les 
+estadistiques del curs
+1
+#cu nach
+1
+#pe nach
+T01(0)
+V01(0)
+#pr nach
+#ec 1
+1 0 1 2 (vectores_1 tuplas)
+#ns vectores_3
+8
+#ls
+arboles 4 ((A02)((A04)A03)A01)
+colas 3 ((C02)(C03)C01)
+listas 7 (((L03)(((L06)(L07)L05)L04)L02)L01)
+pilas 5 (((P03)P02)((P05)P04)P01)
+tuplas 3 ((T02)(T03)T01)
+vectores_1 5 (((V03)(V05)V02)(V06)V01)
+vectores_2 7 (((V08)(V09)V06)((V05)(V03)V10)V07)
+vectores_3 10 (((((V15)V06)V13)(V14)V02)(((V03)(V05)V12)V11)V01)
+#envio nach V01 0
+#e nach V01 0
+#e nach V01 1
+#envio nach T01 1
+#pe nach
+T02(0)
+T03(0)
+V02(0)
+V06(0)
+#pr nach
+T01(1)
+V01(3)
+#e nach T02 0
+#e nach T02 1
+#e nach T03 1
+#pe nach
+V02(0)
+V06(0)
+#e nach V02 1
+#e nach V03 1
+#e nach V05 1
+#envio nach V06 0
+#e nach V06 1
+#pe nach
+error: usuario no inscrito en ningun curso
+#pr nach
+T01(1)
+T02(2)
+T03(1)
+V01(3)
+V02(1)
+V03(1)
+V05(1)
+V06(2)
+#cu nach
+0
+#lc
+1 1 0 2 (vectores_1 tuplas)
+2 0 0 4 (vectores_2 tuplas pilas colas)
+3 0 0 6 (vectores_2 tuplas pilas colas listas arboles)
+#nc //afegim el nou curs on hi ha la sessio vectores_3 que sera la principal per 
+combrobar que l'usuari se li afegeixen al problemes enviables altres que no son els
+naturals de l'estructura de prerrequisits
+4
+#lc
+1 1 0 2 (vectores_1 tuplas)
+2 0 0 4 (vectores_2 tuplas pilas colas)
+3 0 0 6 (vectores_2 tuplas pilas colas listas arboles)
+4 0 0 4 (vectores_3 arboles colas tuplas)
+#i nach 5
+error: el curso no existe
+#i nach 4
+1
+#curso_usuario nach //s'inscriu nach al curs 4 on comprovarem que al haver fet ja el
+curs 1, ha fet problemes del curs 4 i per tant, la sessio de vectores_3 no segueix l'estructura de prerrequisits tipica
+4
+#i nach 2
+error: usuario inscrito en otro curso
+#pe nach
+A01(0)
+C01(0)
+V11(0)
+V13(0)
+V14(0)
+#e nach A01 1
+#e nach A02 1
+#e nach A03 1
+#e nach V11 1
+#pe nach
+A04(0)
+C01(0)
+V12(0)
+V13(0)
+V14(0)
+#pr nach
+A01(1)
+A02(1)
+A03(1)
+T01(1)
+T02(2)
+T03(1)
+V01(3)
+V02(1)
+V03(1)
+V05(1)
+V06(2)
+V11(1)
+#e nach V13 1
+#e nach V14 0
+#e nach V14 1
+#e nach V12 0
+#e nach V12 0
+#e nach V12 1
+#pe nach
+A04(0)
+C01(0)
+V15(0)
+#e nach V15 1
+#cu nach
+4
+#lc
+1 1 0 2 (vectores_1 tuplas)
+2 0 0 4 (vectores_2 tuplas pilas colas)
+3 0 0 6 (vectores_2 tuplas pilas colas listas arboles)
+4 0 1 4 (vectores_3 arboles colas tuplas)
+#i kase0 2 //tornem a repetir el mateix proces per aquest com amb un altre usuari
+i amb cursos diferents
+1
+#e kase0 V07 1
+#e kase0 V06 1
+#e kase0 V10 1
+#e kase0 V08 1
+#e kase0 V09 1
+#e kase0 V05 1
+#e kase0 V03 1
+#i kase0 4
+error: usuario inscrito en otro curso
+#pe kase0
+error: el usuario no existe
+#e kase0 T01 1
+#e kase0 T02 1
+#e kase0 T03 1
+#e kase0 C01 1
+#e kase0 C02 1
+#e kase0 C03 1
+#pe kase0
+P01(0)
+#pr kase0
+C01(1)
+C02(1)
+C03(1)
+T01(1)
+T02(1)
+T03(1)
+V03(1)
+V05(1)
+V06(1)
+V07(1)
+V08(1)
+V09(1)
+V10(1)
+#e kase0 P01 1
+#e kase0 P02 1
+#e kase0 P04 1
+#e kase0 P05 1
+#pe kase0
+P03(0)
+#e kase0 P03 0
+#e kase0 P03 1
+#pe kase0
+error: usuario no inscrito en ningun curso
+#pr kase0
+C01(1)
+C02(1)
+C03(1)
+P01(1)
+P02(1)
+P03(2)
+P04(1)
+P05(1)
+T01(1)
+T02(1)
+T03(1)
+V03(1)
+V05(1)
+V06(1)
+V07(1)
+V08(1)
+V09(1)
+V10(1)
+#cu kase0
+0
+#i kase0 1
+1
+#pe kase0
+V01(0)
+#lc
+1 1 1 2 (vectores_1 tuplas)
+2 1 0 4 (vectores_2 tuplas pilas colas)
+3 0 0 6 (vectores_2 tuplas pilas colas listas arboles)
+4 0 1 4 (vectores_3 arboles colas tuplas)
+#lp //comprovacio de que totes les estatdistiques s'han actualitzat correctament
+A01(1,1,1)
+A02(1,1,1)
+A03(1,1,1)
+A04(0,0,1)
+A05(0,0,1)
+C01(1,1,1)
+C02(1,1,1)
+C03(1,1,1)
+C04(0,0,1)
+C05(0,0,1)
+C06(0,0,1)
+L01(0,0,1)
+L02(0,0,1)
+L03(0,0,1)
+L04(0,0,1)
+L05(0,0,1)
+L06(0,0,1)
+L07(0,0,1)
+L08(0,0,1)
+P01(1,1,1)
+P02(1,1,1)
+P04(1,1,1)
+P05(1,1,1)
+P06(0,0,1)
+T01(2,2,1)
+T03(2,2,1)
+T04(0,0,1)
+T05(0,0,1)
+V02(1,1,1)
+V03(2,2,1)
+V04(0,0,1)
+V05(2,2,1)
+V07(1,1,1)
+V08(1,1,1)
+V09(1,1,1)
+V10(1,1,1)
+V11(1,1,1)
+V13(1,1,1)
+V15(1,1,1)
+T02(3,2,1.33333)
+V06(3,2,1.33333)
+P03(2,1,1.5)
+V14(2,1,1.5)
+V01(3,1,2)
+V12(3,1,2)
+#lu
+ayax(0,0,0,0)
+benet(0,0,0,0)
+blake(0,0,0,0)
+calle13(0,0,0,0)
+kase0(19,18,18,1)
+kaze(0,0,0,0)
+nach(23,16,16,4)
+prok(0,0,0,0)
+residente(0,0,0,0)
+sfdk(0,0,0,0)
