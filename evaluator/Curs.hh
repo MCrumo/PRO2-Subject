@@ -9,8 +9,8 @@
 
 /** @class Curs
     @brief Representa un curs del Evaluator.
-    
-    Format per un subconjut del total de sessions
+
+    Si a la plataforma hi ha N cursos, cada curs té un valor enter entre 1 i N que l'identifica. Un curs està format per un subconjunt de sessions diferents del repositori, amb la restricció que la intersecció entre qualsevol parell de sessions del curs és buida. És a dir, un problema de la col·lecció només pot aparèixer una vegada (com màxim) en un mateix curs, integrat en una sessió determinada. Un problema pot formar part d'un o més cursos o de cap. El mateix passa amb les sessions, poden formar part d'un o més cursos o de cap. I igualment podem dir que un problema pot formar part d'una o més sessions (mentre no siguin del mateix curs) o de cap. 
 */
 
 class Curs 

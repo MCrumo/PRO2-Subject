@@ -8,7 +8,7 @@
 #include "Sessio.hh" 
 
 /** @class Cjt_sessions
-    @brief Representa el conjunt de sessions del Evaluator.
+    @brief Representa el conjunt de sessions de l'Evaluator.
 */
 
 class Cjt_sessions
@@ -90,7 +90,7 @@ public:
     void escriure_sessio(string nom) const;
     
 private:
-    //conjunt amb la clau id de sessio i Sessio
+    //conjunt indexat amb la clau id de sessio i valor Sessio
     map<string, Sessio> llista_sessions;
 };
 #endif

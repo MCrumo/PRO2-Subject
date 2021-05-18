@@ -1,3 +1,7 @@
+/** @file Usuari.cc
+    @brief Implementació de la classe Usuari
+*/
+
 #include "Usuari.hh"
 
 

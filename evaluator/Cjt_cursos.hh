@@ -120,7 +120,7 @@ public:
     void escriure_curs(int nom) const;
     
 private:
-    //vector de Cursos sense repeticio on la id de cada curs es la seva posicio +1
+    //vector de cursos sense repeticions, on la id de cada curs coincideix amb la seva posicio al vector +1
     vector<Curs> llista_cursos;
 };
 

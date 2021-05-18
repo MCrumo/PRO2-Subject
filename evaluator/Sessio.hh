@@ -6,9 +6,9 @@
 #define SESSIO
 
 #include "Cjt_problemes.hh"
-#include "Problema.hh"
 #include "BinTree.hh"
 #ifndef NO_DIAGRAM
+#include "Problema.hh"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -17,7 +17,8 @@ using namespace std;
 /** @class Sessio
     @brief Representa una sessió del Evaluator.
     
-    Conté un subconjut de problemes de la colecció de problemes
+    Conté un subconjut de problemes de la colecció de problemes.
+    Cada sessió té un nom que la identifica (string) i està formada per un sub-conjunt de problemes diferents de la col·lecció estructurats segons unes relacions de prerequisit. A cada sessió hi ha un problema bàsic inicial que s'ha de resoldre abans que la resta de problemes de la mateixa sessió. Els problemes d'una sessió poden ser prerequisit directe de 0, 1 o 2 problemes de la mateixa sessió, i cada problema, excepte el bàsic inicial, té un únic problema que és prerequsito directe d'ell.
 */
 
 class Sessio

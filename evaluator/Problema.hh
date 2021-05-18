@@ -14,7 +14,9 @@ using namespace std;
 #endif
 
 /** @class Problema
-    @brief Representa un problema del Evaluator.
+    @brief Representa un problema de l'Evaluator.
+    
+    Cada problema té un nom que l'identifica (string). De cada problema gestionarem el nombre total d'enviaments realitzats a aquest problema i quants d'ells han estat jutjats com a correctes. 
 */
 
 class Problema 

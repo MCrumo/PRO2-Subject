@@ -1,3 +1,7 @@
+/** @file Cjt_problemes.cc
+    @brief Implementació de la classe Cjt_problemes
+*/
+
 #include "Cjt_problemes.hh"
 
 const char *e1 = "error: el problema ya existe";

@@ -1,3 +1,7 @@
+/** @file Sessio.cc
+    @brief Implementació de la classe Sessio
+*/
+
 #include "Sessio.hh" 
 
 Sessio::Sessio() {}

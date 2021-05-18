@@ -1,4 +1,4 @@
-/** @file Cjt_usuaris.hh
+    /** @file Cjt_usuaris.hh
     @brief Especificació de la classe Cjt_usuaris
 */
 
@@ -8,7 +8,9 @@
 #include "Usuari.hh"
 
 /** @class Cjt_usuaris
-    @brief Representa el conjunt d'usuaris del Evaluator.
+    @brief Representa el conjunt d'usuaris de l'Evaluator.
+    
+    Els usuaris es poden donar de baixa de la plataforma, la qual cosa implicarà que es perdi tota la informació associada a aquests usuaris.
 */
 
 class Cjt_usuaris
@@ -126,12 +128,12 @@ public:
     
     /** @brief Operació d'escriptura d'un usuari
       \pre existeix usuari amb id "u" al parametre implicit
-      \post s'han escrit pel canal estàndard de sortida els atributs de l'usuari "u" de parametre implicit
+      \post s'han escrit pel canal estàndard de sortida els atributs de l'usuari "u" del parametre implicit
     */
     void escriure_usuari(string u) const;
     
 private:
-    //conjunt amb la clau de id d'usuari i Usuari
+    //conjunt indexat amb la clau de id d'usuari i amb valor Usuari
     map<string, Usuari> llista_usuaris;
 };
 

@@ -2,18 +2,20 @@
  * @mainpage Pràctica de PRO2: Evaluator, plataforma de gestió de problemes i cursos de programació. 
 
  En aquesta pràctica farem una plataforma de cursos de programació anomenada Evaluator en la cual un conjunt d'usuaris podran anar completant aquests cursos.
- La plataforma Evaluator integra una colecció de problemes de programació, un repositori de sessions compostes per problemes de tals colecció, un conjunt de cursos formats per una o més sessions i un conjunt d'usuaris registrats
+ La plataforma Evaluator integra una colecció de problemes de programació, un repositori de sessions compostes per problemes de tals colecció, un conjunt de cursos formats per una o més sessions i un conjunt d'usuaris registrats.
+ El programa principal d'aquesta pràctica és program.cc
 */
 
-/** @file main.cc
-    @brief Programa principal de la pràctica <em>Evaluator, plataforma de gestió de problemes i cursos de programació</em>.
+/** @file program.cc
+    @brief Programa principal de la pràctica.
 */
 
+
+#include "Cjt_usuaris.hh"
+#ifndef NO_DIAGRAM
 #include "Cjt_problemes.hh"
 #include "Cjt_sessions.hh"
 #include "Cjt_cursos.hh"
-#include "Cjt_usuaris.hh"
-#ifndef NO_DIAGRAM
 #endif
 
 /** @brief Programa principal de la pràctica <em>Evaluator, plataforma de gestió de problemes i cursos de programació</em>.

@@ -6,15 +6,15 @@
 #define USUARI
 
 #include "Cjt_cursos.hh"
-#include "Cjt_problemes.hh"
 #ifndef NO_DIAGRAM
+#include "Cjt_problemes.hh"
 #include <set>
 #endif
 
 /** @class Usuari
     @brief Representa un usuari del Evaluator.
 
-    Conte la informació de l'usuari com ara: nom, a quins cursos està inscrit, registre de problemes resolts, quins pot enviar, nombre total d'enviaments per problema o quants jutgats com a correctes
+    Conte la informació de l'usuari com ara: nom, a quins cursos està inscrit, registre de problemes resolts, quins pot enviar, nombre total d'enviaments per problema o quants han sigut jutgats com a correctes. Un usuari pot esta inscrit nomes a un curs o a cap i només es podrà inscriure a un curs quan hagi acabat el que estava fent o si no està inscrit en cap. Quan esta inscrit a un curs, la intersecció entre el conjunt de problemes que ja ha resolt i el conjunt dels problemes que pot enviar a aquest curs, ha de ser buida.
 */
 
 class Usuari

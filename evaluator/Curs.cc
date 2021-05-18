@@ -1,3 +1,7 @@
+/** @file Curs.cc
+    @brief Implementació de la classe Curs
+*/
+
 #include "Curs.hh" 
 
 const char *e12 = "error: el problema no pertenece al curso";

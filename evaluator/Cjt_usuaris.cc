@@ -1,3 +1,7 @@
+/** @file Cjt_usuaris.cc
+    @brief Implementació de la classe Cjt_usuaris
+*/
+
 #include "Cjt_usuaris.hh"
 
 const char *e7 = "error: el usuario ya existe";

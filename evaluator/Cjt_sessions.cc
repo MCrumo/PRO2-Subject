@@ -1,3 +1,7 @@
+ /** @file Cjt_sessions.cc
+    @brief Implementació de la classe Cjt_sessions
+*/
+
 #include "Cjt_sessions.hh"
 
 const char *e3 = "error: la sesion ya existe";

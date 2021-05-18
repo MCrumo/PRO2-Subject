@@ -1,3 +1,7 @@
+/** @file Cjt_cursos.cc
+    @brief Implementació de la classe Cjt_cursos
+*/
+
 #include "Cjt_cursos.hh"
 
 const char *e6 = "error: el curso no existe";
