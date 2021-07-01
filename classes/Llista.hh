@@ -17,16 +17,37 @@ private:
   // especificaci� operacions privades
 
 
-static void esborra_node_llista(node_llista* m)
-    /* Pre: cert */
-    /* Post: no fa res si m �s NULL, en cas contrari, allibera espai dels
-       nodes de la cadena que te el node apuntat per m com a primer */
-  {
-    if (m != NULL) {
-      esborra_node_llista(m->seg);
-      delete m;
+static node_llista* copia_node_llista(node_llista* m, node_llista* oact, node_llista* &u, node_llista* &a)
+/* Pre: cert */
+/* Post: si m és NULL, el resultat, u i a són NULL; en cas contrari,
+el resultat apunta al primer node d’una cadena de nodes que són còpia de la
+cadena que té el node apuntat per m com a primer, u apunta a l’últim node,
+a és o bé NULL si oact no apunta a cap node de la cadena que comença amb m
+o bé apunta al node còpia del node apuntat per oact */
+{
+    node_llista* n;
+    if (m==NULL) {n=NULL; u=NULL; a=NULL;}
+    else {
+        n = new node_llista;
+        n->info = m->info;
+        n->ant = NULL;
+        n->seg = copia_node_llista(m->seg, oact, u, a);
+        if (n->seg == NULL) u = n;
+        else (n->seg)->ant = n;
+        if (m == oact) a = n;
     }
-  }
+    return n;
+}
+static void esborra_node_llista(node_llista* m)
+/* Pre: cert */
+/* Post: no fa res si m és NULL, en cas contrari, allibera espai dels nodes de
+la cadena que té el node apuntat per m com a primer */
+{
+    if (m != NULL) {
+        esborra_node_llista(m->seg);
+        delete m;
+    }
+}
 
 
 public:
