@@ -1,6 +1,6 @@
 # PRO2 - Subject
 
-This is a C++ project using `classes`. Performed in a subject from the Engineering Degree. 
+This is a C++ project using `classes`. Performed in a subject from the Engineering Degree (PROgramming II). 
 
 The class structure simulates a platform that evaluates code called `evaluator`.
 
